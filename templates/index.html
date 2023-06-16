@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>PredictBay</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Favicons -->
+    <link href="/static/img/logoalt2.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+
+    <!-- Vendor CSS Files -->
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/boxicons.min.css" rel="stylesheet">
+    <link href="/static/css/quill.bubble.css" rel="stylesheet">
+    <link href="/static/css/quill.snow.css" rel="stylesheet">
+    <link href="/static/css/remixicon.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="loader">
+        <div id="loader-text"></div>
+    </div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="{{url_for('index')}}" class="logo d-flex align-items-center">
+                <img src="/static/img/logoalt2.png" alt="">
+                <span class="d-none d-lg-block">PredictBay</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="/">
+                <input type="text" id="ticker" name="ticker" value="{{ ticker }}"
+                    placeholder="Enter ticker symbol (NASDAQ)">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle" href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li><!-- End Search Icon-->
+                <!-- <li class="nav-item">
+                    <a class="nav-link nav-icon" href="https://predictbay-deployment-gfg-dfdw6l7waq-as.a.run.app">
+                        <i class="bi bi-arrow-return-left"></i>
+                    </a>
+                </li>Add a new list item for the icon -->
+
+                <!-- <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="/static/img/user-icon.jpg" alt="Profile" class="rounded-circle">
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <!-- {% if username %}
+                            <h1>Welcome, {{ username }}!</h1>
+                            <a href="{{ url_for('logout') }}">Logout</a>
+                            {% else %}
+                            <h1>Welcome to the Home Page</h1>
+                            <a href="{{ url_for('register') }}">Register</a>
+                            <br>
+                            <a href="{{ url_for('login') }}">Login</a>
+                            {% endif %} -->
+                            <!-- <h6>Kevin Anderson</h6>
+                            <span>Web Designer</span> -->
+                        </li>
+                        <!-- <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <i class="bi bi-gear"></i>
+                                <span>Account Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                                <i class="bi bi-question-circle"></i>
+                                <span>Need Help?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+                 -->
+                    </ul><!-- End Profile Dropdown Items -->
+                </li>
+            </ul>
+        </nav><!-- End Icons Navigation -->
+    </header><!-- End Header -->
+
+
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed " href="{{url_for('index')}}">
+                    <i class="bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('indicators')}}">
+                    <i class="bi bi-bar-chart"></i>
+                    <span>indicators</span>
+                </a>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('faq')}}">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li><!-- End F.A.Q Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('contact')}}">
+                    <i class="bi bi-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('news')}}">
+                    <i class="bi bi-newspaper"></i>
+                    <span>News</span>
+                </a>
+            </li><!-- End News Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('gchat')}}">
+                    <i class="bi bi-chat-right-dots"></i>
+                    <span>Global Chat</span>
+                </a>
+            </li><!-- End Global Chat Nav -->
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('register')}}">
+                    <i class="bi bi-card-list"></i>
+                    <span>Register</span>
+                </a>
+            </li><!-- End Register Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('login')}}">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+            </li><!-- End Login Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('overview')}}">
+                    <i class="bi bi-dash-circle"></i>
+                    <span>Overview</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('about')}}">
+                    <i class="bi bi-person"></i>
+                    <span>About Us</span>
+                </a>
+            </li>
+
+
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+
+    <main id="main" class="main">
+
+        <section class="section dashboard">
+            <div class="row">
+                <div class="col-lg-8">
+
+                    <div class="row">
+
+
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| High</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{high_value|round(3)}}</h6>
+                                            <span
+                                                class="text-success small pt-1 fw-bold">{{high_percent|round(4)}}%</span>
+                                            <span class="text-muted small pt-2 ps-1">{{high_status}}</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Sales Card -->
+
+
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| Open</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{open_value|round(3)}}</h6>
+                                            <span
+                                                class="text-danger small pt-1 fw-bold">{{Open_percent|round(4)}}%</span>
+                                            <span class="text-muted small pt-2 ps-1">{{Open_status}}</span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Sales Card -->
+
+
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card revenue-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| Close</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{close_value|round(3)}}</h6>
+                                            <span
+                                                class="text-success small pt-1 fw-bold">{{Close_percent|round(4)}}%</span>
+                                            <span class="text-muted small pt-2 ps-1">{{Close_status}}</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Revenue Card -->
+
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| Closing Price</span></h5>
+                                    <!-- <div id="div_output" style="width: 800px; height: 600px;"></div> -->
+                                    {% if chart %}
+                                    {{ chart|safe }}
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Reports -->
+
+
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| Original VS Prediction (LSTM)</span></h5>
+                                    <div id="graph-div">{{ graph_html|safe }}</div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Reports -->
+
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| Original VS Prediction (BiLSTM)</span>
+                                    </h5>
+
+
+                                    <div id="graph-div">{{ bilstm_graph_html|safe }}</div>
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Reports -->
+
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| LSTM Predicted Price</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{predicted_price|round(4)}}</h6>
+                                            <!-- <span class="text-success small pt-1 fw-bold">{{high_percent|round(4)}}%</span>
+                                            <span class="text-muted small pt-2 ps-1">{{high_status}}</span>
+                         -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Sales Card -->
+
+
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| Predicted Closing Range</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{uprange}} - {{downrange}}</h6>
+                                            <!-- <span class="text-danger small pt-1 fw-bold">{{Open_percent|round(4)}}%</span>
+                                            <span class="text-muted small pt-2 ps-1">{{Open_status}}</span> -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Sales Card -->
+
+
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card revenue-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| BiLSTM Predicted Price</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{biLSTM_predicted_price|round(4)}}</h6>
+                                            <!-- <span class="text-success small pt-1 fw-bold">{{Close_percent|round(4)}}%</span>
+                                            <span class="text-muted small pt-2 ps-1">{{Close_status}}</span> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Revenue Card -->
+
+                    </div>
+                </div>
+                <!-- Right side columns -->
+                <div class="col-lg-4">
+
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Company Name :<span> {{ company_name }}</span></h5>
+                            <h5 class="card-title">Market Cap :<span> {{ market_cap }}</span></h5>
+                            <h5 class="card-title">Description :<span> {{ short_description }}</span></h5>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-body">
+                            <form
+                                action="https://live.us21.list-manage.com/subscribe/post?u=ad18f4fc61203ce08318f1249&amp;id=08d1490c3a&amp;f_id=00ebd4e6f0"
+                                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                                class="validate" target="_blank" novalidate>
+                                <div id="mc_embed_signup_scroll">
+                                    <h2 class="card-title" style="font-size: 25px;">Subscribe to our Newsletter</h2>
+                                    <!-- <div class="indicates-required"><span class="asterisk">*</span> indicates required
+                                    </div> -->
+                                    <div class="row mb-3">
+                                        <label for="mce-FNAME" class="col-sm-2 col-form-label">Name </label>
+                                        <input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME"
+                                            style="width: 300px;">
+                                        <span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="mce-EMAIL" class="col-sm-2 col-form-label">Email <span
+                                                class="asterisk" style="color: red;">*</span></label>
+                                        <input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL"
+                                            required style="width: 300px;">
+                                        <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                                    </div>
+
+                                    <div id="mce-responses" class="clear-foot">
+                                        <div class="response" id="mce-error-response" style="display:none"></div>
+                                        <div class="response" id="mce-success-response" style="display:none"></div>
+                                    </div>
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input
+                                            type="text" name="b_ad18f4fc61203ce08318f1249_08d1490c3a" tabindex="-1"
+                                            value=""></div>
+                                    <div class="optionalParent">
+                                        <div class="clear-foot">
+                                            <div class="col-sm-10">
+                                                <input type="submit" value="Subscribe" name="subscribe"
+                                                    id="mc-embedded-subscribe" class="btn btn-primary" style="margin-left: 68px;">
+                                            </div>
+
+                                            <!-- <p class="brandingLogo"><a href="http://eepurl.com/itxM9Q"
+                                                    title="Mailchimp - email marketing made easy and fun"><img
+                                                        src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a>
+                                            </p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+
+                </div><!-- End Right side columns -->
+
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script
+        type='text/javascript'>(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; fnames[2] = 'LNAME'; ftypes[2] = 'text'; fnames[3] = 'ADDRESS'; ftypes[3] = 'address'; fnames[4] = 'PHONE'; ftypes[4] = 'phone'; fnames[5] = 'BIRTHDAY'; ftypes[5] = 'birthday'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Predict-Bay-Chat-Bot" agent-id="8d3a76f6-5407-46d9-8133-59a8919cffc5"
+        language-code="en"></df-messenger>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
+        </div>
+    </footer><!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src="/static/js/apexcharts.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/quill.min.js"></script>
+    <script src="/static/assets/tinymce/tinymce.min.js"></script>
+    <script src="/static/js/simple-datatables.js"></script>
+    <script src="/static/js/validate.js"></script>
+    <script>
+        var loader = document.getElementById("loader");
+
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+flask
+yfinance
+numpy
+pandas
+scikit-learn
+tensorflow
+plotly
+statsmodels
+matplotlib
+seaborn
+IPython
+flask_cors

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PredictBay</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/bootstrap-icons.min.css">
+
+  <!-- Favicons -->
+  <link href="/static/img/logoalt2.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/quill.bubble.css" rel="stylesheet">
+  <link href="/static/css/quill.snow.css" rel="stylesheet">
+  <link href="/static/css/remixicon.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{{url_for('index')}}" class="logo d-flex align-items-center">
+        <img src="/static/img/logoalt2.png" alt="">
+        <span class="d-none d-lg-block">PredictBay</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="/indicators">
+        <input type="text" id="ticker" name="ticker" value="{{ ticker }}" placeholder="Enter ticker symbol (NASDAQ)">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle" href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+      </ul>
+    </nav><!-- End Icons Navigation -->
+  </header><!-- End Header -->
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="{{url_for('index')}}">
+          <i class="bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('indicators')}}">
+          <i class="bi bi-bar-chart"></i>
+          <span>indicators</span>
+        </a>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('faq')}}">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('contact')}}">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('news')}}">
+          <i class="bi bi-newspaper"></i>
+          <span>News</span>
+        </a>
+      </li><!-- End News Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('gchat')}}">
+          <i class="bi bi-chat-right-dots"></i>
+          <span>Global Chat</span>
+        </a>
+      </li><!-- End Global Chat Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('register')}}">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('login')}}">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('overview')}}">
+          <i class="bi bi-dash-circle"></i>
+          <span>Overview</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('about')}}">
+          <i class="bi bi-person"></i>
+          <span>About Us</span>
+        </a>
+      </li>
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Indicators</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{url_for('index')}}">Home</a></li>
+          <li class="breadcrumb-item active"><a href="{{url_for('indicators')}}">Indicators</a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">SMA |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>The Simple Moving Average (SMA) is a widely used stock market indicator. It calculates a stock's average closing prices
+              over a specified period, smoothing out price fluctuations. Short-term SMAs (e.g., 10-day) offer immediate insights. When
+              the stock price is above the SMA, it indicates a bullish trend and potential buying opportunities; below the SMA
+              suggests a bearish trend and possible selling opportunities. Traders watch for crossovers, where a shorter-term SMA
+              intersects a longer-term one, to confirm trend reversals or continuations. While the SMA is a lagging indicator, it aids
+              in trend analysis when combined with other tools.
+</span></h5>
+              {{ sma_graph_html|safe }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">EMA |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>EMA (Exponential Moving Average): The Exponential Moving Average is a stock market indicator that gives more weight to
+              recent price data. It calculates the average closing prices over a specified time period, with greater emphasis on the
+              most recent prices. EMA reacts more quickly to price changes compared to the SMA, making it popular among short-term
+              traders. It helps identify trend direction, potential support and resistance levels, and generates trading signals when
+              the price crosses above or below the EMA line. Traders often use multiple EMAs with different periods to gain insights
+              into various timeframes, combining them for analysis.</span></h5>
+              {{ ema_graph_html|safe }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">RSI |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>RSI (Relative Strength Index): It is a momentum oscillator used in technical analysis. RSI measures the speed and change
+              of price movements, indicating whether a stock is overbought or oversold. It ranges from 0 to 100, with values above 70
+              considered overbought and values below 30 considered oversold. RSI helps traders identify potential trend reversals and
+              divergence patterns. It can generate buy or sell signals when it crosses certain threshold levels. RSI is a valuable
+              tool for assessing a stock's strength and potential for a price correction, but it's advisable to use it in conjunction
+              with other indicators for confirmation.</span></h5>
+              {{ rsi_graph_html|safe }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Bollinger Bands |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>Bollinger Bands consist of a central moving average line and two outer bands that are derived from the standard
+              deviation of price movements. The bands dynamically adjust according to market volatility, expanding during periods of
+              high volatility and contracting during low volatility.When the price reaches or crosses the upper band, it may indicate
+              an overbought condition. Conversely, when the price touches or crosses the lower band, it may signal an oversold
+              condition and a potential upward reversal. Traders also look for squeeze patterns, where the bands narrow, indicating
+              low volatility and potential breakout opportunities.</span></h5>
+
+              {{ bb_graph_html|safe }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">ROC |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>The Rate of Change is a momentum indicator used in stock market analysis. It measures the percentage change in price
+              over a specified time period. By comparing the current price to the price at a certain point in the past. It provides
+              insights into the speed and magnitude of price movements. A positive ROC indicates upward momentum, while a negative ROC
+              suggests downward momentum. Traders use ROC to identify potential trend reversals, overbought or oversold conditions,
+              and divergence patterns. ROC can help confirm trading signals and provide insights into the strength or weakness of a
+              stock's price movement.</span></h5>
+
+              {{roc_graph_html|safe}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">WMA |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>WMA (Weighted Moving Average) is used to identify trends and potential buy or sell signals. It calculates the average
+              price of a security over a specific time period, giving more weight to recent prices. By incorporating a weighting
+              factor, WMA reacts more quickly to price changes compared to simple moving averages. This indicator helps traders
+              identify potential trend reversals or confirm existing trends. Short-term traders often utilize WMA indicators to make
+              short-term trading decisions, while long-term investors may use them to gauge overall market direction and plan their
+              investment strategies accordingly.</span></h5>
+              {{wma_graph_html|safe}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">VWAP |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>VWAP (Volume-Weighted Average Price) combines both price and volume information to provide insights into the average
+              price at which a security has traded throughout the day. It calculates the average price by multiplying each trade's
+              price by its corresponding volume and then dividing the sum by the total volume. VWAP is commonly used by institutional
+              investors and algorithmic traders to assess the fair value of a security and determine if a particular trade was
+              executed at a favorable price. Traders often compare the current price to the VWAP line to identify potential overbought
+              or oversold conditions in the market.</span></h5>
+              {{vwap_graph_html|safe}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Stochastic |<span> {{ticker}}</span></h5>
+              <h5 class="card-title"><span>The Stochastic oscillator is used to identify overbought and oversold conditions in the market. It measures the closing
+              price of a security in relation to its price range over a specified period. The indicator consists of two lines: %K and
+              %D. %K represents the current closing price's position within the range, while %D is a smoothed version of %K. Values
+              range from 0 to 100, with readings above 80 considered overbought and readings below 20 considered oversold. Traders
+              often use Stochastic to generate buy or sell signals when the lines cross or when they diverge from the price trend,
+              helping identify potential reversals.</span></h5>
+              {{stochastic_graph_html|safe}}
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">ATR |<span> {{ticker}}</span></h5>
+              {{atr_graph_html|safe}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">CMF |<span> {{ticker}}</span></h5>
+              {{cmf_graph_html|safe}}
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/static/js/apexcharts.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/quill.min.js"></script>
+<script src="/static/assets/tinymce/tinymce.min.js"></script>
+<script src="/static/js/simple-datatables.js"></script>
+<script src="/static/js/validate.js"></script>
+
+
+</body>
+
+</html>

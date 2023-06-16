@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PredictBay</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/img/logoalt2.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+  <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/quill.bubble.css" rel="stylesheet">
+  <link href="/static/css/quill.snow.css" rel="stylesheet">
+  <link href="/static/css/remixicon.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* teams section styling */
+    .teams .title::after {
+      content: "";
+    }
+
+    .teams .carousel .card {
+      background: #222;
+      border-radius: 6px;
+      padding: 25px 35px;
+      text-align: center;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .teams .carousel .card:hover {
+      background: rgba(164, 161, 161, 0);
+    }
+
+    .teams .carousel .card .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .teams .carousel .card:hover .box {
+      transform: scale(1.05);
+    }
+
+    .teams .carousel .card .text {
+      font-size: 25px;
+      font-weight: 500;
+      margin: 10px 0 7px 0;
+    }
+
+    .teams .carousel .card img {
+      height: 150px;
+      width: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgb(46, 77, 248);
+      transition: all 0.3s ease;
+    }
+
+    .teams .carousel .card:hover img {
+      border-color: #fff;
+    }
+
+    .owl-dots {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .owl-dot {
+      height: 13px;
+      width: 13px;
+      margin: 0 5px;
+      outline: none !important;
+      border-radius: 50%;
+      border: 2px solid rgb(46, 77, 248) !important;
+      transition: all 0.3s ease;
+    }
+
+    .owl-dot.active {
+      width: 35px;
+      border-radius: 14px;
+    }
+
+    .owl-dot.active,
+    .owl-dot:hover {
+      background: rgb(46, 77, 248) !important;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{{url_for('index')}}" class="logo d-flex align-items-center">
+        <img src="/static/img/logoalt2.png" alt="">
+        <span class="d-none d-lg-block">PredictBay</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+  
+    <ul class="sidebar-nav" id="sidebar-nav">
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="{{url_for('index')}}">
+          <i class="bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('indicators')}}">
+          <i class="bi bi-bar-chart"></i>
+          <span>indicators</span>
+        </a>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('faq')}}">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('contact')}}">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('news')}}">
+          <i class="bi bi-newspaper"></i>
+          <span>News</span>
+        </a>
+      </li><!-- End News Page Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('gchat')}}">
+          <i class="bi bi-chat-right-dots"></i>
+          <span>Global Chat</span>
+        </a>
+      </li><!-- End Global Chat Nav -->
+  
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('register')}}">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('login')}}">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('overview')}}">
+          <i class="bi bi-dash-circle"></i>
+          <span>Overview</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('about')}}">
+          <i class="bi bi-person"></i>
+          <span>About Us</span>
+        </a>
+      </li>
+  
+  
+    </ul>
+  
+  </aside><!-- End Sidebar-->
+
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{url_for('index')}}">Home</a></li>
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+    <!-- teams section start -->
+    <section class="teams" id="teams">
+      <div class="max-width">
+        <!-- <h2 class="title">About Us</h2> -->
+        <div class="carousel owl-carousel">
+          <div class="card">
+            <div class="box">
+              <img src="/static/img/mayukh_dp.jpg" alt="">
+              <div class="text">
+                <h2>Mayukh Mondal</h2>
+              </div>
+              <p>
+              <h3>MLOps | Backend | DevOps</h3>
+              <div class="social-links mt-2">
+                <a href="https://github.com/Mayukh-Mondal-Dev" class="github" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://instagram.com/_arko._" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://twitter.com/MayukhM026" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/mayukh-mondal-0a01b1225/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+              <div class="col-xl-8">
+                <h5 class="card-title">Profile Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Name</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Mayukh Mondal</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Country</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>India</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Durgapur WB</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>(+91)89007 79277</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b><a href="mailto:21051405@kiit.ac.in" style="color:rgb(252, 246, 246)">21051405@kiit.ac.in</a></b></h5>
+                  </div>
+                </div>
+
+              </div>
+
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="box">
+              <img src="/static/img/abhishek.jpg" alt="">
+              <div class="text">
+                <h2>Abhishek Mallick</h2>
+              </div>
+              <p>
+              <h3>ML | FullStack</h3>
+              <div class="social-links mt-2">
+                <a href="https://github.com/Abhishek-Mallick" class="github" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://instagram.com/_abhishek_mallick_" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/abhishek-mallick09/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+
+              <div class="col-xl-8">
+                <!-- <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <h5 class="card-title">About</h5>
+                                <p class="small fst-italic">.</p> -->
+
+                <h5 class="card-title">Profile Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Name</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Abhishek Mallick</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Country</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>India</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Kolkata WB</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>(+91)62916 53332</b></h5>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b><a href="mailto:21051706@kiit.ac.in" style="color:rgb(252, 246, 246)">21051706@kiit.ac.in</a></b></h5>
+                  </div>
+                </div>
+
+              </div>
+
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="box">
+              <img src="/static/img/1686636419497.jpg" alt="">
+              <div class="text">
+                <h2>Deepraj Bera</h2>
+              </div>
+              <p>
+              <h3>ML | Full stack</h3>
+              <div class="social-links mt-2">
+                <a href="https://github.com/deepraj21" class="github" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://www.instagram.com/its_deep.raj/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/deepraj-bera-b64996231/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+
+              <div class="col-xl-8">
+                
+                <h5 class="card-title">Profile Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label "style="font-size: 15px;">Name</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Deepraj Bera</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label "style="font-size: 15px;">Country</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>India</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label"style="font-size: 14px;">Address</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Barrackpore WB</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label"style="font-size: 15px;">Phone</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>(+91)70441 35575</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b><a href="mailto:21051302@kiit.ac.in" style="color:rgb(252, 246, 246)">21051302@kiit.ac.in</a></b></h5>
+                  </div>
+                </div>
+
+              </div>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="box">
+              <img src="/static/img/harshit.jpg" alt="">
+              <div class="text">
+                <h2>Harshit Mania</h2>
+              </div>
+              <p>
+              <h3>MERN</h3>
+              <div class="social-links mt-2">
+                <a href="https://github.com/Harshitm14" class="github" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://instagram.com/maniaishere03" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/harshit-mania-720bbb236/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+
+              <div class="col-xl-8">
+        
+
+                <h5 class="card-title">Profile Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Name</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Harshit Mania</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Country</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>India</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>Bokaro Jharkhand</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b>(+91)82601 53995</b></h5>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
+                  <div class="col-lg-9 col-md-8">
+                    <h5><b><a href="mailto:21051398@kiit.ac.in" style="color:rgb(252, 246, 246)">21051398@kiit.ac.in</a></b></h5>
+                  </div>
+                </div>
+
+              </div>
+
+              </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      <p class="fs-2"> <a href="mailto:predictbay04@gmail.com">
+        <i class="bi-envelope-fill fs-4"></i></i></a> | <a href="https://github.com/The-Predictbay" target="_blank"><i class="bi bi-github fs-4" ></i></a></p>
+      &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <script src="/static/js/apexcharts.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/quill.min.js"></script>
+  <script src="/static/js/tinymce.min.js"></script>
+  <script src="/static/js/simple-datatables.js"></script>
+  <script src="/static/js/validate.js"></script>
+
+  <script>
+    // owl carousel script
+    $('.carousel').owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: true,
+      autoplayTimeOut: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        600: {
+          items: 2,
+          nav: false
+        },
+        1000: {
+          items: 3,
+          nav: false
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
