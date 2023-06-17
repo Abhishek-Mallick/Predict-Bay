@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PredictBay</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/bootstrap-icons.min.css">
+
+  <!-- Favicons -->
+  <link href="/static/img/logoalt2.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/quill.bubble.css" rel="stylesheet">
+  <link href="/static/css/quill.snow.css" rel="stylesheet">
+  <link href="/static/css/remixicon.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    ::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #343a40;        /* color of the tracking area */
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    -ms-overflow-style:none;
+    background-color: #adb5bd;    /* color of the scroll thumb */
+    border-radius: 25px;       /* roundness of the scroll thumb */
+    border: 3px #dee2e6;  /* creates padding around scroll thumb */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{{url_for('index')}}" class="logo d-flex align-items-center">
+        <img src="/static/img/logoalt2.png" alt="">
+        <span class="d-none d-lg-block">PredictBay</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        
+      </ul>
+    </nav><!-- End Icons Navigation -->
+  </header><!-- End Header -->
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="{{url_for('index')}}">
+          <i class="bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('indicators')}}">
+          <i class="bi bi-bar-chart"></i>
+          <span>indicators</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('statergy')}}">
+          <i class="bi bi-currency-exchange"></i>
+          <span>Trade</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('faq')}}">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('contact')}}">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('news')}}">
+          <i class="bi bi-newspaper"></i>
+          <span>News</span>
+        </a>
+      </li><!-- End News Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('gchat')}}">
+          <i class="bi bi-chat-right-dots"></i>
+          <span>Global Chat</span>
+        </a>
+      </li><!-- End Global Chat Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('register')}}">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('login')}}">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('overview')}}">
+          <i class="bi bi-dash-circle"></i>
+          <span>Overview</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('about')}}">
+          <i class="bi bi-person"></i>
+          <span>About Us</span>
+        </a>
+      </li>
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Trading Techniques</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Trade With PredictBay</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+    
+        <div class="col-lg-6">
+          <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">TURTLE STATERGY |<span> {{ticker}}</span></h5>
+              <form class="row g-3" method="POST" action="/statergy">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="TICKER SYMBOL" id="ticker" name="ticker" value ="{{ ticker }}" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" placeholder="INITIAL MONEY" id="initial_money" name="initial_money"  value ="{{ initial_money }}" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" placeholder="NUMBER OF YEARS" id="years" name="years"  value ="{{ years }}" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" placeholder="MAX BUY" id="max_buy" name="max_buy"  value ="{{ max_buy }}" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" placeholder="MAX SELL" id="max_sell" name="max_sell"  value ="{{ max_sell }}" required>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                </div>
+              </form><!-- End No Labels Form -->
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-lg-6">
+          <div class="card" style="height: 285px;">
+            <div class="card-body">
+              <h5 class="card-title">DESCRIPTION</h5>
+              <h5 class="card-title" style="overflow:hidden;overflow-y:scroll;height: 200px; width: 100%; "><span>The Turtle strategy, also known as the Turtle Trading strategy, is a trend-following trading strategy developed by
+              Richard Dennis and William Eckhardt in the 1980s. It gained popularity when a group of novice traders, known as the
+              "Turtles," achieved significant success using this strategy.
+              
+              The Turtle strategy is based on the idea of riding long-term trends in the market. It is a systematic approach that uses
+              technical indicators to determine entry and exit points for trades. The strategy aims to capture substantial profits
+              from trending markets while also implementing strict risk management rules.
+              
+              Here are the key principles and components of the Turtle strategy:
+              
+              Breakout Entry: The Turtle strategy identifies breakouts, which occur when the price surpasses a certain range or level
+              of support/resistance. The strategy utilizes a Donchian channel, which consists of the highest high and lowest low over
+              a specific period. When the price breaks above the channel's upper boundary, it triggers a long entry, and when it
+              breaks below the lower boundary, it triggers a short entry.
+              
+              Position Sizing: The Turtle strategy emphasizes the concept of position sizing based on volatility. It uses the Average
+              True Range (ATR) indicator to determine the appropriate position size for each trade. The position size is typically a
+              percentage of the trader's equity, adjusted according to the market's volatility.
+              
+              Stop Loss and Take Profit: The strategy incorporates dynamic stop loss and take profit levels based on the recent market
+              volatility. The initial stop loss is set at a certain multiple of the ATR away from the entry price, providing a
+              predefined risk level for each trade. The take profit level is usually not predefined but is instead trailed along with
+              the trend, allowing for potential large gains during extended trends.
+              
+              Pyramiding: The Turtle strategy utilizes a pyramiding technique, where additional positions are added as the trade moves
+              in the desired direction. Each new position is initiated at predetermined price intervals or levels, allowing the trader
+              to increase exposure and potential profits during favorable market conditions.
+              
+              Trend Identification: The strategy aims to identify and trade strong, sustained trends. It uses long-term moving
+              averages, such as the 50-day or 200-day moving average, to determine the overall trend direction. Trades are taken only
+              in the direction of the prevailing trend, avoiding counter-trend trades.
+              
+              Systematic Approach: The Turtle strategy is a rule-based and systematic approach, aiming to remove subjective
+              decision-making from trading. Traders follow the predefined rules strictly, regardless of personal opinions or emotions,
+              to maintain consistency and discipline.
+              
+              Portfolio Diversification: To mitigate risk, the Turtle strategy recommends diversifying the trading portfolio across
+              different markets and asset classes. This approach helps to spread the risk and reduces the reliance on any single trade
+              or market.
+              
+              Overall, the Turtle strategy is designed to capture and ride long-term trends while managing risk through strict
+              position sizing, stop loss levels, and systematic rules. It focuses on disciplined execution, risk management, and
+              adherence to the predefined strategy rather than making subjective judgments based on market sentiment or opinions.</span></h5>
+            </div>
+          </div>
+        </div>
+  
+      </div> 
+    </section>
+
+
+    
+    <div class="card">
+      <div class="card-body">
+        <div id="graph_turtle"></div>
+      </div>
+    </div>
+    
+    <!-- <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">No Labels / Placeholders as labels Form</h5>
+    
+      
+        <form class="row g-3">
+          <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="TICKER SYMBOL">
+          </div>
+          <div class="col-md-6">
+            <input type="number" class="form-control" placeholder="INITIAL MONEY">
+          </div>
+          <div class="col-md-6">
+            <input type="number" class="form-control" placeholder="NUMBER OF YEARS">
+          </div>
+          <div class="col-md-6">
+            <input type="number" class="form-control" placeholder="MAX BUY">
+          </div>
+          <div class="col-md-6">
+            <input type="number" class="form-control" placeholder="MAX SELL">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+    
+      </div>
+    </div> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+      // var graphJSON_ma = {{ graph_json_ma| safe }};
+      var graph_JSON_turtle = {{ graph_json_turtle | safe}}
+      var ticker = "{{ ticker }}";
+      var years = "{{ years }}";
+      var initialMoney = "{{ initial_money }}";
+      var maxBuy = "{{ max_buy }}";
+      var maxSell = "{{ max_sell }}";
+
+
+      // Parse the graph JSON data passed from the Flask app
+      // var graph = {{ graph_json_ma| safe }};
+      var graphData = {{ graph_json_turtle| safe }};
+
+
+      // Render the graph using Plotly
+      // Plotly.newPlot('graph1', graph.data, graph.layout);
+      Plotly.newPlot('graph_turtle', graphData.data, graphData.layout);
+
+
+      // Update the displayed information
+      var infoDiv = document.createElement("div");
+      infoDiv.innerHTML = "Ticker: " + ticker + "<br>";
+      infoDiv.innerHTML += "Years: " + years + "<br>";
+      infoDiv.innerHTML += "Initial Money: $" + initialMoney + "<br>";
+      infoDiv.innerHTML += "Max Buy: " + maxBuy + "<br>";
+      infoDiv.innerHTML += "Max Sell: " + maxSell + "<br>";
+
+      document.body.insertBefore(infoDiv, stockChart);
+    </script>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/static/js/apexcharts.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/quill.min.js"></script>
+<script src="/static/assets/tinymce/tinymce.min.js"></script>
+<script src="/static/js/simple-datatables.js"></script>
+<script src="/static/js/validate.js"></script>
+
+
+</body>
+
+</html>

@@ -111,6 +111,30 @@
     .owl-dot:hover {
       background: rgb(46, 77, 248) !important;
     }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+      /* width of the entire scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #343a40;
+      /* color of the tracking area */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      -ms-overflow-style: none;
+      background-color: #adb5bd;
+      /* color of the scroll thumb */
+      border-radius: 25px;
+      /* roundness of the scroll thumb */
+      border: 3px #dee2e6;
+      /* creates padding around scroll thumb */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
   </style>
 
 </head>
@@ -132,9 +156,9 @@
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-  
+
     <ul class="sidebar-nav" id="sidebar-nav">
-  
+
       <li class="nav-item">
         <a class="nav-link collapsed " href="{{url_for('index')}}">
           <i class="bi-grid"></i>
@@ -146,67 +170,74 @@
           <i class="bi bi-bar-chart"></i>
           <span>indicators</span>
         </a>
-  
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('statergy')}}">
+          <i class="bi bi-currency-exchange"></i>
+          <span>Trade</span>
+        </a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('faq')}}">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
-  
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('contact')}}">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
       </li><!-- End Contact Page Nav -->
-  
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('news')}}">
           <i class="bi bi-newspaper"></i>
           <span>News</span>
         </a>
       </li><!-- End News Page Nav -->
-  
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('gchat')}}">
           <i class="bi bi-chat-right-dots"></i>
           <span>Global Chat</span>
         </a>
       </li><!-- End Global Chat Nav -->
-  
-  
+
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('register')}}">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
         </a>
       </li><!-- End Register Page Nav -->
-  
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('login')}}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>
       </li><!-- End Login Page Nav -->
-  
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('overview')}}">
           <i class="bi bi-dash-circle"></i>
           <span>Overview</span>
         </a>
       </li>
-  
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('about')}}">
           <i class="bi bi-person"></i>
           <span>About Us</span>
         </a>
       </li>
-  
-  
+
+
     </ul>
-  
+
   </aside><!-- End Sidebar-->
 
 
@@ -237,10 +268,14 @@
               <p>
               <h3>MLOps | Backend | DevOps</h3>
               <div class="social-links mt-2">
-                <a href="https://github.com/Mayukh-Mondal-Dev" class="github" target="_blank"><i class="bi bi-github"></i></a>
-                <a href="https://instagram.com/_arko._" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="https://twitter.com/MayukhM026" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/mayukh-mondal-0a01b1225/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/Mayukh-Mondal-Dev" class="github" target="_blank"><i
+                    class="bi bi-github"></i></a>
+                <a href="https://instagram.com/_arko._" class="instagram" target="_blank"><i
+                    class="bi bi-instagram"></i></a>
+                <a href="https://twitter.com/MayukhM026" class="twitter" target="_blank"><i
+                    class="bi bi-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/mayukh-mondal-0a01b1225/" class="linkedin" target="_blank"><i
+                    class="bi bi-linkedin"></i></a>
               </div>
               <div class="col-xl-8">
                 <h5 class="card-title">Profile Details</h5>
@@ -251,32 +286,33 @@
                     <h5><b>Mayukh Mondal</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Country</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>India</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>Durgapur WB</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>(+91)89007 79277</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
                   <div class="col-lg-9 col-md-8">
-                    <h5><b><a href="mailto:21051405@kiit.ac.in" style="color:rgb(252, 246, 246)">21051405@kiit.ac.in</a></b></h5>
+                    <h5><b><a href="mailto:21051405@kiit.ac.in"
+                          style="color:rgb(252, 246, 246)">21051405@kiit.ac.in</a></b></h5>
                   </div>
                 </div>
 
@@ -294,9 +330,12 @@
               <p>
               <h3>ML | FullStack</h3>
               <div class="social-links mt-2">
-                <a href="https://github.com/Abhishek-Mallick" class="github" target="_blank"><i class="bi bi-github"></i></a>
-                <a href="https://instagram.com/_abhishek_mallick_" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/abhishek-mallick09/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/Abhishek-Mallick" class="github" target="_blank"><i
+                    class="bi bi-github"></i></a>
+                <a href="https://instagram.com/_abhishek_mallick_" class="instagram" target="_blank"><i
+                    class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/abhishek-mallick09/" class="linkedin" target="_blank"><i
+                    class="bi bi-linkedin"></i></a>
               </div>
 
               <div class="col-xl-8">
@@ -312,32 +351,33 @@
                     <h5><b>Abhishek Mallick</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Country</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>India</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>Kolkata WB</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>(+91)62916 53332</b></h5>
                   </div>
                 </div>
-                
+
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
                   <div class="col-lg-9 col-md-8">
-                    <h5><b><a href="mailto:21051706@kiit.ac.in" style="color:rgb(252, 246, 246)">21051706@kiit.ac.in</a></b></h5>
+                    <h5><b><a href="mailto:21051706@kiit.ac.in"
+                          style="color:rgb(252, 246, 246)">21051706@kiit.ac.in</a></b></h5>
                   </div>
                 </div>
 
@@ -356,37 +396,39 @@
               <h3>ML | Full stack</h3>
               <div class="social-links mt-2">
                 <a href="https://github.com/deepraj21" class="github" target="_blank"><i class="bi bi-github"></i></a>
-                <a href="https://www.instagram.com/its_deep.raj/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/deepraj-bera-b64996231/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.instagram.com/its_deep.raj/" class="instagram" target="_blank"><i
+                    class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/deepraj-bera-b64996231/" class="linkedin" target="_blank"><i
+                    class="bi bi-linkedin"></i></a>
               </div>
 
               <div class="col-xl-8">
-                
+
                 <h5 class="card-title">Profile Details</h5>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label "style="font-size: 15px;">Name</div>
+                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Name</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>Deepraj Bera</b></h5>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label "style="font-size: 15px;">Country</div>
+                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Country</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>India</b></h5>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label"style="font-size: 14px;">Address</div>
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>Barrackpore WB</b></h5>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label"style="font-size: 15px;">Phone</div>
+                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
                   <div class="col-lg-9 col-md-8">
                     <h5><b>(+91)70441 35575</b></h5>
                   </div>
@@ -395,7 +437,8 @@
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
                   <div class="col-lg-9 col-md-8">
-                    <h5><b><a href="mailto:21051302@kiit.ac.in" style="color:rgb(252, 246, 246)">21051302@kiit.ac.in</a></b></h5>
+                    <h5><b><a href="mailto:21051302@kiit.ac.in"
+                          style="color:rgb(252, 246, 246)">21051302@kiit.ac.in</a></b></h5>
                   </div>
                 </div>
 
@@ -413,12 +456,14 @@
               <h3>MERN</h3>
               <div class="social-links mt-2">
                 <a href="https://github.com/Harshitm14" class="github" target="_blank"><i class="bi bi-github"></i></a>
-                <a href="https://instagram.com/maniaishere03" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/harshit-mania-720bbb236/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://instagram.com/maniaishere03" class="instagram" target="_blank"><i
+                    class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/harshit-mania-720bbb236/" class="linkedin" target="_blank"><i
+                    class="bi bi-linkedin"></i></a>
               </div>
 
               <div class="col-xl-8">
-        
+
 
                 <h5 class="card-title">Profile Details</h5>
 
@@ -453,7 +498,8 @@
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
                   <div class="col-lg-9 col-md-8">
-                    <h5><b><a href="mailto:21051398@kiit.ac.in" style="color:rgb(252, 246, 246)">21051398@kiit.ac.in</a></b></h5>
+                    <h5><b><a href="mailto:21051398@kiit.ac.in"
+                          style="color:rgb(252, 246, 246)">21051398@kiit.ac.in</a></b></h5>
                   </div>
                 </div>
 
@@ -462,7 +508,7 @@
               </p>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -472,7 +518,8 @@
   <footer id="footer" class="footer">
     <div class="copyright">
       <p class="fs-2"> <a href="mailto:predictbay04@gmail.com">
-        <i class="bi-envelope-fill fs-4"></i></i></a> | <a href="https://github.com/The-Predictbay" target="_blank"><i class="bi bi-github fs-4" ></i></a></p>
+          <i class="bi-envelope-fill fs-4"></i></i></a> | <a href="https://github.com/The-Predictbay" target="_blank"><i
+            class="bi bi-github fs-4"></i></a></p>
       &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
     </div>
   </footer><!-- End Footer -->

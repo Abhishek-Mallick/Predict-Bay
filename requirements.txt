@@ -1,11 +1,12 @@
-Flask
-cryptography
+flask
 yfinance
+numpy
+pandas
 scikit-learn
 tensorflow
 plotly
 statsmodels
-IPython
+matplotlib
 seaborn
+IPython
 flask_cors
-ta

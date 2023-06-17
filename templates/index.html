@@ -34,6 +34,32 @@
     <link href="/static/css/remixicon.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
     <link href="/static/css/styles.css" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar {
+            width: 12px;
+            /* width of the entire scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #343a40;
+            /* color of the tracking area */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -ms-overflow-style: none;
+            background-color: #adb5bd;
+            /* color of the scroll thumb */
+            border-radius: 25px;
+            /* roundness of the scroll thumb */
+            border: 3px #dee2e6;
+            /* creates padding around scroll thumb */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
+
 
 </head>
 
@@ -58,10 +84,10 @@
                 <input type="text" id="ticker" name="ticker" value="{{ ticker }}"
                     placeholder="Enter ticker symbol (NASDAQ)">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+
             </form>
+
         </div>
-
-
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li class="nav-item d-block d-lg-none">
@@ -75,11 +101,12 @@
                     </a>
                 </li>Add a new list item for the icon -->
 
-                <!-- <li class="nav-item dropdown pe-3">
+                <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="/static/img/user-icon.jpg" alt="Profile" class="rounded-circle">
-                    </a>
+                        <!-- <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> -->
+                    </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
@@ -137,7 +164,7 @@
                         </li>
                  -->
                     </ul><!-- End Profile Dropdown Items -->
-                </li>
+                </li><!-- End Profile Nav -->
             </ul>
         </nav><!-- End Icons Navigation -->
     </header><!-- End Header -->
@@ -160,6 +187,14 @@
                     <i class="bi bi-bar-chart"></i>
                     <span>indicators</span>
                 </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('statergy')}}">
+                    <i class="bi bi-currency-exchange"></i>
+                    <span>Trade</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('faq')}}">
@@ -443,6 +478,84 @@
 
                         </div>
                     </div><!-- End Recent Activity -->
+
+                    <!-- Recent Activity -->
+                    <div class="card" style="height: 550px;">
+                        <div class="card-body" style="overflow:hidden;overflow-y:scroll;height: 200px; width: 100%; ">
+                            <h5 class="card-title">TOP COMPANIES IN INDIA<span> | MARKET CAPITALISATION - BSE</span>
+                            </h5>
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/reliance.svg" height="55px" width="55px">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Reliance Industries Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">1,742,477.95</span>
+
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/tcs.webp" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Tata Consultancy Services Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">1,161,840.29</span>
+
+
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/HDFC-Bank-Logo.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>HDFC Bank Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">895,458.57</span>
+
+
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/ICICI_logo.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>ICICI Bank Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">653,980.16</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/HUL_logo.svg" height="55px" width="55px" style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Hindustan Unilever Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">638,019.76</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/1200px-ITC_Limited_Logo.svg.png" height="55px" width="55px" style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>ITC Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">563,237.76</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+
                     <!-- Recent Activity -->
                     <div class="card">
                         <div class="card-body">
@@ -480,7 +593,8 @@
                                         <div class="clear-foot">
                                             <div class="col-sm-10">
                                                 <input type="submit" value="Subscribe" name="subscribe"
-                                                    id="mc-embedded-subscribe" class="btn btn-primary" style="margin-left: 68px;">
+                                                    id="mc-embedded-subscribe" class="btn btn-primary"
+                                                    style="margin-left: 68px;">
                                             </div>
 
                                             <!-- <p class="brandingLogo"><a href="http://eepurl.com/itxM9Q"
