@@ -992,7 +992,7 @@ def round_off(value):
 
 def generate_block_every_second():
     scheduled_time_pre = "01:20 AM"
-    scheduled_time_close = "01:30 AM"
+    scheduled_time_close = "01:35 AM"
     while True:
         public_key = load_public_key()
         if public_key is not None:
