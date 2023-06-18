@@ -829,7 +829,7 @@ class Blockchain:
                 return []
 
     def add_block(self, data, public_key):
-        timestamp = ctime()
+        timestamp = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%a %b %d %H:%M:%S %Y")
         previous_hash = self.chain[-1].current_hash if self.chain else ""
         new_block = Block(timestamp, data, previous_hash)
         new_block.encrypt_data(public_key)
