@@ -8,9 +8,8 @@
   <title>PredictBay </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="/static/img/logoalt2.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -53,6 +52,92 @@
       ::-webkit-scrollbar-thumb:hover {
         background-color: #555;
       }
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #212529;
+  color: #F0F4F8;
+  }
+  
+  header {
+    background-color: #222;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  nav {
+    background-color: #222;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  section {
+    padding: 20px;
+    text-align: justify;
+  }
+  
+  h1, h2 {
+    color: #fff;
+  }
+  
+  p {
+    color: #ccc;
+  }
+  
+  .scroll-button {
+    background-color: #555;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .scroll-button:hover {
+    background-color: #777;
+  }
+  /* New styles for the search input form */
+  #search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  #search-input {
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 16px;
+    width: 300px;
+  }
+  
+  #search-input:focus {
+    outline: none;
+  }
+  
+  #search-form button {
+    background-color: #555;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 16px;
+    margin-left: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #search-form button:hover {
+    background-color: #777;
+  }
     </style>
 
 </head>
@@ -69,26 +154,6 @@
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
-
-
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
 
@@ -179,138 +244,698 @@
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Frequently Asked Questions</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{url_for('index')}}">Home</a></li>
-          <li class="breadcrumb-item active">Frequently Asked Questions</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section faq">
-
-          <div class="card basic">
-            <div class="card-body">
-              <h5 class="card-title">Basic Questions</h5>
-
-              <div>
-                <h6>1. What is the stock market?</h6>
-                <p>The stock market is a place where publicly traded companies' stocks or shares are bought and sold. Investors purchase stocks in the hope of making a profit, either by selling them at a higher price or by earning dividends on their investment.</p>
-              </div>
-
-              <div class="pt-2">
-                <h6>2. How does the stock market work?</h6>
-                <p>Companies issue stocks when they want to raise capital, or money, to fund their operations or expansion plans. These stocks are then traded on stock exchanges, which are platforms where buyers and sellers can trade stocks.
-
-                  The price of a stock is determined by supply and demand. If there are more buyers than sellers, the price of the stock goes up. If there are more sellers than buyers, the price of the stock goes down.
-                  
-                  </p>
-              </div>
-
-              <div class="pt-2">
-                <h6>3. What is a Closing Price?</h6>
-                <p>The closing price is reported by stock exchanges at the end of each trading day and is widely available through financial news outlets, online trading platforms, and other financial resources. It is important for investors to keep track of the closing price of stocks they are interested in to make informed investment decisions.</p>
-              </div>
-
-              <div class="pt-2">
-                <h6>3. What is PredictBay?</h6>
-                <p>Looking to stay one step ahead of the stock market game? Look no further than our cutting-edge stock market prediction project! Using advanced algorithms and time-series data analysis, our platform provides predictions on stock prices, along with clear, easy-to-read graphs that make it simple to understand market trends. Simply enter your desired ticker symbol and watch as our platform works its magic, delivering accurate insights into future stock prices that you can rely on. Stay ahead of the curve and make informed investment decisions with our stock market prediction project.</p>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- F.A.Q Group 1 -->
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">PredictBay</h5>
-
-              <div class="accordion accordion-flush" id="faq-group-1">
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse">
-                      How does the stock predictor work?
-                    </button>
-                  </h2>
-                  <div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      The stock predictor utilizes advanced algorithms and mathematical models to analyze historical data, market trends, and relevant factors to generate predictions for the closing price of stocks.                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-2" type="button" data-bs-toggle="collapse">
-                      What data and factors are used to make the predictions?
-                    </button>
-                  </h2>
-                  <div id="faqsOne-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      The stock predictor takes into account a variety of data and factors, including historical price data, trading volume, market volatility, company fundamentals, industry trends, macroeconomic indicators, news sentiment analysis, and other relevant market variables                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-3" type="button" data-bs-toggle="collapse">
-                      How accurate are the predictions?                    </button>
-                  </h2>
-                  <div id="faqsOne-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      The accuracy of the predictions can vary and is influenced by several factors, including the quality and availability of data, the complexity of the market conditions, and the effectiveness of the prediction algorithms. The stock predictor strives to provide accurate predictions, but it's important to note that stock market predictions are inherently uncertain and subject to market volatility.                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-4" type="button" data-bs-toggle="collapse">
-                      How frequently are the predictions updated?
-                    </button>
-                  </h2>
-                  <div id="faqsOne-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      The frequency of prediction updates depends on the stock predictor website's policies and the availability of new data. Some websites may update predictions daily, while others may provide real-time updates or have a specific schedule for releasing new predictions.                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-5" type="button" data-bs-toggle="collapse">
-                      Can I use the stock predictor for international stocks, or is it limited to specific markets?                    </button>
-                  </h2>
-                  <div id="faqsOne-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      The application retrieves historical data from Yahoo Finance, which covers a wide range of stock exchanges worldwide. However, it's important to note that the availability of data may vary for different exchanges, and some smaller or less popular exchanges may have limited or no data coverage.                    </div>
-                  </div>
-                  
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-6" type="button" data-bs-toggle="collapse">
-                      How do I find out the closing price of my desired stock ?
-                  </h2>
-                  <div id="faqsOne-6" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      Just put the appropriate stock ticker of the stock you want to know about in the search bar and PredictBay will do the rest for you !
-                  </div>
-                  
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-          
+  
+    <header style="background-color: #ffffff00;">
+      <h1>Understanding Trading</h1>
+      <!-- <form id="search-form" onsubmit="searchWebsite(event)">
+        <input type="text" id="search-input" placeholder="Enter Keyword...">
+        <button type="submit">Search</button>
+      </form> -->
+    </header>
+  
+    <nav id="scroll-button" style="align-self: auto; background-color: #ffffff00;">
+      <button class="scroll-button" onclick="scrollToSection('stock-market')">Stock Market</button>
+      <button class="scroll-button" onclick="scrollToSection('technical-analysis')">Technical Analysis</button>
+      <button class="scroll-button" onclick="scrollToSection('Indicators')">Indicators</button>
+      <button class="scroll-button" onclick="scrollToSection('Trading')">Trading</button>
+  
+  
+    </nav>
+  
+    <section id="stock-market">
+      <h2>Stock Market</h2>
+  
+      Investing in stocks can be a rewarding way to grow your wealth over time. However, if you're new to the world of
+      stocks, the terminology and concepts can seem overwhelming. This section aims to demystify the basics of stocks, why
+      people trade them, and how the trading process works.
+  
+      <br><br>
+      <h5>What is a Stock?</h5>
+      A stock, also known as a share or equity, represents ownership in a company. When you buy a stock, you become a
+      shareholder and have a claim on the company's assets and earnings. In simple terms, owning a stock means you own a
+      small piece of that company.
+      <br><br>
+      <h5>Why Do People Trade Stocks?</h5>
+      People trade stocks for various reasons, but the primary motivation is to make a profit. Investing in stocks
+      provides an opportunity to grow your money as the value of the stocks can increase over time. Additionally, some
+      companies distribute a portion of their earnings as dividends to shareholders, which can provide an additional
+      income stream.
+      <br><br>
+      <h5>Basic Concepts</h5>
+  
+      1. Stock Exchange: Stock trading typically takes place on organized marketplaces called stock exchanges, such as the
+      New York Stock Exchange (NYSE) or NASDAQ. These exchanges facilitate the buying and selling of stocks between buyers
+      and sellers.<br>
+      <br>
+      2. Publicly Traded Companies: Stocks are available for companies that have decided to "go public" by conducting an
+      initial public offering (IPO). This process allows companies to sell shares to the public and raise capital to fund
+      their operations or expansion plans.<br>
+      <br>
+      3. Ticker Symbol: Each publicly traded company has a unique ticker symbol, a combination of letters usually
+      representing the company's name or abbreviation. Ticker symbols are used to identify and trade specific stocks.<br>
+      <br>
+      4. Stock Price: The stock price represents the value of a single share of a company's stock at a given point in
+      time. Stock prices can fluctuate based on supply and demand dynamics, company performance, economic conditions, and
+      other factors.<br>
+      <br>
+      5. Market Capitalization: Market capitalization, or market cap, refers to the total value of a company's outstanding
+      shares of stock. It is calculated by multiplying the stock price by the total number of shares outstanding. Market
+      cap categorizes companies into different sizes, such as large-cap, mid-cap, and small-cap.<br>
+  
+  
+      <br><br>
+      <h5> Trading Process </h5>
+  
+      1. Brokerage Account: To trade stocks, you'll need a brokerage account. A brokerage account is a specialized account
+      that allows you to buy and sell stocks, typically through an online platform provided by a brokerage firm.
+      <br><br>
+      2. Placing Orders: Once you have a brokerage account, you can place buy or sell orders for the stocks you want to
+      trade. There are different types of orders, including market orders (buy or sell at the current market price) and
+      limit orders (buy or sell at a specific price or better).
+      <br><br>
+      3. Bid and Ask Prices: When trading stocks, you'll encounter bid and ask prices. The bid price is the highest price
+      a buyer is willing to pay for a stock, while the ask price is the lowest price a seller is willing to accept. The
+      difference between the bid and ask prices is called the bid-ask spread.
+      <br><br>
+      4. Execution of Trades: When your buy or sell order matches with another trader's order, the trade is executed. This
+      process is facilitated by the stock exchange, and the trade is reflected in your brokerage account.
+      <br><br>
+  
+      Trading stocks involves buying and selling shares of publicly traded companies. Investors trade stocks to
+      potentially earn a profit and benefit from company ownership. Understanding basic concepts like stock exchanges,
+      ticker symbols, stock prices, and market capitalization is essential for beginners. By opening a brokerage account,
+      you can participate in the stock market and execute trades based on your investment goals and strategies. Remember
+      that investing in stocks carries risks, so it's important to conduct thorough research and seek professional advice
+      before making investment decisions.
+      </p>
+      <!-- Add content about the stock market here -->
     </section>
-
+  
+    <section id="technical-analysis">
+      <h2>Technical Analysis </h2>
+      Technical analysis is a valuable tool used by traders and investors to gain insights into the potential direction of
+      stock prices. It operates on the premise that market prices are not completely random but instead follow trends and
+      patterns that can be identified and analyzed.
+  
+      One of the primary components of technical analysis is charting. Charts display historical price data, such as stock
+      prices over time, and allow analysts to visually identify patterns and trends. Common types of charts used in
+      technical analysis include line charts, bar charts, and candlestick charts. By examining these charts, analysts can
+      spot important price levels, such as support and resistance levels, as well as key chart patterns like trends,
+      reversals, and consolidations.
+  
+  
+      <br><br>
+      Technical analysts also utilize various indicators to supplement their analysis. These indicators are mathematical
+      calculations based on price and volume data and can provide additional insights into the strength and momentum of
+      price movements. Examples of commonly used technical indicators include moving averages, relative strength index
+      (RSI), moving average convergence divergence (MACD), and stochastic oscillators. These indicators help traders
+      identify potential entry and exit points for trades and provide signals for potential trend reversals or
+      continuations.
+  
+      Furthermore, technical analysis incorporates the concept of support and resistance. Support refers to a price level
+      at which buying pressure is expected to outweigh selling pressure, potentially causing the stock's price to "bounce"
+      or reverse its downward trend. Resistance, on the other hand, represents a price level at which selling pressure is
+      anticipated to surpass buying pressure, potentially causing the stock's price to stall or reverse its upward trend.
+      Identifying these support and resistance levels can aid in setting price targets and determining stop-loss levels to
+      manage risk.
+  
+      <br><br>
+      It's important to note that technical analysis is not infallible and does not guarantee accurate predictions of
+      future price movements. Factors such as market sentiment, economic news, and company-specific events can influence
+      stock prices and cause them to deviate from predicted patterns. Therefore, technical analysis should be used in
+      conjunction with other forms of analysis, such as fundamental analysis, to make well-rounded investment decisions.
+  
+      In summary, technical analysis is a method of analyzing historical price data, patterns, and indicators to forecast
+      future price movements in the stock market. By studying charts, utilizing indicators, and identifying support and
+      resistance levels, technical analysts aim to gain insights into potential trading opportunities. However, it's
+      important to remember that technical analysis is just one tool among many in the investor's toolkit and should be
+      used in conjunction with other forms of analysis for informed decision-making.
+  
+  
+      <br><br>
+      The field of technical analysis is based on three fundamental assumptions:
+      <br><br>
+      1. The market discounts everything:
+      Technical analysis acknowledges that the market incorporates and reflects all available information, including
+      fundamental factors such as company performance, economic conditions, and market sentiment. It recognizes that
+      market prices are influenced by the collective actions and emotions of market participants. However, it is important
+      to note that technical analysis focuses primarily on price and volume data rather than the underlying fundamental
+      factors.
+      <br><br>
+      2. Price moves in trends:
+      One of the core principles of technical analysis is that price movements tend to exhibit trends. Once a trend is
+      established, it is more likely to continue than to reverse. Technical analysts utilize various tools and techniques,
+      such as trend lines, moving averages, and indicators, to identify and follow these trends. By aligning their
+      strategies with the prevailing trend, traders aim to increase the probability of successful trades.
+      <br><br>
+      3. History tends to repeat itself:
+      Technical analysis recognizes that historical price patterns and behaviors often repeat themselves in the future.
+      Market participants tend to react in similar ways to similar market conditions, leading to the formation of
+      recognizable patterns. Technical analysts study these patterns, such as chart patterns, candlestick formations, and
+      indicators, to anticipate future price movements. While history repeating itself is not guaranteed, it provides a
+      framework for understanding market dynamics and making informed trading decisions.
+      <br><br>
+      However, it is important to acknowledge that technical analysis has its limitations. Critics argue that relying
+      solely on price data and patterns may overlook important fundamental factors that can influence a stock's value.
+      Therefore, it is often recommended to combine technical analysis with fundamental analysis to gain a more
+      comprehensive understanding of the market and make well-informed investment decisions.
+  
+    </section>
+  
+    <section id="technical-indicator">
+      <h2>Technical Indicator</h2>
+      A technical indicator is a mathematical formula applied to the price, volume, or open interest of a security. It
+      generates a value that helps anticipate future price changes. These indicators provide a unique perspective on the
+      strength and direction of price action within a specific timeframe.
+  
+      The use of indicators serves three main functions: alerting, confirming, and predicting. They can alert analysts to
+      study price action or signal a potential breakout. Indicators can also confirm other technical analysis tools.
+      Furthermore, investors and traders employ indicators to predict future price directions.
+      <br><br>
+      When using indicators, it is important to remember that they should not replace the analysis of price action but
+      rather filter it through mathematical formulas. Analysts should assess what the indicators reveal about a security's
+      price action—whether it is becoming stronger or weaker.
+      <br><br>
+      It is advisable to consider indicators alongside other technical analysis tools such as candlestick patterns,
+      trends, and chart patterns. The interpretation of buy and sell signals from indicators should be viewed in the
+      context of the overall analysis. For example, a buy signal from an indicator may be misleading if the chart pattern
+      indicates a descending triangle with declining peaks.
+  
+      Careful selection of indicators is crucial. It is best to focus on two or three indicators and thoroughly understand
+      their intricacies. Choose indicators that complement each other rather than those that produce redundant signals.
+      For instance, using two indicators that both measure momentum and identify overbought/oversold levels, such as
+      Stochastic and RSI, would be redundant.
+      <br><br>
+      In summary, technical indicators are valuable tools that, when used in conjunction with other analysis techniques,
+      provide insights into price action and aid in identifying optimal entry and exit points. However, their selection,
+      interpretation, and integration with other analysis methods require careful consideration.
+      <br><br>
+      <h2>Type of Indicators</h2>
+      Indicators can be classified into two types: leading and lagging indicators.
+      <br><br>
+      Leading indicators are designed to anticipate price movements and provide early signals for entry and exit points.
+      They generate more trading opportunities and represent price momentum over a specific look-back period. Common
+      leading indicators include the Commodity Channel Index (CCI), Momentum, Relative Strength Index (RSI), Stochastic
+      Oscillator, and Williams %R.
+      <br><br>
+      Lagging indicators, on the other hand, follow trends rather than predict reversals. They are based on past price
+      data and work well in long-lasting trends. Lagging indicators do not provide warnings for upcoming price changes but
+      instead inform you about the current direction of prices, enabling you to make investments accordingly. Examples of
+      lagging indicators include moving averages and the MACD, which are trend-following indicators.
+      <br><br>
+      In summary, leading indicators lead price movements and offer early signals, while lagging indicators follow trends
+      and inform about the current price direction.
+      <br><br>
+    </section>
+  
+    <section id="Indicators">
+      <h2>Indicators</h2>
+      <h5>Moving Averages</h5>
+      Moving averages are widely used trend-following indicators that help identify trends in volatile markets. They
+      smooth data series, making it easier to spot trends, and serve as the foundation for numerous technical indicators
+      and overlays. The Simple Moving Average (SMA) and the Exponential Moving Average (EMA) are the two most popular
+      types of moving averages.
+      <br><br>
+      <h5>Simple moving average (SMA)</h5>
+      A simple moving average is calculated by averaging the closing prices of a security over a specified number of
+      periods. It assigns equal importance to each price within the chosen timeframe. While moving averages can be based
+      on the Open, High, or Low data points, the most common approach uses the closing price. For instance, a 5-day simple
+      moving average is determined by summing the closing prices of the past 5 days and dividing the total by 5.
+      <br><br>
+      <h5>Exponential moving average (EMA)</h5>
+      Known as the exponentially weighted moving average, assigns more weight to recent prices compared to older prices.
+      Technicians use EMA to reduce lag in simple moving averages. The weight given to the most recent price depends on
+      the specified period of the moving average. A shorter EMA period applies more weight to the latest price. For
+      example, a 10-period EMA weighs the most recent price by 18.18%, while a 20-period EMA weighs it by 9.52%.
+      Calculating an EMA is more complex than calculating an SMA, but it reacts faster to recent price changes.
+      <br><br>
+      <h2>Signals</h2>
+      A price break above a moving average (MA) indicates a buy signal, while a break below the MA indicates a sell
+      signal. The significance of a crossover signal increases with a longer time span covered by the MA. If the MA is
+      flat or has changed direction, its violation is strong evidence of a trend reversal. To avoid false signals, it is
+      recommended to wait for one period (e.g., one day for daily data). Combining MA crossovers with trend line
+      violations or price pattern signals provides strong confirmation.
+      <br><br>
+      <h5>Signals - multiple moving averages</h5>
+      Using multiple moving averages (MAs) is advantageous in generating signals. Double and triple MAs are particularly
+      useful.
+      In the case of two MAs, a double crossover is employed. A sell signal occurs when the short-term MA crosses below
+      the long-term MA, and vice versa. Common combinations include the 5-day and 20-day averages, as well as the 20-day
+      and 100-day averages. Although the technique of using two averages lags the market slightly more, it produces fewer
+      whipsaws (false signals).
+      The triple moving average crossover system is popular among investors. The widely used combination is the 4-9-18-day
+      MA. A buy signal is generated when the shortest (and most sensitive) average, the 4-day MA, first crosses the 9-day
+      MA and then the 18-day MA. Each crossover confirms the change in trend.
+      <br><br>
+  
+      <h2>Relative Strength Index (RSI)</h2>
+      The RSI is part of a class of indicators called momentum oscillators.
+      There are a number of indicators that fall in this category, the most common being Relative
+      Strength Index, Stochastic, Rate of Change, Williams %R. Although these indicators are all
+      calculated differently, there are a number of common elements to their use which shall be
+      discussed in the context of the RSI.
+      <br><br>
+      The Relative Strength Index (RSI) is a popular technical indicator used by traders to assess the strength and
+      momentum of price movements. While it is commonly applied in sideways or ranging markets, it can also be used in
+      trending markets to identify overbought and oversold conditions. Here's how the RSI can be applied for generating
+      buy and sell signals based on overbought and oversold levels:
+      <br><br>
+      1. RSI Range: The RSI oscillates between 0 and 100, with values above 70 indicating overbought conditions and values
+      below 30 indicating oversold conditions. These levels are commonly used as thresholds for generating signals.
+      <br><br>
+      2. Overbought Signals: When the RSI crosses above the overbought line (e.g., 70), it suggests that the market is
+      overextended on the upside, and a potential reversal or correction may occur. Traders may consider selling or taking
+      profits in this situation, expecting a downward price movement.
+      <br><br>
+      3. Oversold Signals: When the RSI crosses below the oversold line (e.g., 30), it suggests that the market is
+      oversold, and a potential rebound or reversal may take place. Traders may consider buying or entering long
+      positions, expecting an upward price movement.
+      <br><br>
+      4. Direction of Crossing: It's important to note the direction of the RSI crossing the overbought or oversold lines.
+      For a valid signal, the RSI should first move past the overbought/oversold level and then cross back through it.
+      This confirms a potential change in momentum and provides a clearer indication for entering or exiting trades.
+      <br><br>
+      To summarize:
+      - Go long (buy) when the RSI moves from below the oversold line (e.g., 30) to above it, indicating a potential
+      bullish reversal.
+      - Go short (sell) when the RSI moves from above the overbought line (e.g., 70) to below it, indicating a potential
+      bearish reversal.
+      <br><br>
+      It's important to remember that the RSI is just one tool among many in technical analysis, and it's always
+      recommended to use it in conjunction with other indicators or analysis techniques for confirmation and to consider
+      the broader market context.
+      <br><br>
+  
+      <h2>Stochastic indicator</h2>
+  
+      The Stochastic indicator, developed by George Lane, is a momentum oscillator that compares a security's closing
+      price to its price range over a selected number of periods. The most commonly used period is 14 days. The Stochastic
+      indicator is represented by "%K," which is a mathematical ratio.
+  
+      To calculate the %K value using the Stochastic indicator, the following formula is used:
+      <br><br>
+      %K = ((Today's Close) - (Lowest Low over a selected period)) / ((Highest High over a selected period) - (Lowest Low
+      over a selected period))
+      <br>
+      For example, let's consider today's close at 50, and the highest and lowest prices over the last 14 days were 55 and
+      40, respectively. Applying the formula, we get:
+      <br>
+      %K = (50 - 40) / (55 - 40)
+      = 0.666
+      <br>
+      To present the %K value in a more standardized and easily interpretable format, the resulting decimal value is
+      typically multiplied by 100 to convert it into a percentage:
+      <br>
+      %K = 0.666 * 100
+      = 66.6%
+      <br>
+      Therefore, in this example, the %K value would be 66.6%.
+      <br><br>
+      The Stochastic indicator is used to identify overbought and oversold conditions in the market. It oscillates between
+      0 and 100, with values above 80 generally considered overbought, and values below 20 considered oversold. Traders
+      often look for signals when the %K line crosses above or below these thresholds to generate buy or sell signals,
+      respectively. Additionally, the Stochastic indicator is frequently used in conjunction with its accompanying "%D"
+      line, which is a moving average of the %K line, to further refine trading signals.
+  
+      The Stochastic indicator is commonly used by traders to interpret potential overbought and oversold conditions in
+      the market. It oscillates between 0 and 100 and provides insights into the momentum and strength of price movements.
+      Here's how the Stochastic indicator can be interpreted:
+      <br><br>
+      1. Overbought Conditions: When the Stochastic indicator (%K) rises above 80, it suggests that the price of the
+      security has moved into overbought territory. This means that the price has experienced a significant upward move
+      and may be due for a potential reversal or correction. Traders may consider selling or taking profits in this
+      situation.
+      <br><br>
+      2. Oversold Conditions: When the Stochastic indicator (%K) falls below 20, it indicates that the price of the
+      security has entered oversold territory. This means that the price has experienced a significant downward move and
+      may be due for a potential rebound or reversal. Traders may consider buying or entering long positions in
+      anticipation of a price increase.
+      <br><br>
+      3. Bullish and Bearish Divergences: Divergences can occur between the Stochastic indicator and the price action. A
+      bullish divergence happens when the price makes a lower low, but the Stochastic indicator forms a higher low. This
+      can indicate a potential reversal and a bullish signal. Conversely, a bearish divergence occurs when the price makes
+      a higher high, but the Stochastic indicator forms a lower high, suggesting a potential reversal and a bearish
+      signal.
+      <br><br>
+      4. Signal Line Crossovers: The Stochastic indicator is often used in conjunction with its accompanying "%D" line,
+      which is a moving average of the %K line. Traders look for crossovers between the %K and %D lines as potential buy
+      or sell signals. For example, a buy signal may be generated when the %K line crosses above the %D line, indicating a
+      shift towards bullish momentum. Conversely, a sell signal may be generated when the %K line crosses below the %D
+      line, indicating a shift towards bearish momentum.
+      <br><br>
+      It's important to note that the Stochastic indicator is most effective in ranging or sideways markets. In trending
+      markets, the indicator can stay in overbought or oversold conditions for extended periods, leading to false signals.
+      Therefore, it's recommended to use the Stochastic indicator in conjunction with other technical analysis tools and
+      consider the broader market context for more reliable trading decisions.
+  
+  
+      <h2>Moving Average Convergence/Divergence (MACD)</h2>
+  
+      The Moving Average Convergence/Divergence (MACD) is a widely used technical analysis indicator created by Gerald
+      Appel in the late 1970s. It is considered a refinement of the two moving averages system and provides insights into
+      the relationship between two moving average lines. The MACD is calculated using the following components:
+      <br><br>
+      1. MACD Line (MACD): The MACD line is calculated by subtracting the longer-term exponential moving average (EMA)
+      from the shorter-term EMA. The most common settings are a 12-period EMA subtracted from a 26-period EMA. The MACD
+      line represents the convergence and divergence of these two moving averages.
+      <br><br>
+      2. Signal Line (Signal): The signal line is a 9-period EMA of the MACD line. It acts as a trigger line and helps
+      identify potential buy and sell signals.
+      <br><br>
+      3. MACD Histogram: The MACD histogram represents the difference between the MACD line and the signal line. It
+      provides a visual representation of the relationship between the two lines. The histogram fluctuates above and below
+      a zero line, indicating positive and negative divergence, respectively.
+      <br><br>
+      Interpreting the MACD indicator involves analyzing the relationship between the MACD line, signal line, and
+      histogram. Here are some common interpretations:
+      <br><br>
+      1. MACD Line and Signal Line Crossovers: When the MACD line crosses above the signal line, it generates a bullish
+      signal, suggesting that it may be a good time to buy. Conversely, when the MACD line crosses below the signal line,
+      it generates a bearish signal, indicating a potential selling opportunity.
+      <br><br>
+      2. MACD Histogram: The histogram provides additional insights into the strength and momentum of the price movement.
+      When the histogram moves above the zero line, it indicates increasing bullish momentum. Conversely, when the
+      histogram moves below the zero line, it suggests increasing bearish momentum.
+      <br><br>
+      3. Divergences: Divergences occur when the MACD indicator disagrees with the price action. For example, if the price
+      makes a higher high, but the MACD histogram forms a lower high, it indicates a bearish divergence, potentially
+      signaling a trend reversal. Conversely, a bullish divergence occurs when the price makes a lower low, but the MACD
+      histogram forms a higher low, indicating a potential bullish reversal.
+      <br><br>
+      Traders often use the MACD indicator in conjunction with other technical analysis tools and consider the broader
+      market context to make informed trading decisions.
+      <br><br>
+      <h2> Flow Index (MFI)</h2>
+  
+      The Money Flow Index (MFI) is a technical analysis indicator that incorporates volume data to measure the strength
+      of money flowing in and out of a security. It is also referred to as a smart money flow indicator. The MFI
+      calculation is based on the concepts of positive and negative money flow. Here's how the MFI is calculated and
+      interpreted:
+      <br><br>
+      Positive Money Flow (PMF): When the average price of a day is higher than the average price of the previous day, it
+      is considered positive money flow. The positive money flow for a specific day is calculated by multiplying the
+      average price by the volume.
+      <br><br>
+      Negative Money Flow (NMF): When the average price of a day is lower than the average price of the previous day, it
+      is considered negative money flow. The negative money flow for a specific day is calculated by multiplying the
+      average price by the volume.
+      <br><br>
+      Money Ratio: The money ratio is calculated by dividing the sum of positive money flow over a specified number of
+      periods by the sum of negative money flow over the same number of periods.
+      <br><br>
+      Money Flow Index (MFI): The MFI is calculated using the money ratio. It is derived from the formula: MFI = 100 - 100
+      / (1 + money ratio).
+      <br><br>
+      Interpreting the Money Flow Index (MFI) involves the following guidelines:
+      <br><br>
+      Overbought Conditions: When the MFI reaches a high level, typically above 80, it suggests that the security is
+      overbought. This means that the buying pressure has been strong and may be due for a potential reversal or
+      consolidation. Traders may consider selling or taking profits in this situation.
+      <br><br>
+      Oversold Conditions: When the MFI falls to a low level, typically below 20, it indicates that the security is
+      oversold. This means that selling pressure has been strong and may be due for a potential rebound or reversal.
+      Traders may consider buying or entering long positions in anticipation of a price increase.
+      <br><br>
+      Divergences: Similar to other oscillators, divergences between the MFI and price action can provide valuable
+      signals. A bullish divergence occurs when the price makes a lower low, but the MFI forms a higher low. This suggests
+      a potential bullish reversal. Conversely, a bearish divergence occurs when the price makes a higher high, but the
+      MFI forms a lower high, indicating a potential bearish reversal.
+      <br><br>
+      As with any technical indicator, it's important to use the Money Flow Index (MFI) in conjunction with other analysis
+      tools and consider the broader market context for more accurate trading decisions.
+      <br><br>
+  
+      <h2> Bollinger Bands</h2>
+  
+      Bollinger bands are trading bands developed by John Bollinger.
+      It consists of a 20 period simple moving average with upper and lower bands. The upper band
+      is 2 standard deviation above the moving average and similarly lower band is 2 standard
+      deviation below the moving average. This makes these bands more dynamic and adaptive to
+      volatility.
+  
+      Here's how Bollinger Bands are constructed and how they can be interpreted:
+      <br><br>
+      1. Construction of Bollinger Bands: Bollinger Bands consist of three lines: the middle band, the upper band, and the
+      lower band.
+  
+      - Middle Band: The middle band is a 20-period simple moving average (SMA) of the price. It represents the average
+      price over the selected period.
+  
+      - Upper Band: The upper band is located two standard deviations above the middle band. It provides an upper boundary
+      or resistance level.
+  
+      - Lower Band: The lower band is located two standard deviations below the middle band. It serves as a lower boundary
+      or support level.
+      <br><br>
+      2. Volatility Contraction and Expansion: Bollinger Bands are known for their ability to adapt to market volatility.
+      When the bands tighten or contract, it indicates lower volatility in the market. This contraction is often followed
+      by a period of increased volatility or a significant price move in either direction.
+      <br><br>
+      3. Support and Resistance Levels: The upper band serves as a resistance level, while the lower band acts as a
+      support level. When the price approaches the upper band, it suggests that the security is overbought and may
+      encounter selling pressure. Conversely, when the price approaches the lower band, it indicates that the security is
+      oversold and may experience buying pressure.
+      <br><br>
+      4. Breakouts: Breakouts occur when the price moves outside of the Bollinger Bands. A breakout above the upper band
+      suggests a continuation of the upward trend, while a breakout below the lower band indicates a continuation of the
+      downward trend. Traders often consider breakouts as potential buying or selling opportunities.
+      <br><br>
+      5. Reversal Signals: Reversal signals can be identified when significant price tops or bottoms are formed outside
+      the bands, followed by subsequent tops or bottoms formed inside the bands. This pattern suggests a potential
+      reversal in the current trend.
+      <br><br>
+      It's important to note that Bollinger Bands are not definitive buy or sell signals on their own. They are most
+      effective when used in conjunction with other technical indicators and analysis tools. Additionally, traders should
+      consider the overall market conditions and use proper risk management techniques when interpreting Bollinger Bands.
+      <br><br>
+    </section>
+    <section id="Trading">
+      <h2>Price-sensitive techniques</h2>
+      Moving Averages — Gives the general trend of price based on its recent be havior and tells
+      when the trend has been broken.
+      <br><br>
+      Relative Strength — Measures the strength left in a price trend by comparing number of up
+      and down days over a recent time frame.
+      <br><br>
+      Percentage R — This compares a day’s closing price to a recent range of prices to determine
+      if a market is overbought or oversold.
+      <br><br>
+      Oscillators — Measure the momentum of a price trend based on recent price behavior.
+      Stochastic — Combines indicators like moving average and relative strength to measure
+      overbought and oversold tendencies.
+      <br><br>
+      Point-and-Figure/ kagi — Plots trends and reversals in price movement and then gives buy/
+      sell signals based on recognizable patterns.
+      <br><br>
+      Basic Charting — Techniques for recognizing common price movement patterns and gauging
+      market movements.
+      <br><br>
+      Swing Charting — Provides rigid entry and exit signals based on recent price history.
+      <br><br>
+  
+      <h2>Volume-sensitive techniques</h2>
+      Tic Volume — This is similar to On-Balance Volume, but looks at the volume and directions of
+      individual trades.
+      <br><br>
+      On-Balance Volume — Discovers “smart money’s” moves by balancing the volume of days
+      with rising prices against falling days.
+      <br><br>
+      Composite methods
+      Elliott Wave — Uses rules of cyclic market behavior and pattern formations to predict future
+      price levels, trends, and reversal points.
+      <br><br>
+      <h2> How to use the tool kit of trading techniques</h2>
+  
+      <h5>Price-sensitive techniques</h5>
+      Moving Averages — Gives very good signals in a trending market, but can reduce profi ts in a
+      trading market.
+      <br><br>
+      Relative Strength — This confirms other methods in trading markets. Users have to keep
+      adjusting the scale in trending markets.
+      <br><br>
+      Oscillators — Can confirm other techniques and indicate whether market is overbought or
+      oversold and should be sold or bought.
+      <br><br>
+      Stochastic — Accurate for predicting trading market lows and highs.
+      <br><br>
+      Point-and-Figure — Gives acceptable results most of the time, but can be unreliable in strongly
+      trending markers.
+      <br><br>
+      Basic Charting — Gives general framework for interpreting most other techniques. Volume
+      analysis is an offshoot of basic charting.
+      <br><br>
+      Swing Charting — Works in trending markets. Combine longer and shorter period charts to
+      avoid choppiness in trading markets.
+      <br><br>
+      <h5>Volume-sensitive techniques</h5>
+      Tic Volume — Same observations apply as for On-Balance Volume. Does not work well in a
+      market with no big players.
+      <br><br>
+      On-Balance Volume — Gives good advance warning of when the market will move off the
+      bottom, but is late on tops.
+      <br><br>
+  
+      <h5>Composite techniques</h5>
+      Elliott Wave — Predicts major market moves. Use other techniques to confirm the times and
+      price levels.
+      <br><br>
+  
+      <h5>Trading market tool kit application</h5>
+      1) Moving Averages — Fade breakouts
+      <br><br>
+      2) RSI, and Oscillators — Sell overbought, buy oversold
+      <br><br>
+      3) Stochastic — Sell crossovers to downside and buy crossovers to upside
+      <br><br>
+      4) On-Balance Volume and Tic Volume — Useless as forecasting indicators but can be viable
+      as confirming indicators
+      <br><br>
+      5) Elliott Wave — Verifies the existence of trading market via flat-type corrections classification
+      and shows possible end of trading range
+      <br><br>
+  
+      <h5>Bull market tool kit application</h5>
+      1) Moving Averages — Buy the upside crossovers
+      <br><br>
+      2) RSI, and Oscillators—Buy oversold indicators and ignore the overbought indicators
+      <br><br>
+      3) Stochastics—Buy the crossovers to the upside; do not sell crossovers to the downside
+      <br><br>
+      4) On-Balance Volume and Tic Volume—Useless as forecasting indicators, but viable as
+      confirming indicators, since OBV curves would continually display new breakout highs
+      <br><br>
+      5) Elliott Wave — Buy breakouts of previous highs
+      <br><br>
+  
+      <h5>Bear market toolkit application</h5>
+      1) Moving Averages — Sell the downside crossovers
+      <br><br>
+      2) RSI, and Oscillators—Sell the overbought indicators and ignore the oversold indicators
+      <br><br>
+      3) Stochastics — Sell the crossovers to the downside; do not buy crossovers to the upside
+      <br><br>
+      4) On-Balance Volume and Tic Volume — Too late for forecasting, and non- effective as
+      confirming indicators
+      <br><br>
+      5) Elliott Wave — Sell the breakdowns of previous lows
+      <br><br>
+      <h5> Trading market changing to bull market toolkit application</h5>
+      1) Moving Averages — If traders are fading the false breakouts in the trading market, one
+      trade will finally go against them for a greater than normal loss (short in a bull market).
+      This will signal to them that the markets are about to change.
+      <br><br>
+      2) RSI, and Oscillators — If traders have been selling overbought and buying oversold, they
+      will find a trade which will show a loss even though they sold the overbought signal (short
+      in the bull market). This will signal to them that the markets are changing.
+      <br><br>
+      3) Stochastics — Traders must buy all crossovers from the oversold conditions and not
+      execute trades on overbought signals.
+      <br><br>
+      4) On-Balance Volume and Tic Volume — Accumulation can be observed and hence eventual
+      upside price breakouts can be forecasted with high accuracy.
+      <br><br>
+      5) Elliott Wave — The theory will show a possible breakout to the upside. Cautiously buy
+      at the trading range for an impending move and aggressively buy when the price breaks
+      into new highs moving above the trading range high.
+      <br><br>
+      <h5>Trading market changing to bear market toolkit application</h5>
+      <br><br>
+      1) Moving Averages — If traders had been fading the false breakouts to the upside and false
+      breakdowns to the downside in a trading market, they would find their last trade to be a
+      disproportionate loss (long in a bear market). There really isn’t much chance to recoup
+      this loss because the breakdown is fast and severe. It is best not to fade the markets on
+      the buy side using moving averages after the markets have had a severe run up going
+      into a trading range market.
+      <br><br>
+      2) RSI, %R and Oscillators — If traders had been selling overbought and buying oversold
+      indicators in a trading market, they would suffer a large loss on the last trade. Traders
+      would also find a growing number of oversold indicators and a diminishing number of
+      overbought signals using standard parameters. This signals an impending change in the
+      state of the market condition.
+      <br><br>
+      3) Stochastic — Crossovers from the overbought side to the downside are more valid than
+      crossovers to the upside from the oversold level.
+      <br><br>
+      4) On-Balance Volume and Tic Volume — These two indicators are unreliable for forewarning
+      traders of impending weakness. The best that traders can expect from these indicators
+      is a flattening of the OBV pattern, implying a possible, but not certain, breakdown. The
+      prices would drop dramatically and then the volume indicators would indicate a breakdown.
+      <br><br>
+      5) Elliott Wave — In Elliott Wave corrections, traders have a one-in-two chance that
+      the correction could possibly turn into a bear market sell-off (a zigzag instead of a
+      flat correction). However, in the formation of this correction traders cannot tell until
+      they approach the forecasted event that the correction could turn into a bear market
+      correction instead of a flat correction. If the market turns into a bear market correction
+      they only have to sell into new lows and maintain a short position to profit from the move
+      downwards. If, however, it turns into a flat correction, they will find themselves selling
+      the bottom. Elliott Wave analysis does offer inkling about what type of correction traders
+      can expect, based on the existence of alternative patterns prior to the one currently
+      under examination.
+  
+      <h5>Bull market changing to trading market toolkit application</h5>
+  
+  
+      1) Moving Averages — Price finally crosses the moving averages to the downside after
+      leading the averages from above. If traders didn’t buy the price breakout to the upside,
+      traders mustn’t do it now but, instead, start to fade the upside breakouts carefully and
+      fade the downside breakdowns.
+      <br><br>
+      2) RSI, and Oscillators — After a solid series of bad overbought signals in the bull market,
+      traders finally find more oversold indicators appearing. As the trading market continues,
+      oversold and overbought indicators become equal in number. The fact that the numbers
+      Even out indicates the complexion of the market is changing from uptrend to trading.
+      <br><br>
+      3) Stochastics — In the bull trend, the crossovers from overbought were more often than
+      not false signals and the crossovers from oversold, if they did happen, were valid buy
+      signals. Now, as the market flattens out, traders will find the crossovers from either side
+      to be valid and can also initiate positions with profitability.
+      <br><br>
+      4) On-Balance Volume and Tic Volume — This technique fails when you try to use it to
+      forecast imminent price breakdowns. These cumulative volume indicators would not begin
+      to signal distribution until price deterioration was well underway. The best signal that could
+      be emitted would be a flattening of the price trend signal.
+      <br><br>
+      5) Elliott Wave — According to strict Elliott Wave tenets, this application does not exist per
+      se: A bull market turns to a bear market upon its completion. Elliott Wave would not
+      consider the existence of trading to bear market designation, but bull to bear immediately.
+      Yet, traders can observe that the two types of corrective markets alternate with each
+      other: if a previous correction was one of two types (flat or zigzag) then the second of
+      the set will be the alternate type to the first. In this way, traders can predict something
+      about the nature of this market phase
+      <br><br>
+  
+      <h5>Bear market changing to trading market tool kit application</h5>
+      1) Moving Averages — When the market changes to a trading market from a bear market
+      the moving averages will no longer lag as far behind the actual price or shorter moving
+      average as was the case in the preceding bear market. Traders can now expect a
+      flattening out of the moving average curve to correspond with the flattening of market
+      prices. If they continued to sell the breakdowns and defer from buying as before, they
+      would be continually whipsawed (instead, they should sell the breakouts and buy the
+      breakdowns).
+      <br><br>
+      2) RSI, and Oscillators — In the bear down trend traders would have an overwhelming
+      number of oversold signals and a dearth of overbought signals. They could have adjusted
+      the overbought parameter to the downside to give themselves, in effect, “overbought”
+      signals to initiate short positions on. At the changing point, the number of oversold and
+      overbought signals begin to equal each other in numbers. They could sell the overbought
+      and buy the oversold with confidence at this point.
+      <br><br>
+      3) Stochastics — During the bear market, crossovers from the oversold side were less valid
+      as buy signals than crossovers from the overbought side were as sell signals. They will
+      now appear equally valid as the trading market appears.
+      <br><br>
+      4) On-Balance Volume and Tic Volume — The OBV curve and Tic Volume flatten out after
+      the bottom price is made, thereby giving traders an after-the-fact confirmation of the
+      end of the down move, but not a reliable anticipatory signal.
+      <br><br>
+      5) Elliott Wave — The ‘bear move down’ would have been an impulse wave down and the
+      the trading market would have been a corrective wave to this. Once traders have determined
+      which of the three impulse waves (1,3, or 5 of an impulse 1-2-3-4-5, or even in a larger
+      dimension or c of an a-b-c correction) they were in the process of completing they would
+      have a better idea of what type of correction is starting.
+      <br><br>
+  
+    </section>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -321,6 +946,52 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script>
+    var originalContent = '';
+
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function searchWebsite(event) {
+        event.preventDefault();
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        const sections = document.getElementsByTagName('section');
+
+        let foundResults = false;
+
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i];
+          const sectionContent = section.textContent.toLowerCase();
+
+          if (sectionContent.includes(keyword)) {
+            section.style.display = 'block';
+            section.classList.add('highlight');
+            foundResults = true;
+          } else {
+            section.style.display = 'none';
+            section.classList.remove('highlight');
+          }
+        }
+
+        // Show or hide back button based on search results
+        const backButton = document.getElementById('back-button');
+        backButton.style.display = foundResults ? 'block' : 'none';
+
+        // If no results found, scroll to the top of the page
+        if (!foundResults) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+
+      function goBack() {
+        // Restore the original content and reset styles
+        document.body.innerHTML = originalContent;
+        originalContent = '';
+      }
+
+  </script>
 
   <script src="/static/js/apexcharts.min.js"></script>
   <script src="/static/js/bootstrap.bundle.min.js"></script>
