@@ -6,7 +6,8 @@ scikit-learn
 tensorflow
 plotly
 statsmodels
-matplotlib
 seaborn
-IPython
 flask_cors
+ta
+cryptography
+sqlite3

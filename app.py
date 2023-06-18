@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request 
+from flask import Flask, render_template, current_app, request, redirect, url_for, g 
 import yfinance as yf
 import numpy as np
 import pandas as pd
@@ -17,7 +17,7 @@ import math
 from time import sleep
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-from datetime import datetime
+import datetime
 import warnings
 from sklearn.model_selection import train_test_split as split
 from sklearn.preprocessing import MinMaxScaler
@@ -39,6 +39,15 @@ from math import floor
 import threading
 import ta
 from queue import Queue
+import hashlib
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization, hashes
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+import sqlite3
+from sqlite3 import Error
+import time
+from time import ctime, sleep
+
 
 app = Flask(__name__)
 
@@ -61,7 +70,7 @@ def Data_fetch_transform(data):
     data_feature_selected['differenced_demand_filled'] = np.where(pd.isnull(data_feature_selected['differenced_trasnformation_demand']), data_feature_selected['Adj Close'], data_feature_selected['differenced_trasnformation_demand'])
     data_feature_selected['differenced_inv_transformation_demand'] = data_feature_selected['differenced_demand_filled'].cumsum()
     np.testing.assert_array_equal(data_feature_selected['Adj Close'].values, data_feature_selected['differenced_inv_transformation_demand'].values)
-    current_datetime = datetime.now()
+    current_datetime = datetime.datetime.now()
     # Extract the date portion
     current_date = current_datetime.date()
     # Convert the date to a string
@@ -678,5 +687,366 @@ def statergy():
 
 
 
+################Blockchain##################
+def create_connection():
+    conn = None
+    try:
+        if not os.path.exists("logs.db"):
+            conn = sqlite3.connect('logs.db')
+        else:
+            conn = sqlite3.connect('logs.db')
+        return conn
+    except Error as e:
+        print(e)
+    return conn
+
+
+def generate_key_pair():
+    private_key = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend()
+    )
+    public_key = private_key.public_key()
+    return private_key, public_key
+
+
+def save_private_key(private_key):
+    pem = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+    with open("private_key.pem", "wb") as f:
+        f.write(pem)
+
+
+def save_public_key(public_key):
+    pem = public_key.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+    with open("public_key.pem", "wb") as f:
+        f.write(pem)
+
+
+def load_private_key():
+    if os.path.isfile("private_key.pem"):
+        with open("private_key.pem", "rb") as f:
+            pem = f.read()
+            return serialization.load_pem_private_key(pem, password=None, backend=default_backend())
+    else:
+        return None
+
+
+def load_public_key():
+    if os.path.isfile("public_key.pem"):
+        with open("public_key.pem", "rb") as f:
+            pem = f.read()
+            return serialization.load_pem_public_key(pem, backend=default_backend())
+    else:
+        return None
+
+
+private_key = load_private_key()
+public_key = load_public_key()
+if private_key is None or public_key is None:
+    private_key, public_key = generate_key_pair()
+    save_private_key(private_key)
+    save_public_key(public_key)
+
+
+@app.before_request
+def before_request():
+    g.private_key = private_key
+    g.public_key = public_key
+
+
+class Block:
+    def __init__(self, timestamp, data, previous_hash):
+        self.timestamp = timestamp
+        self.data = data
+        self.previous_hash = previous_hash
+        self.current_hash = self.hash_block()
+        self.encrypted_data = None
+        self.decrypted_data = None
+
+    def encrypt_data(self, public_key):
+        data_bytes = self.data.encode()
+        encrypted_data = public_key.encrypt(
+            data_bytes,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+        self.encrypted_data = encrypted_data.hex()
+
+    def decrypt_data(self, private_key):
+        try:
+            encrypted_data = bytes.fromhex(self.encrypted_data)
+            decrypted_data = private_key.decrypt(
+                encrypted_data,
+                padding.OAEP(
+                    mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                    algorithm=hashes.SHA256(),
+                    label=None
+                )
+            )
+            self.decrypted_data = decrypted_data.decode()
+        except Exception as e:
+            print(e)
+
+    def hash_block(self):
+        input_string = f"{self.timestamp}{self.data}{self.previous_hash}"
+        input_bytes = input_string.encode()
+        hash_bytes = hashlib.sha256(input_bytes)
+        hash_hex = hash_bytes.hexdigest()
+        return hash_hex
+
+
+class Blockchain:
+    def __init__(self):
+        self.chain = self.load_blocks_from_db()
+
+    def load_blocks_from_db(self):
+        conn = create_connection()
+        with conn:
+            c = conn.cursor()
+            try:
+                c.execute("SELECT * FROM blocks")
+                rows = c.fetchall()
+
+                blocks = []
+                for row in rows:
+                    timestamp, encrypted_data, previous_hash, current_hash = row
+                    new_block = Block(timestamp, "", previous_hash)
+                    new_block.encrypted_data = encrypted_data
+                    new_block.current_hash = current_hash
+                    blocks.append(new_block)
+
+                return blocks
+            except sqlite3.OperationalError:
+                return []
+
+    def add_block(self, data, public_key):
+        timestamp = ctime()
+        previous_hash = self.chain[-1].current_hash if self.chain else ""
+        new_block = Block(timestamp, data, previous_hash)
+        new_block.encrypt_data(public_key)
+        self.chain.append(new_block)
+        self.save_to_db(new_block)
+
+    def save_to_db(self, block):
+        conn = create_connection()
+        with conn:
+            create_table(conn)
+            c = conn.cursor()
+            c.execute("INSERT INTO blocks (timestamp, encrypted_data, previous_hash, current_hash) VALUES (?, ?, ?, ?)",
+                      (block.timestamp, block.encrypted_data, block.previous_hash, block.current_hash))
+            conn.commit()
+
+
+def create_table(conn):
+    try:
+        c = conn.cursor()
+        create_table_sql = '''
+            CREATE TABLE IF NOT EXISTS blocks
+            ("timestamp" TEXT PRIMARY KEY, encrypted_data TEXT, previous_hash TEXT, current_hash TEXT)
+        '''
+        c.execute(create_table_sql)
+    except Error as e:
+        print(e)
+
+
+blockchain = Blockchain()
+
+
+##############################MODELFUNCTION FOR LOGS#################################################################
+
+def models(ticker):
+
+    period = '10y'
+    df = get_data(ticker, period)
+
+    def biLSTM(data_frame):
+        bilstm_model = load_model("bilstm_1000_epochs.h5")
+        X_train,X_test,y_train,ytest,scaler = Data_fetch_transform(data_frame)
+        train_predict=bilstm_model.predict(X_train)
+        test_predict=bilstm_model.predict(X_test)
+        train_predict=scaler.inverse_transform(train_predict)
+        test_predict=scaler.inverse_transform(test_predict)
+        predictions = bilstm_model.predict(X_test)
+        def evaluate_predictions(predictions, ytest, outliers):
+            ratio = []
+            differences = []
+            for pred in range(len(ytest)):
+                ratio.append((ytest[pred]/predictions[pred])-1)
+                differences.append(abs(ytest[pred]- predictions[pred]))
+                
+                
+            n_outliers = int(len(differences) * outliers)
+            outliers = pd.Series(differences).astype(float).nlargest(n_outliers)
+                
+            return ratio, differences, outliers    
+        ratio, differences, outliers = evaluate_predictions(predictions, ytest, 0.01)
+        for index in outliers.index: 
+            outliers[index] = predictions[index]
+
+        def predict_next_day_closing_price(model, X_test, scaler):
+
+            X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 1)
+            predictions = model.predict(X_test)
+            predictions = scaler.inverse_transform(predictions)
+            return predictions[-1][0]
+        
+        next_day = predict_next_day_closing_price(bilstm_model, X_test, scaler)
+
+        return round(next_day, 3)
+
+    
+    def LSTM(df):
+        closing_prices = df['Close']
+        data_training = pd.DataFrame(df['Close'][0:int(len(df) * 0.7)])
+        data_testing = pd.DataFrame(df['Close'][int(len(df) * 0.7):int(len(df))])
+
+        scaler = MinMaxScaler(feature_range=(0, 1))
+        data_training_array = scaler.fit_transform(data_training)
+
+        x_train = []
+        y_train = []
+
+        for i in range(100, data_training_array.shape[0]):
+            x_train.append(data_training_array[i - 100: i])
+            y_train.append(data_training_array[i, 0])
+
+        x_train, y_train = np.array(x_train), np.array(y_train)
+
+        # Load model
+        model = load_model('lstm_1000_epochs.h5')
+
+        past_100_days = data_training.tail(100)
+        final_df = pd.concat([past_100_days, data_testing], ignore_index=True)
+
+        input_data = scaler.fit_transform(final_df)
+
+        x_test = []
+        y_test = []
+
+        for i in range(100, input_data.shape[0]):
+            x_test.append(input_data[i - 100:i])
+            y_test.append(input_data[i, 0])
+
+        x_test, y_test = np.array(x_test), np.array(y_test)
+
+        y_predict = model.predict(x_test)
+
+        scaler = scaler.scale_
+
+        scale_factor = 1 / scaler[0]
+        y_predict = y_predict * scale_factor
+        y_test = y_test * scale_factor
+
+        last_100_days = data_testing[-100:].values
+        scaler = MinMaxScaler()
+        last_100_days_scaled = scaler.fit_transform(last_100_days)
+
+        predicted_prices = []
+
+        for i in range(1):
+            X_test = np.array([last_100_days_scaled])
+            X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
+            predicted_price = model.predict(X_test)
+            predicted_prices.append(predicted_price)
+            last_100_days_scaled = np.append(last_100_days_scaled, predicted_price)
+            last_100_days_scaled = np.delete(last_100_days_scaled, 0)
+
+        predicted_prices = np.array(predicted_prices)
+        predicted_prices = predicted_prices.reshape(predicted_prices.shape[0], predicted_prices.shape[2])
+        predicted_prices = scaler.inverse_transform(predicted_prices)
+        predicted_price = predicted_prices[0][0]
+
+        return round(predicted_price, 3)
+
+    lstm_price = LSTM(df)
+    bilstm_price = biLSTM(df)
+
+    if (bilstm_price > lstm_price):
+        uprange = floor(bilstm_price)
+        downrange = floor(lstm_price)
+    else:
+        uprange = floor(lstm_price)
+        downrange = floor(bilstm_price)    
+
+
+    return lstm_price, bilstm_price, uprange, downrange
+
+
+
+#######################################################################################################################
+
+def round_off(value):
+    formatted_value = "{:.2f}".format(value)
+    return float(formatted_value)
+
+################################Only for Google####################################
+
+def generate_block_every_second():
+    scheduled_time_pre = "01:20 AM"
+    scheduled_time_close = "01:30 AM"
+    while True:
+        public_key = load_public_key()
+        if public_key is not None:
+            current_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%I:%M %p")
+            if current_time == scheduled_time_close:
+                symbol = "GOOGL"
+                data = f"Open: {round(get_today_open(symbol),3)}, High: {round(get_today_high(symbol),3)}, Close: {round(get_today_close(symbol),3)}"
+                blockchain.add_block(data, public_key)
+            if current_time == scheduled_time_pre:
+                symbol = "GOOGL"
+                lstm, bilstm, up, down = models(symbol)
+                lstm_r = round_off(lstm)
+                bilstm_r = round_off(bilstm)
+                data = f"LSTM: {lstm_r}, BiLSTM: {bilstm_r}, Range: {up} - {down}"
+                blockchain.add_block(data, public_key)
+        sleep(60)
+
+###########################################Only for Google############################
+
+@app.route("/logs")
+def block_chain():
+    private_key = g.private_key
+
+    blocks = []
+    for block in blockchain.chain:
+        if block.timestamp == 0:
+            continue
+        if block.decrypted_data is None:
+            block.decrypt_data(private_key)
+
+        block_dict = {
+            "timestamp": block.timestamp,
+            "data": block.decrypted_data,
+            "previous_hash": block.previous_hash,
+            "current_hash": block.current_hash
+        }
+        blocks.append(block_dict)
+
+    return render_template("logs.html", blocks=blocks)
+
+
+# @app.route("/add_block", methods=["POST"])
+# def add_block():
+#     data = request.form.get("data")
+#     public_key = g.public_key
+
+#     blockchain.add_block(data, public_key)
+
+#     return redirect(url_for("block_chain"))
+
 if __name__ == '__main__':
+    block_thread = threading.Thread(target=generate_block_every_second)
+    block_thread.daemon = True
+    block_thread.start()
     app.run(debug=False,threaded=True,use_reloader=False)

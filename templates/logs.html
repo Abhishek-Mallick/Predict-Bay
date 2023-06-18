@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predictbay</title>
+</head>
+<body>
+    <h1>Logs</h1>
+    <!-- <form action="/add_block" method="POST">
+        <input type="text" name="data" placeholder="Enter block data">
+        <button type="submit">Add Block</button>
+    </form> -->
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>Data</th>
+            <th>Previous Hash</th>
+            <th>Current Hash</th>
+        </tr>
+        {% for block in blocks %}
+        <tr>
+            <td>{{ block['timestamp'] }}</td>
+            <td>{{ block['data'] }}</td>
+            <td>{{ block['previous_hash'] }}</td>
+            <td>{{ block['current_hash'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
