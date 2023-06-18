@@ -8,143 +8,139 @@
   <title>PredictBay </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <!-- Favicons -->
+
   <link href="/static/img/logoalt2.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/boxicons.min.css" rel="stylesheet">
-    <link href="/static/css/quill.bubble.css" rel="stylesheet">
-    <link href="/static/css/quill.snow.css" rel="stylesheet">
-    <link href="/static/css/remixicon.css" rel="stylesheet">
-    <link href="/static/css/style.css" rel="stylesheet">
-    <link href="/static/css/styles.css" rel="stylesheet">
+  <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/quill.bubble.css" rel="stylesheet">
+  <link href="/static/css/quill.snow.css" rel="stylesheet">
+  <link href="/static/css/remixicon.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet">
 
-    <style>
-      ::-webkit-scrollbar {
-        width: 12px;
-        /* width of the entire scrollbar */
-      }
-    
-      ::-webkit-scrollbar-track {
-        background: #343a40;
-        /* color of the tracking area */
-      }
-    
-      ::-webkit-scrollbar-thumb {
-        -ms-overflow-style: none;
-        background-color: #adb5bd;
-        /* color of the scroll thumb */
-        border-radius: 25px;
-        /* roundness of the scroll thumb */
-        border: 3px #dee2e6;
-        /* creates padding around scroll thumb */
-      }
-    
-      ::-webkit-scrollbar-thumb:hover {
-        background-color: #555;
-      }
-      body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #212529;
-  color: #F0F4F8;
-  }
-  
-  header {
-    background-color: #222;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  nav {
-    background-color: #222;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  section {
-    padding: 20px;
-    text-align: justify;
-  }
-  
-  h1, h2 {
-    color: #fff;
-  }
-  
-  p {
-    color: #ccc;
-  }
-  
-  .scroll-button {
-    background-color: #555;
-    border: none;
-    border-radius: 20px;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .scroll-button:hover {
-    background-color: #777;
-  }
-  /* New styles for the search input form */
-  #search-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  #search-input {
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 16px;
-    width: 300px;
-  }
-  
-  #search-input:focus {
-    outline: none;
-  }
-  
-  #search-form button {
-    background-color: #555;
-    border: none;
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 16px;
-    margin-left: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  #search-form button:hover {
-    background-color: #777;
-  }
-    </style>
+  <style>
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #343a40;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      -ms-overflow-style: none;
+      background-color: #adb5bd;
+      border-radius: 25px;
+      border: 3px #dee2e6;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #212529;
+      color: #F0F4F8;
+    }
+
+    header {
+      background-color: #222;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 10px;
+      text-align: center;
+    }
+
+    section {
+      padding: 20px;
+      text-align: justify;
+    }
+
+    h1,
+    h2 {
+      color: #fff;
+    }
+
+    p {
+      color: #ccc;
+    }
+
+    .scroll-button {
+      background-color: #555;
+      border: none;
+      border-radius: 20px;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .scroll-button:hover {
+      background-color: #777;
+    }
+    #search-form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    #search-input {
+      border: none;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 16px;
+      width: 300px;
+    }
+
+    #search-input:focus {
+      outline: none;
+    }
+
+    #search-form button {
+      background-color: #555;
+      border: none;
+      color: #fff;
+      padding: 8px 16px;
+      font-size: 16px;
+      margin-left: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #search-form button:hover {
+      background-color: #777;
+    }
+  </style>
 
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -153,11 +149,10 @@
         <span class="d-none d-lg-block">PredictBay</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    </div>
 
-  </header><!-- End Header -->
+  </header>
 
-  <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
   
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -167,62 +162,60 @@
           <i class="bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('indicators')}}">
           <i class="bi bi-bar-chart"></i>
-          <span>indicators</span>
+          <span>Indicators</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{url_for('statergy')}}">
+        <a class="nav-link collapsed" href="{{url_for('trade')}}">
           <i class="bi bi-currency-exchange"></i>
           <span>Trade</span>
         </a>
       </li>
-  
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('faq')}}">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li>
   
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('contact')}}">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li>
   
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('news')}}">
           <i class="bi bi-newspaper"></i>
           <span>News</span>
         </a>
-      </li><!-- End News Page Nav -->
+      </li>
   
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('gchat')}}">
           <i class="bi bi-chat-right-dots"></i>
           <span>Global Chat</span>
         </a>
-      </li><!-- End Global Chat Nav -->
-  
+      </li>
   
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('register')}}">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li>
   
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('login')}}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>
-      </li><!-- End Login Page Nav -->
+      </li>
   
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('overview')}}">
@@ -238,37 +231,33 @@
         </a>
       </li>
   
-  
     </ul>
   
-  </aside><!-- End Sidebar-->
+  </aside>
 
   <main id="main" class="main">
-  
+
     <header style="background-color: #ffffff00;">
       <h1>Understanding Trading</h1>
-      <!-- <form id="search-form" onsubmit="searchWebsite(event)">
-        <input type="text" id="search-input" placeholder="Enter Keyword...">
-        <button type="submit">Search</button>
-      </form> -->
     </header>
-  
+
     <nav id="scroll-button" style="align-self: auto; background-color: #ffffff00;">
       <button class="scroll-button" onclick="scrollToSection('stock-market')">Stock Market</button>
       <button class="scroll-button" onclick="scrollToSection('technical-analysis')">Technical Analysis</button>
       <button class="scroll-button" onclick="scrollToSection('Indicators')">Indicators</button>
       <button class="scroll-button" onclick="scrollToSection('Trading')">Trading</button>
-  
-  
+
+
     </nav>
-  
+
     <section id="stock-market">
       <h2>Stock Market</h2>
-  
+
       Investing in stocks can be a rewarding way to grow your wealth over time. However, if you're new to the world of
-      stocks, the terminology and concepts can seem overwhelming. This section aims to demystify the basics of stocks, why
+      stocks, the terminology and concepts can seem overwhelming. This section aims to demystify the basics of stocks,
+      why
       people trade them, and how the trading process works.
-  
+
       <br><br>
       <h5>What is a Stock?</h5>
       A stock, also known as a share or equity, represents ownership in a company. When you buy a stock, you become a
@@ -282,68 +271,82 @@
       income stream.
       <br><br>
       <h5>Basic Concepts</h5>
-  
-      1. Stock Exchange: Stock trading typically takes place on organized marketplaces called stock exchanges, such as the
-      New York Stock Exchange (NYSE) or NASDAQ. These exchanges facilitate the buying and selling of stocks between buyers
+
+      1. Stock Exchange: Stock trading typically takes place on organized marketplaces called stock exchanges, such as
+      the
+      New York Stock Exchange (NYSE) or NASDAQ. These exchanges facilitate the buying and selling of stocks between
+      buyers
       and sellers.<br>
       <br>
       2. Publicly Traded Companies: Stocks are available for companies that have decided to "go public" by conducting an
-      initial public offering (IPO). This process allows companies to sell shares to the public and raise capital to fund
+      initial public offering (IPO). This process allows companies to sell shares to the public and raise capital to
+      fund
       their operations or expansion plans.<br>
       <br>
       3. Ticker Symbol: Each publicly traded company has a unique ticker symbol, a combination of letters usually
-      representing the company's name or abbreviation. Ticker symbols are used to identify and trade specific stocks.<br>
+      representing the company's name or abbreviation. Ticker symbols are used to identify and trade specific
+      stocks.<br>
       <br>
       4. Stock Price: The stock price represents the value of a single share of a company's stock at a given point in
-      time. Stock prices can fluctuate based on supply and demand dynamics, company performance, economic conditions, and
+      time. Stock prices can fluctuate based on supply and demand dynamics, company performance, economic conditions,
+      and
       other factors.<br>
       <br>
-      5. Market Capitalization: Market capitalization, or market cap, refers to the total value of a company's outstanding
+      5. Market Capitalization: Market capitalization, or market cap, refers to the total value of a company's
+      outstanding
       shares of stock. It is calculated by multiplying the stock price by the total number of shares outstanding. Market
       cap categorizes companies into different sizes, such as large-cap, mid-cap, and small-cap.<br>
-  
-  
+
+
       <br><br>
       <h5> Trading Process </h5>
-  
-      1. Brokerage Account: To trade stocks, you'll need a brokerage account. A brokerage account is a specialized account
+
+      1. Brokerage Account: To trade stocks, you'll need a brokerage account. A brokerage account is a specialized
+      account
       that allows you to buy and sell stocks, typically through an online platform provided by a brokerage firm.
       <br><br>
       2. Placing Orders: Once you have a brokerage account, you can place buy or sell orders for the stocks you want to
       trade. There are different types of orders, including market orders (buy or sell at the current market price) and
       limit orders (buy or sell at a specific price or better).
       <br><br>
-      3. Bid and Ask Prices: When trading stocks, you'll encounter bid and ask prices. The bid price is the highest price
+      3. Bid and Ask Prices: When trading stocks, you'll encounter bid and ask prices. The bid price is the highest
+      price
       a buyer is willing to pay for a stock, while the ask price is the lowest price a seller is willing to accept. The
       difference between the bid and ask prices is called the bid-ask spread.
       <br><br>
-      4. Execution of Trades: When your buy or sell order matches with another trader's order, the trade is executed. This
+      4. Execution of Trades: When your buy or sell order matches with another trader's order, the trade is executed.
+      This
       process is facilitated by the stock exchange, and the trade is reflected in your brokerage account.
       <br><br>
-  
+
       Trading stocks involves buying and selling shares of publicly traded companies. Investors trade stocks to
       potentially earn a profit and benefit from company ownership. Understanding basic concepts like stock exchanges,
-      ticker symbols, stock prices, and market capitalization is essential for beginners. By opening a brokerage account,
+      ticker symbols, stock prices, and market capitalization is essential for beginners. By opening a brokerage
+      account,
       you can participate in the stock market and execute trades based on your investment goals and strategies. Remember
-      that investing in stocks carries risks, so it's important to conduct thorough research and seek professional advice
+      that investing in stocks carries risks, so it's important to conduct thorough research and seek professional
+      advice
       before making investment decisions.
       </p>
-      <!-- Add content about the stock market here -->
     </section>
-  
+
     <section id="technical-analysis">
       <h2>Technical Analysis </h2>
-      Technical analysis is a valuable tool used by traders and investors to gain insights into the potential direction of
-      stock prices. It operates on the premise that market prices are not completely random but instead follow trends and
+      Technical analysis is a valuable tool used by traders and investors to gain insights into the potential direction
+      of
+      stock prices. It operates on the premise that market prices are not completely random but instead follow trends
+      and
       patterns that can be identified and analyzed.
-  
-      One of the primary components of technical analysis is charting. Charts display historical price data, such as stock
+
+      One of the primary components of technical analysis is charting. Charts display historical price data, such as
+      stock
       prices over time, and allow analysts to visually identify patterns and trends. Common types of charts used in
-      technical analysis include line charts, bar charts, and candlestick charts. By examining these charts, analysts can
+      technical analysis include line charts, bar charts, and candlestick charts. By examining these charts, analysts
+      can
       spot important price levels, such as support and resistance levels, as well as key chart patterns like trends,
       reversals, and consolidations.
-  
-  
+
+
       <br><br>
       Technical analysts also utilize various indicators to supplement their analysis. These indicators are mathematical
       calculations based on price and volume data and can provide additional insights into the strength and momentum of
@@ -351,47 +354,56 @@
       (RSI), moving average convergence divergence (MACD), and stochastic oscillators. These indicators help traders
       identify potential entry and exit points for trades and provide signals for potential trend reversals or
       continuations.
-  
-      Furthermore, technical analysis incorporates the concept of support and resistance. Support refers to a price level
-      at which buying pressure is expected to outweigh selling pressure, potentially causing the stock's price to "bounce"
-      or reverse its downward trend. Resistance, on the other hand, represents a price level at which selling pressure is
-      anticipated to surpass buying pressure, potentially causing the stock's price to stall or reverse its upward trend.
-      Identifying these support and resistance levels can aid in setting price targets and determining stop-loss levels to
+
+      Furthermore, technical analysis incorporates the concept of support and resistance. Support refers to a price
+      level
+      at which buying pressure is expected to outweigh selling pressure, potentially causing the stock's price to
+      "bounce"
+      or reverse its downward trend. Resistance, on the other hand, represents a price level at which selling pressure
+      is
+      anticipated to surpass buying pressure, potentially causing the stock's price to stall or reverse its upward
+      trend.
+      Identifying these support and resistance levels can aid in setting price targets and determining stop-loss levels
+      to
       manage risk.
-  
+
       <br><br>
       It's important to note that technical analysis is not infallible and does not guarantee accurate predictions of
       future price movements. Factors such as market sentiment, economic news, and company-specific events can influence
       stock prices and cause them to deviate from predicted patterns. Therefore, technical analysis should be used in
       conjunction with other forms of analysis, such as fundamental analysis, to make well-rounded investment decisions.
-  
-      In summary, technical analysis is a method of analyzing historical price data, patterns, and indicators to forecast
+
+      In summary, technical analysis is a method of analyzing historical price data, patterns, and indicators to
+      forecast
       future price movements in the stock market. By studying charts, utilizing indicators, and identifying support and
       resistance levels, technical analysts aim to gain insights into potential trading opportunities. However, it's
       important to remember that technical analysis is just one tool among many in the investor's toolkit and should be
       used in conjunction with other forms of analysis for informed decision-making.
-  
-  
+
+
       <br><br>
       The field of technical analysis is based on three fundamental assumptions:
       <br><br>
       1. The market discounts everything:
       Technical analysis acknowledges that the market incorporates and reflects all available information, including
       fundamental factors such as company performance, economic conditions, and market sentiment. It recognizes that
-      market prices are influenced by the collective actions and emotions of market participants. However, it is important
+      market prices are influenced by the collective actions and emotions of market participants. However, it is
+      important
       to note that technical analysis focuses primarily on price and volume data rather than the underlying fundamental
       factors.
       <br><br>
       2. Price moves in trends:
       One of the core principles of technical analysis is that price movements tend to exhibit trends. Once a trend is
-      established, it is more likely to continue than to reverse. Technical analysts utilize various tools and techniques,
+      established, it is more likely to continue than to reverse. Technical analysts utilize various tools and
+      techniques,
       such as trend lines, moving averages, and indicators, to identify and follow these trends. By aligning their
       strategies with the prevailing trend, traders aim to increase the probability of successful trades.
       <br><br>
       3. History tends to repeat itself:
       Technical analysis recognizes that historical price patterns and behaviors often repeat themselves in the future.
       Market participants tend to react in similar ways to similar market conditions, leading to the formation of
-      recognizable patterns. Technical analysts study these patterns, such as chart patterns, candlestick formations, and
+      recognizable patterns. Technical analysts study these patterns, such as chart patterns, candlestick formations,
+      and
       indicators, to anticipate future price movements. While history repeating itself is not guaranteed, it provides a
       framework for understanding market dynamics and making informed trading decisions.
       <br><br>
@@ -399,29 +411,33 @@
       solely on price data and patterns may overlook important fundamental factors that can influence a stock's value.
       Therefore, it is often recommended to combine technical analysis with fundamental analysis to gain a more
       comprehensive understanding of the market and make well-informed investment decisions.
-  
+
     </section>
-  
+
     <section id="technical-indicator">
       <h2>Technical Indicator</h2>
       A technical indicator is a mathematical formula applied to the price, volume, or open interest of a security. It
       generates a value that helps anticipate future price changes. These indicators provide a unique perspective on the
       strength and direction of price action within a specific timeframe.
-  
-      The use of indicators serves three main functions: alerting, confirming, and predicting. They can alert analysts to
+
+      The use of indicators serves three main functions: alerting, confirming, and predicting. They can alert analysts
+      to
       study price action or signal a potential breakout. Indicators can also confirm other technical analysis tools.
       Furthermore, investors and traders employ indicators to predict future price directions.
       <br><br>
       When using indicators, it is important to remember that they should not replace the analysis of price action but
-      rather filter it through mathematical formulas. Analysts should assess what the indicators reveal about a security's
+      rather filter it through mathematical formulas. Analysts should assess what the indicators reveal about a
+      security's
       price action—whether it is becoming stronger or weaker.
       <br><br>
       It is advisable to consider indicators alongside other technical analysis tools such as candlestick patterns,
       trends, and chart patterns. The interpretation of buy and sell signals from indicators should be viewed in the
-      context of the overall analysis. For example, a buy signal from an indicator may be misleading if the chart pattern
+      context of the overall analysis. For example, a buy signal from an indicator may be misleading if the chart
+      pattern
       indicates a descending triangle with declining peaks.
-  
-      Careful selection of indicators is crucial. It is best to focus on two or three indicators and thoroughly understand
+
+      Careful selection of indicators is crucial. It is best to focus on two or three indicators and thoroughly
+      understand
       their intricacies. Choose indicators that complement each other rather than those that produce redundant signals.
       For instance, using two indicators that both measure momentum and identify overbought/oversold levels, such as
       Stochastic and RSI, would be redundant.
@@ -439,15 +455,18 @@
       Oscillator, and Williams %R.
       <br><br>
       Lagging indicators, on the other hand, follow trends rather than predict reversals. They are based on past price
-      data and work well in long-lasting trends. Lagging indicators do not provide warnings for upcoming price changes but
-      instead inform you about the current direction of prices, enabling you to make investments accordingly. Examples of
+      data and work well in long-lasting trends. Lagging indicators do not provide warnings for upcoming price changes
+      but
+      instead inform you about the current direction of prices, enabling you to make investments accordingly. Examples
+      of
       lagging indicators include moving averages and the MACD, which are trend-following indicators.
       <br><br>
-      In summary, leading indicators lead price movements and offer early signals, while lagging indicators follow trends
+      In summary, leading indicators lead price movements and offer early signals, while lagging indicators follow
+      trends
       and inform about the current price direction.
       <br><br>
     </section>
-  
+
     <section id="Indicators">
       <h2>Indicators</h2>
       <h5>Moving Averages</h5>
@@ -459,7 +478,8 @@
       <h5>Simple moving average (SMA)</h5>
       A simple moving average is calculated by averaging the closing prices of a security over a specified number of
       periods. It assigns equal importance to each price within the chosen timeframe. While moving averages can be based
-      on the Open, High, or Low data points, the most common approach uses the closing price. For instance, a 5-day simple
+      on the Open, High, or Low data points, the most common approach uses the closing price. For instance, a 5-day
+      simple
       moving average is determined by summing the closing prices of the past 5 days and dividing the total by 5.
       <br><br>
       <h5>Exponential moving average (EMA)</h5>
@@ -481,13 +501,16 @@
       useful.
       In the case of two MAs, a double crossover is employed. A sell signal occurs when the short-term MA crosses below
       the long-term MA, and vice versa. Common combinations include the 5-day and 20-day averages, as well as the 20-day
-      and 100-day averages. Although the technique of using two averages lags the market slightly more, it produces fewer
+      and 100-day averages. Although the technique of using two averages lags the market slightly more, it produces
+      fewer
       whipsaws (false signals).
-      The triple moving average crossover system is popular among investors. The widely used combination is the 4-9-18-day
-      MA. A buy signal is generated when the shortest (and most sensitive) average, the 4-day MA, first crosses the 9-day
+      The triple moving average crossover system is popular among investors. The widely used combination is the
+      4-9-18-day
+      MA. A buy signal is generated when the shortest (and most sensitive) average, the 4-day MA, first crosses the
+      9-day
       MA and then the 18-day MA. Each crossover confirms the change in trend.
       <br><br>
-  
+
       <h2>Relative Strength Index (RSI)</h2>
       The RSI is part of a class of indicators called momentum oscillators.
       There are a number of indicators that fall in this category, the most common being Relative
@@ -500,18 +523,21 @@
       trending markets to identify overbought and oversold conditions. Here's how the RSI can be applied for generating
       buy and sell signals based on overbought and oversold levels:
       <br><br>
-      1. RSI Range: The RSI oscillates between 0 and 100, with values above 70 indicating overbought conditions and values
+      1. RSI Range: The RSI oscillates between 0 and 100, with values above 70 indicating overbought conditions and
+      values
       below 30 indicating oversold conditions. These levels are commonly used as thresholds for generating signals.
       <br><br>
       2. Overbought Signals: When the RSI crosses above the overbought line (e.g., 70), it suggests that the market is
-      overextended on the upside, and a potential reversal or correction may occur. Traders may consider selling or taking
+      overextended on the upside, and a potential reversal or correction may occur. Traders may consider selling or
+      taking
       profits in this situation, expecting a downward price movement.
       <br><br>
       3. Oversold Signals: When the RSI crosses below the oversold line (e.g., 30), it suggests that the market is
       oversold, and a potential rebound or reversal may take place. Traders may consider buying or entering long
       positions, expecting an upward price movement.
       <br><br>
-      4. Direction of Crossing: It's important to note the direction of the RSI crossing the overbought or oversold lines.
+      4. Direction of Crossing: It's important to note the direction of the RSI crossing the overbought or oversold
+      lines.
       For a valid signal, the RSI should first move past the overbought/oversold level and then cross back through it.
       This confirms a potential change in momentum and provides a clearer indication for entering or exiting trades.
       <br><br>
@@ -525,19 +551,22 @@
       recommended to use it in conjunction with other indicators or analysis techniques for confirmation and to consider
       the broader market context.
       <br><br>
-  
+
       <h2>Stochastic indicator</h2>
-  
+
       The Stochastic indicator, developed by George Lane, is a momentum oscillator that compares a security's closing
-      price to its price range over a selected number of periods. The most commonly used period is 14 days. The Stochastic
+      price to its price range over a selected number of periods. The most commonly used period is 14 days. The
+      Stochastic
       indicator is represented by "%K," which is a mathematical ratio.
-  
+
       To calculate the %K value using the Stochastic indicator, the following formula is used:
       <br><br>
-      %K = ((Today's Close) - (Lowest Low over a selected period)) / ((Highest High over a selected period) - (Lowest Low
+      %K = ((Today's Close) - (Lowest Low over a selected period)) / ((Highest High over a selected period) - (Lowest
+      Low
       over a selected period))
       <br>
-      For example, let's consider today's close at 50, and the highest and lowest prices over the last 14 days were 55 and
+      For example, let's consider today's close at 50, and the highest and lowest prices over the last 14 days were 55
+      and
       40, respectively. Applying the formula, we get:
       <br>
       %K = (50 - 40) / (55 - 40)
@@ -551,14 +580,16 @@
       <br>
       Therefore, in this example, the %K value would be 66.6%.
       <br><br>
-      The Stochastic indicator is used to identify overbought and oversold conditions in the market. It oscillates between
+      The Stochastic indicator is used to identify overbought and oversold conditions in the market. It oscillates
+      between
       0 and 100, with values above 80 generally considered overbought, and values below 20 considered oversold. Traders
       often look for signals when the %K line crosses above or below these thresholds to generate buy or sell signals,
       respectively. Additionally, the Stochastic indicator is frequently used in conjunction with its accompanying "%D"
       line, which is a moving average of the %K line, to further refine trading signals.
-  
+
       The Stochastic indicator is commonly used by traders to interpret potential overbought and oversold conditions in
-      the market. It oscillates between 0 and 100 and provides insights into the momentum and strength of price movements.
+      the market. It oscillates between 0 and 100 and provides insights into the momentum and strength of price
+      movements.
       Here's how the Stochastic indicator can be interpreted:
       <br><br>
       1. Overbought Conditions: When the Stochastic indicator (%K) rises above 80, it suggests that the price of the
@@ -573,26 +604,30 @@
       <br><br>
       3. Bullish and Bearish Divergences: Divergences can occur between the Stochastic indicator and the price action. A
       bullish divergence happens when the price makes a lower low, but the Stochastic indicator forms a higher low. This
-      can indicate a potential reversal and a bullish signal. Conversely, a bearish divergence occurs when the price makes
+      can indicate a potential reversal and a bullish signal. Conversely, a bearish divergence occurs when the price
+      makes
       a higher high, but the Stochastic indicator forms a lower high, suggesting a potential reversal and a bearish
       signal.
       <br><br>
       4. Signal Line Crossovers: The Stochastic indicator is often used in conjunction with its accompanying "%D" line,
       which is a moving average of the %K line. Traders look for crossovers between the %K and %D lines as potential buy
-      or sell signals. For example, a buy signal may be generated when the %K line crosses above the %D line, indicating a
+      or sell signals. For example, a buy signal may be generated when the %K line crosses above the %D line, indicating
+      a
       shift towards bullish momentum. Conversely, a sell signal may be generated when the %K line crosses below the %D
       line, indicating a shift towards bearish momentum.
       <br><br>
       It's important to note that the Stochastic indicator is most effective in ranging or sideways markets. In trending
-      markets, the indicator can stay in overbought or oversold conditions for extended periods, leading to false signals.
+      markets, the indicator can stay in overbought or oversold conditions for extended periods, leading to false
+      signals.
       Therefore, it's recommended to use the Stochastic indicator in conjunction with other technical analysis tools and
       consider the broader market context for more reliable trading decisions.
-  
-  
+
+
       <h2>Moving Average Convergence/Divergence (MACD)</h2>
-  
+
       The Moving Average Convergence/Divergence (MACD) is a widely used technical analysis indicator created by Gerald
-      Appel in the late 1970s. It is considered a refinement of the two moving averages system and provides insights into
+      Appel in the late 1970s. It is considered a refinement of the two moving averages system and provides insights
+      into
       the relationship between two moving average lines. The MACD is calculated using the following components:
       <br><br>
       1. MACD Line (MACD): The MACD line is calculated by subtracting the longer-term exponential moving average (EMA)
@@ -603,21 +638,25 @@
       identify potential buy and sell signals.
       <br><br>
       3. MACD Histogram: The MACD histogram represents the difference between the MACD line and the signal line. It
-      provides a visual representation of the relationship between the two lines. The histogram fluctuates above and below
+      provides a visual representation of the relationship between the two lines. The histogram fluctuates above and
+      below
       a zero line, indicating positive and negative divergence, respectively.
       <br><br>
       Interpreting the MACD indicator involves analyzing the relationship between the MACD line, signal line, and
       histogram. Here are some common interpretations:
       <br><br>
       1. MACD Line and Signal Line Crossovers: When the MACD line crosses above the signal line, it generates a bullish
-      signal, suggesting that it may be a good time to buy. Conversely, when the MACD line crosses below the signal line,
+      signal, suggesting that it may be a good time to buy. Conversely, when the MACD line crosses below the signal
+      line,
       it generates a bearish signal, indicating a potential selling opportunity.
       <br><br>
-      2. MACD Histogram: The histogram provides additional insights into the strength and momentum of the price movement.
+      2. MACD Histogram: The histogram provides additional insights into the strength and momentum of the price
+      movement.
       When the histogram moves above the zero line, it indicates increasing bullish momentum. Conversely, when the
       histogram moves below the zero line, it suggests increasing bearish momentum.
       <br><br>
-      3. Divergences: Divergences occur when the MACD indicator disagrees with the price action. For example, if the price
+      3. Divergences: Divergences occur when the MACD indicator disagrees with the price action. For example, if the
+      price
       makes a higher high, but the MACD histogram forms a lower high, it indicates a bearish divergence, potentially
       signaling a trend reversal. Conversely, a bullish divergence occurs when the price makes a lower low, but the MACD
       histogram forms a higher low, indicating a potential bullish reversal.
@@ -626,13 +665,14 @@
       market context to make informed trading decisions.
       <br><br>
       <h2> Flow Index (MFI)</h2>
-  
+
       The Money Flow Index (MFI) is a technical analysis indicator that incorporates volume data to measure the strength
       of money flowing in and out of a security. It is also referred to as a smart money flow indicator. The MFI
       calculation is based on the concepts of positive and negative money flow. Here's how the MFI is calculated and
       interpreted:
       <br><br>
-      Positive Money Flow (PMF): When the average price of a day is higher than the average price of the previous day, it
+      Positive Money Flow (PMF): When the average price of a day is higher than the average price of the previous day,
+      it
       is considered positive money flow. The positive money flow for a specific day is calculated by multiplying the
       average price by the volume.
       <br><br>
@@ -643,7 +683,8 @@
       Money Ratio: The money ratio is calculated by dividing the sum of positive money flow over a specified number of
       periods by the sum of negative money flow over the same number of periods.
       <br><br>
-      Money Flow Index (MFI): The MFI is calculated using the money ratio. It is derived from the formula: MFI = 100 - 100
+      Money Flow Index (MFI): The MFI is calculated using the money ratio. It is derived from the formula: MFI = 100 -
+      100
       / (1 + money ratio).
       <br><br>
       Interpreting the Money Flow Index (MFI) involves the following guidelines:
@@ -657,43 +698,51 @@
       Traders may consider buying or entering long positions in anticipation of a price increase.
       <br><br>
       Divergences: Similar to other oscillators, divergences between the MFI and price action can provide valuable
-      signals. A bullish divergence occurs when the price makes a lower low, but the MFI forms a higher low. This suggests
+      signals. A bullish divergence occurs when the price makes a lower low, but the MFI forms a higher low. This
+      suggests
       a potential bullish reversal. Conversely, a bearish divergence occurs when the price makes a higher high, but the
       MFI forms a lower high, indicating a potential bearish reversal.
       <br><br>
-      As with any technical indicator, it's important to use the Money Flow Index (MFI) in conjunction with other analysis
+      As with any technical indicator, it's important to use the Money Flow Index (MFI) in conjunction with other
+      analysis
       tools and consider the broader market context for more accurate trading decisions.
       <br><br>
-  
+
       <h2> Bollinger Bands</h2>
-  
+
       Bollinger bands are trading bands developed by John Bollinger.
       It consists of a 20 period simple moving average with upper and lower bands. The upper band
       is 2 standard deviation above the moving average and similarly lower band is 2 standard
       deviation below the moving average. This makes these bands more dynamic and adaptive to
       volatility.
-  
+
       Here's how Bollinger Bands are constructed and how they can be interpreted:
       <br><br>
-      1. Construction of Bollinger Bands: Bollinger Bands consist of three lines: the middle band, the upper band, and the
+      1. Construction of Bollinger Bands: Bollinger Bands consist of three lines: the middle band, the upper band, and
+      the
       lower band.
-  
+
       - Middle Band: The middle band is a 20-period simple moving average (SMA) of the price. It represents the average
       price over the selected period.
-  
-      - Upper Band: The upper band is located two standard deviations above the middle band. It provides an upper boundary
+
+      - Upper Band: The upper band is located two standard deviations above the middle band. It provides an upper
+      boundary
       or resistance level.
-  
-      - Lower Band: The lower band is located two standard deviations below the middle band. It serves as a lower boundary
+
+      - Lower Band: The lower band is located two standard deviations below the middle band. It serves as a lower
+      boundary
       or support level.
       <br><br>
-      2. Volatility Contraction and Expansion: Bollinger Bands are known for their ability to adapt to market volatility.
-      When the bands tighten or contract, it indicates lower volatility in the market. This contraction is often followed
+      2. Volatility Contraction and Expansion: Bollinger Bands are known for their ability to adapt to market
+      volatility.
+      When the bands tighten or contract, it indicates lower volatility in the market. This contraction is often
+      followed
       by a period of increased volatility or a significant price move in either direction.
       <br><br>
       3. Support and Resistance Levels: The upper band serves as a resistance level, while the lower band acts as a
       support level. When the price approaches the upper band, it suggests that the security is overbought and may
-      encounter selling pressure. Conversely, when the price approaches the lower band, it indicates that the security is
+      encounter selling pressure. Conversely, when the price approaches the lower band, it indicates that the security
+      is
       oversold and may experience buying pressure.
       <br><br>
       4. Breakouts: Breakouts occur when the price moves outside of the Bollinger Bands. A breakout above the upper band
@@ -705,8 +754,10 @@
       reversal in the current trend.
       <br><br>
       It's important to note that Bollinger Bands are not definitive buy or sell signals on their own. They are most
-      effective when used in conjunction with other technical indicators and analysis tools. Additionally, traders should
-      consider the overall market conditions and use proper risk management techniques when interpreting Bollinger Bands.
+      effective when used in conjunction with other technical indicators and analysis tools. Additionally, traders
+      should
+      consider the overall market conditions and use proper risk management techniques when interpreting Bollinger
+      Bands.
       <br><br>
     </section>
     <section id="Trading">
@@ -732,7 +783,7 @@
       <br><br>
       Swing Charting — Provides rigid entry and exit signals based on recent price history.
       <br><br>
-  
+
       <h2>Volume-sensitive techniques</h2>
       Tic Volume — This is similar to On-Balance Volume, but looks at the volume and directions of
       individual trades.
@@ -745,7 +796,7 @@
       price levels, trends, and reversal points.
       <br><br>
       <h2> How to use the tool kit of trading techniques</h2>
-  
+
       <h5>Price-sensitive techniques</h5>
       Moving Averages — Gives very good signals in a trending market, but can reduce profi ts in a
       trading market.
@@ -774,12 +825,12 @@
       On-Balance Volume — Gives good advance warning of when the market will move off the
       bottom, but is late on tops.
       <br><br>
-  
+
       <h5>Composite techniques</h5>
       Elliott Wave — Predicts major market moves. Use other techniques to confirm the times and
       price levels.
       <br><br>
-  
+
       <h5>Trading market tool kit application</h5>
       1) Moving Averages — Fade breakouts
       <br><br>
@@ -793,7 +844,7 @@
       5) Elliott Wave — Verifies the existence of trading market via flat-type corrections classification
       and shows possible end of trading range
       <br><br>
-  
+
       <h5>Bull market tool kit application</h5>
       1) Moving Averages — Buy the upside crossovers
       <br><br>
@@ -806,7 +857,7 @@
       <br><br>
       5) Elliott Wave — Buy breakouts of previous highs
       <br><br>
-  
+
       <h5>Bear market toolkit application</h5>
       1) Moving Averages — Sell the downside crossovers
       <br><br>
@@ -871,10 +922,10 @@
       the bottom. Elliott Wave analysis does offer inkling about what type of correction traders
       can expect, based on the existence of alternative patterns prior to the one currently
       under examination.
-  
+
       <h5>Bull market changing to trading market toolkit application</h5>
-  
-  
+
+
       1) Moving Averages — Price finally crosses the moving averages to the downside after
       leading the averages from above. If traders didn’t buy the price breakout to the upside,
       traders mustn’t do it now but, instead, start to fade the upside breakouts carefully and
@@ -903,7 +954,7 @@
       the set will be the alternate type to the first. In this way, traders can predict something
       about the nature of this market phase
       <br><br>
-  
+
       <h5>Bear market changing to trading market tool kit application</h5>
       1) Moving Averages — When the market changes to a trading market from a bear market
       the moving averages will no longer lag as far behind the actual price or shorter moving
@@ -934,62 +985,59 @@
       dimension or c of an a-b-c correction) they were in the process of completing they would
       have a better idea of what type of correction is starting.
       <br><br>
-  
-    </section>
-  </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+    </section>
+  </main>
+
   <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
   <script>
     var originalContent = '';
 
-      function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
 
-      function searchWebsite(event) {
-        event.preventDefault();
-        const keyword = document.getElementById('search-input').value.toLowerCase();
-        const sections = document.getElementsByTagName('section');
+    function searchWebsite(event) {
+      event.preventDefault();
+      const keyword = document.getElementById('search-input').value.toLowerCase();
+      const sections = document.getElementsByTagName('section');
 
-        let foundResults = false;
+      let foundResults = false;
 
-        for (let i = 0; i < sections.length; i++) {
-          const section = sections[i];
-          const sectionContent = section.textContent.toLowerCase();
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const sectionContent = section.textContent.toLowerCase();
 
-          if (sectionContent.includes(keyword)) {
-            section.style.display = 'block';
-            section.classList.add('highlight');
-            foundResults = true;
-          } else {
-            section.style.display = 'none';
-            section.classList.remove('highlight');
-          }
-        }
-
-        // Show or hide back button based on search results
-        const backButton = document.getElementById('back-button');
-        backButton.style.display = foundResults ? 'block' : 'none';
-
-        // If no results found, scroll to the top of the page
-        if (!foundResults) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (sectionContent.includes(keyword)) {
+          section.style.display = 'block';
+          section.classList.add('highlight');
+          foundResults = true;
+        } else {
+          section.style.display = 'none';
+          section.classList.remove('highlight');
         }
       }
 
-      function goBack() {
-        // Restore the original content and reset styles
-        document.body.innerHTML = originalContent;
-        originalContent = '';
+      const backButton = document.getElementById('back-button');
+      backButton.style.display = foundResults ? 'block' : 'none';
+
+      if (!foundResults) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+    }
+
+    function goBack() {
+      document.body.innerHTML = originalContent;
+      originalContent = '';
+    }
 
   </script>
 
