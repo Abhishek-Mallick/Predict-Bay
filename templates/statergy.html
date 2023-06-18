@@ -26,6 +26,7 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
   <link href="/static/css/bootstrap.min.css" rel="stylesheet">
   <link href="/static/css/boxicons.min.css" rel="stylesheet">
@@ -35,24 +36,50 @@
   <link href="/static/css/style.css" rel="stylesheet">
   <link href="/static/css/styles.css" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="/static/css/materialize.min.css"></script>
+
   <style>
     ::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
+      width: 12px;
+      /* width of the entire scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #343a40;
+      /* color of the tracking area */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      -ms-overflow-style: none;
+      background-color: #adb5bd;
+      /* color of the scroll thumb */
+      border-radius: 25px;
+      /* roundness of the scroll thumb */
+      border: 3px #dee2e6;
+      /* creates padding around scroll thumb */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+    .center-table {
+      margin-left: auto;
+      margin-right: auto;
   }
-  
-  ::-webkit-scrollbar-track {
-    background: #343a40;        /* color of the tracking area */
+  .spaced-table th, .spaced-table td {
+      padding: 10px 20px; /* Adjust as needed */
+      text-align: center;
   }
-  
-  ::-webkit-scrollbar-thumb{
-    -ms-overflow-style:none;
-    background-color: #adb5bd;    /* color of the scroll thumb */
-    border-radius: 25px;       /* roundness of the scroll thumb */
-    border: 3px #dee2e6;  /* creates padding around scroll thumb */
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-  }
+  .bordered-table {
+    width: 100%;
+    border-collapse: collapse; /* This ensures the borders on each cell touch each other */
+}
+
+.bordered-table th, .bordered-table td {
+    border: 1px solid black; /* Adjust as needed */
+    padding: 10px;
+    text-align: center;
+}
   </style>
 
 </head>
@@ -72,7 +99,7 @@
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-        
+
       </ul>
     </nav><!-- End Icons Navigation -->
   </header><!-- End Header -->
@@ -176,125 +203,364 @@
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row">
-    
+
         <div class="col-lg-6">
-          <div class="card" >
+          <div class="card">
             <div class="card-body">
               <h5 class="card-title">TURTLE STATERGY |<span> {{ticker}}</span></h5>
               <form class="row g-3" method="POST" action="/statergy">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="TICKER SYMBOL" id="ticker" name="ticker" value ="{{ ticker }}" required>
+                  <input type="text" class="form-control" placeholder="TICKER SYMBOL" id="ticker" name="ticker"
+                    value="{{ ticker }}" required>
                 </div>
                 <div class="col-md-6">
-                  <input type="number" class="form-control" placeholder="INITIAL MONEY" id="initial_money" name="initial_money"  value ="{{ initial_money }}" required>
+                  <input type="number" class="form-control" placeholder="INITIAL MONEY" id="initial_money"
+                    name="initial_money" value="{{ initial_money }}" required>
                 </div>
                 <div class="col-md-6">
-                  <input type="number" class="form-control" placeholder="NUMBER OF YEARS" id="years" name="years"  value ="{{ years }}" required>
+                  <input type="number" class="form-control" placeholder="NUMBER OF YEARS" id="years" name="years"
+                    value="{{ years }}" required>
                 </div>
                 <div class="col-md-6">
-                  <input type="number" class="form-control" placeholder="MAX BUY" id="max_buy" name="max_buy"  value ="{{ max_buy }}" required>
+                  <input type="number" class="form-control" placeholder="MAX BUY" id="max_buy" name="max_buy"
+                    value="{{ max_buy }}" required>
                 </div>
                 <div class="col-md-6">
-                  <input type="number" class="form-control" placeholder="MAX SELL" id="max_sell" name="max_sell"  value ="{{ max_sell }}" required>
+                  <input type="number" class="form-control" placeholder="MAX SELL" id="max_sell" name="max_sell"
+                    value="{{ max_sell }}" required>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                  <button type="submit" class="btn btn-danger" value="submit">Submit</button>
                 </div>
               </form><!-- End No Labels Form -->
             </div>
           </div>
         </div>
-    
+
         <div class="col-lg-6">
           <div class="card" style="height: 285px;">
             <div class="card-body">
               <h5 class="card-title">DESCRIPTION</h5>
-              <h5 class="card-title" style="overflow:hidden;overflow-y:scroll;height: 200px; width: 100%; "><span>The Turtle strategy, also known as the Turtle Trading strategy, is a trend-following trading strategy developed by
-              Richard Dennis and William Eckhardt in the 1980s. It gained popularity when a group of novice traders, known as the
-              "Turtles," achieved significant success using this strategy.
-              
-              The Turtle strategy is based on the idea of riding long-term trends in the market. It is a systematic approach that uses
-              technical indicators to determine entry and exit points for trades. The strategy aims to capture substantial profits
-              from trending markets while also implementing strict risk management rules.
-              
-              Here are the key principles and components of the Turtle strategy:
-              
-              Breakout Entry: The Turtle strategy identifies breakouts, which occur when the price surpasses a certain range or level
-              of support/resistance. The strategy utilizes a Donchian channel, which consists of the highest high and lowest low over
-              a specific period. When the price breaks above the channel's upper boundary, it triggers a long entry, and when it
-              breaks below the lower boundary, it triggers a short entry.
-              
-              Position Sizing: The Turtle strategy emphasizes the concept of position sizing based on volatility. It uses the Average
-              True Range (ATR) indicator to determine the appropriate position size for each trade. The position size is typically a
-              percentage of the trader's equity, adjusted according to the market's volatility.
-              
-              Stop Loss and Take Profit: The strategy incorporates dynamic stop loss and take profit levels based on the recent market
-              volatility. The initial stop loss is set at a certain multiple of the ATR away from the entry price, providing a
-              predefined risk level for each trade. The take profit level is usually not predefined but is instead trailed along with
-              the trend, allowing for potential large gains during extended trends.
-              
-              Pyramiding: The Turtle strategy utilizes a pyramiding technique, where additional positions are added as the trade moves
-              in the desired direction. Each new position is initiated at predetermined price intervals or levels, allowing the trader
-              to increase exposure and potential profits during favorable market conditions.
-              
-              Trend Identification: The strategy aims to identify and trade strong, sustained trends. It uses long-term moving
-              averages, such as the 50-day or 200-day moving average, to determine the overall trend direction. Trades are taken only
-              in the direction of the prevailing trend, avoiding counter-trend trades.
-              
-              Systematic Approach: The Turtle strategy is a rule-based and systematic approach, aiming to remove subjective
-              decision-making from trading. Traders follow the predefined rules strictly, regardless of personal opinions or emotions,
-              to maintain consistency and discipline.
-              
-              Portfolio Diversification: To mitigate risk, the Turtle strategy recommends diversifying the trading portfolio across
-              different markets and asset classes. This approach helps to spread the risk and reduces the reliance on any single trade
-              or market.
-              
-              Overall, the Turtle strategy is designed to capture and ride long-term trends while managing risk through strict
-              position sizing, stop loss levels, and systematic rules. It focuses on disciplined execution, risk management, and
-              adherence to the predefined strategy rather than making subjective judgments based on market sentiment or opinions.</span></h5>
+              <h5 class="card-title" style="overflow:hidden;overflow-y:scroll;height: 200px; width: 100%; "><span>
+                The
+                  Turtle strategy, also known as the Turtle Trading strategy, is a trend-following trading strategy
+                  developed by
+                  Richard Dennis and William Eckhardt in the 1980s. It gained popularity when a group of novice traders,
+                  known as the
+                  "Turtles," achieved significant success using this strategy.<br><br>
+
+                  The Turtle strategy is based on the idea of riding long-term trends in the market. It is a systematic
+                  approach that uses
+                  technical indicators to determine entry and exit points for trades. The strategy aims to capture
+                  substantial profits
+                  from trending markets while also implementing strict risk management rules.<br><br>
+
+                  Here are the key principles and components of the Turtle strategy:<br><br>
+
+                  Breakout Entry: The Turtle strategy identifies breakouts, which occur when the price surpasses a
+                  certain range or level
+                  of support/resistance. The strategy utilizes a Donchian channel, which consists of the highest high
+                  and lowest low over
+                  a specific period. When the price breaks above the channel's upper boundary, it triggers a long entry,
+                  and when it
+                  breaks below the lower boundary, it triggers a short entry.<br><br>
+
+                  Position Sizing: The Turtle strategy emphasizes the concept of position sizing based on volatility. It
+                  uses the Average
+                  True Range (ATR) indicator to determine the appropriate position size for each trade. The position
+                  size is typically a
+                  percentage of the trader's equity, adjusted according to the market's volatility.<br><br>
+
+                  Stop Loss and Take Profit: The strategy incorporates dynamic stop loss and take profit levels based on
+                  the recent market
+                  volatility. The initial stop loss is set at a certain multiple of the ATR away from the entry price,
+                  providing a
+                  predefined risk level for each trade. The take profit level is usually not predefined but is instead
+                  trailed along with
+                  the trend, allowing for potential large gains during extended trends.<br><br>
+
+                  Pyramiding: The Turtle strategy utilizes a pyramiding technique, where additional positions are added
+                  as the trade moves
+                  in the desired direction. Each new position is initiated at predetermined price intervals or levels,
+                  allowing the trader
+                  to increase exposure and potential profits during favorable market conditions.<br><br>
+
+                  Trend Identification: The strategy aims to identify and trade strong, sustained trends. It uses
+                  long-term moving
+                  averages, such as the 50-day or 200-day moving average, to determine the overall trend direction.
+                  Trades are taken only
+                  in the direction of the prevailing trend, avoiding counter-trend trades.<br><br>
+
+                  Systematic Approach: The Turtle strategy is a rule-based and systematic approach, aiming to remove
+                  subjective
+                  decision-making from trading. Traders follow the predefined rules strictly, regardless of personal
+                  opinions or emotions,
+                  to maintain consistency and discipline.<br><br>
+
+                  Portfolio Diversification: To mitigate risk, the Turtle strategy recommends diversifying the trading
+                  portfolio across
+                  different markets and asset classes. This approach helps to spread the risk and reduces the reliance
+                  on any single trade
+                  or market.<br><br>
+
+                  Overall, the Turtle strategy is designed to capture and ride long-term trends while managing risk
+                  through strict
+                  position sizing, stop loss levels, and systematic rules. It focuses on disciplined execution, risk
+                  management, and
+                  adherence to the predefined strategy rather than making subjective judgments based on market sentiment
+                  or opinions.</span></h5>
             </div>
           </div>
         </div>
-  
-      </div> 
+
+      </div>
     </section>
 
 
-    
+
+
+
     <div class="card">
       <div class="card-body">
         <div id="graph_turtle"></div>
       </div>
     </div>
-    
-    <!-- <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">No Labels / Placeholders as labels Form</h5>
-    
-      
-        <form class="row g-3">
-          <div class="col-md-12">
-            <input type="text" class="form-control" placeholder="TICKER SYMBOL">
+
+    <section class="section">
+      <div class="row">
+
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">NEURAL NETWORK STATERGY</h5>
+
+              <!-- General Form Elements -->
+              <form>
+                <div class="row mb-3">
+                  <!-- <label class="col-sm-2 col-form-label">Submit Button</label> -->
+                  <div class="text-center">
+                    <button id="suggestbutton" class="btn btn-danger">Suggest</button>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">File Upload</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="file" id="uploadcsv">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Learning rate</label>
+                  <div class="col-sm-10">
+                    <input id="learningrate" type="number" placeholder="Eg: 0.001" data-position="bottom"
+                      data-delay="50" data-tooltip="learning rate during training" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Input dropout rate</label>
+                  <div class="col-sm-10">
+                    <input id="inputdropoutrate" type="number" placeholder="Eg: 0.9" data-position="bottom"
+                      data-delay="50" data-tooltip="dropout rate for LSTM input" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Output dropout rate</label>
+                  <div class="col-sm-10">
+                    <input id="outputdropoutrate" type="number" placeholder="Eg: 0.9" data-position="bottom"
+                      data-delay="50" data-tooltip="dropout rate for LSTM output" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Timestamp per training</label>
+                  <div class="col-sm-10">
+                    <input id="timestamp" type="number" placeholder="Eg: 5" data-position="bottom" data-delay="50"
+                      data-tooltip="Trends for every minibatch" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Size layer</label>
+                  <div class="col-sm-10">
+                    <input id="sizelayer" type="number" placeholder="Eg: 64" data-position="bottom" data-delay="50"
+                      data-tooltip="LSTM size" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Training Iteration</label>
+                  <div class="col-sm-10">
+                    <input id="epoch" type="number" placeholder="Eg: 10" data-position="bottom" data-delay="50"
+                      data-tooltip="Total epoch" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Future days to forecast</label>
+                  <div class="col-sm-10">
+                    <input id="future" type="number" placeholder="Eg: 10" data-position="bottom" data-delay="50"
+                      data-tooltip="number of days forecast" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Smoothing weights</label>
+                  <div class="col-sm-10">
+                    <input id="smooth" type="number" placeholder="Eg: 10" data-position="bottom" data-delay="50"
+                      data-tooltip="Rate anchor smoothing for trends" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Initial money(usd)</label>
+                  <div class="col-sm-10">
+                    <input id="initialmoney" type="number" placeholder="Eg: 10000" data-position="bottom"
+                      data-delay="50" data-tooltip="Money in for simulation" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Max buy(unit)</label>
+                  <div class="col-sm-10">
+                    <input id="maxbuy" type="number" placeholder="Eg: 5" data-position="bottom" data-delay="50"
+                      data-tooltip="Max unit to buy" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Max sell(unit)</label>
+                  <div class="col-sm-10">
+                    <input id="maxsell" type="number" placeholder="Eg: 10" data-position="bottom" data-delay="50"
+                      data-tooltip="Max unit to sell" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Historical rolling</label>
+                  <div class="col-sm-10">
+                    <input id="history" type="number" placeholder="Eg: 5" data-position="bottom" data-delay="50"
+                      data-tooltip="MA to compare of" class="form-control">
+                  </div>
+                </div>
+
+
+                <div class="row mb-3">
+                  <!-- <label class="col-sm-2 col-form-label">Submit Button</label> -->
+                  <div class="text-center">
+                    <button id="trainbutton" class="btn btn-danger">Train</button>
+                  </div>
+                </div>
+
+
+              </form><!-- End General Form Elements -->
+
+            </div>
           </div>
-          <div class="col-md-6">
-            <input type="number" class="form-control" placeholder="INITIAL MONEY">
+
+        </div>
+        <div class="col-lg-6">
+          <div class="card" style="height: 1087px;">
+            <div class="card-body">
+              <h5 class="card-title">DESCRIPTION</h5>
+              <h5 class="card-title" style="overflow:hidden;overflow-y:scroll;height: 1000px; width: 100%; "><span>
+              Neural networks have emerged as a popular and powerful technique in the realm of stock trading strategies. As a
+              computational model inspired by the human brain, neural networks consist of interconnected nodes, or "neurons," that
+              work together to process and analyze complex data. These networks have proven to be highly effective in analyzing large
+              amounts of historical market data and predicting future trends.<br><br>
+              
+              The use of neural networks in stock trading strategies involves training the network on a vast array of historical
+              market data, which typically includes information such as stock prices, trading volumes, company financials, economic
+              indicators, news sentiment, and technical indicators. By analyzing this data, the neural network learns the underlying
+              patterns and relationships, allowing it to make predictions about future market behavior.<br><br>
+              
+              The process of training a neural network involves adjusting its internal weights and biases to minimize prediction
+              errors. This is achieved through a technique called backpropagation, where the network iteratively adjusts its
+              parameters based on the differences between its predicted outputs and the actual outcomes in the training data. This
+              iterative learning process helps the neural network recognize and adapt to the complex patterns present in the data,
+              ultimately improving its predictive capabilities.<br><br>
+              
+              Once the neural network is trained, it can be applied to new, unseen data to generate predictions or trading signals.
+              For example, given the current market conditions, the network can provide recommendations such as whether to buy, sell,
+              or hold a particular stock. These recommendations are based on the patterns and relationships learned during the
+              training phase.<br><br>
+              
+              The strength of neural networks in stock trading strategies lies in their ability to capture non-linear relationships
+              and complex patterns within the data. Traditional statistical models often struggle to uncover such intricate
+              connections, but neural networks excel in detecting and leveraging them. They can identify subtle correlations and
+              trends that may be overlooked by other methods, making them valuable tools for investors and traders.<br><br>
+              
+              One of the key advantages of neural networks is their adaptability to changing market conditions. Markets are dynamic
+              and subject to various influences, such as economic events, policy changes, and investor sentiment. Neural networks can
+              learn and adjust their predictions in response to these changing conditions, allowing them to remain effective in a
+              dynamic trading environment.<br><br>
+              
+              Despite their strengths, it's important to acknowledge the limitations of neural networks in stock trading strategies.
+              One common challenge is the potential for overfitting. Overfitting occurs when a neural network becomes too specialized
+              in the training data and fails to generalize well to new, unseen data. To mitigate this risk, rigorous validation
+              techniques are employed to assess the performance of the neural network on independent datasets.<br><br>
+              
+              Furthermore, while neural networks can provide valuable insights, they should be considered as one component of a
+              comprehensive stock trading strategy. It's important to incorporate risk management techniques, consider market
+              fundamentals, and perform qualitative analysis alongside the neural network predictions. Human expertise and intuition
+              are still essential for making informed investment decisions and effectively managing portfolio risk.<br><br>
+              
+              In conclusion, neural networks offer a powerful and flexible tool for stock trading strategies. Their ability to analyze
+              and interpret complex patterns in market data has made them increasingly popular among investors and traders. However,
+              it is crucial to recognize their limitations and utilize them as part of a broader approach that combines human
+              judgment, risk management techniques, and other relevant factors. By leveraging the strengths of neural networks while
+              exercising caution and sound judgment, investors can enhance their decision-making processes and potentially improve
+              their trading outcomes.</span></h5>
+            </div>
           </div>
-          <div class="col-md-6">
-            <input type="number" class="form-control" placeholder="NUMBER OF YEARS">
-          </div>
-          <div class="col-md-6">
-            <input type="number" class="form-control" placeholder="MAX BUY">
-          </div>
-          <div class="col-md-6">
-            <input type="number" class="form-control" placeholder="MAX SELL">
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-    
+        </div>
       </div>
-    </div> -->
+    </section>
+    <div class="card" style="height: 100vh;">
+      <div class="card-body">
+        <!-- <div class="row" style="padding-left:10px;padding-right:10px"> -->
+          <!-- <div class="col s12 m12"> -->
+            <div id="div_output" style="height: 800px;"></div>
+          <!-- </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="row close-first" style="padding-left:10px;padding-right:40px;display: flex; justify-content: center; align-items: center;">
+      <div class="col s12 m8">
+        <div id="div_dist" style="height: 450px;"></div>
+      </div>
+      <div class="col s12 m4">
+        <div class="row">
+          <div id="div_loss" style="height: 250px;"></div>
+        </div>
+        <div class="row" id="log" style="height: 150px; overflow:auto;display: flex; justify-content: center; align-items: center;">
+        </div>
+      </div>
+    </div>
+    <div class="row" style="padding-left:10px;padding-right:10px">
+    <ul class="collapsible" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header" style="text-align: center;"><i class="material-icons">archive</i>Simulation log</div>
+            <div class="collapsible-body" style="text-align: center;"><span>
+                <table class="bordered-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Action</th>
+                            <th>Price</th>
+                            <th>Investment</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id='table-body'>
+                    </tbody>
+                </table><br>
+                <span id="log-invest"></span>
+            </span></div>
+        </li>
+    </ul>
+</div>
+    <div class="row center" id="color-investment">
+    </div>
+
+
+
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>
       // var graphJSON_ma = {{ graph_json_ma| safe }};
@@ -330,18 +596,30 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-<!-- Vendor JS Files -->
-<script src="/static/js/apexcharts.min.js"></script>
-<script src="/static/js/bootstrap.bundle.min.js"></script>
-<script src="/static/js/main.js"></script>
-<script src="/static/js/quill.min.js"></script>
-<script src="/static/assets/tinymce/tinymce.min.js"></script>
-<script src="/static/js/simple-datatables.js"></script>
-<script src="/static/js/validate.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="/static/js/apexcharts.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/quill.min.js"></script>
+  <script src="/static/assets/tinymce/tinymce.min.js"></script>
+  <script src="/static/js/simple-datatables.js"></script>
+  <script src="/static/js/validate.js"></script>
+  <script src="/static/js/tradejs/tf.js"></script>
+  <script src="/static/js/tradejs/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/tradejs/materialize.min.js"></script>
+  <script src="/static/js/tradejs/d3.v3.min.js"></script>
+  <script src="/static/js/tradejs/numeric-1.2.6.min.js"></script>
+  <script src="/static/js/tradejs/numjs.min.js"></script>
+  <script src="/static/js/tradejs/utils.js"></script>
+  <script src="/static/js/tradejs/echarts.min.js"></script>
+  <script src="/static/js/tradejs/echarts-gl.min.js"></script>
+  <script src="/static/js/tradejs/papaparse.min.js"></script>
+  <script src="/static/js/tradejs/google.js"> </script>
+  <script src="/static/js/tradejs/init.js"> </script>
 
 
 </body>
