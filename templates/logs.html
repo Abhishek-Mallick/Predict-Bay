@@ -1,29 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Predictbay</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PredictBay</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/bootstrap-icons.min.css">
+
+  <link href="/static/img/logoalt2.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/quill.bubble.css" rel="stylesheet">
+  <link href="/static/css/quill.snow.css" rel="stylesheet">
+  <link href="/static/css/remixicon.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
 </head>
+
 <body>
-    <h1>Logs (GOOGLE)</h1>
-    <!-- <form action="/add_block" method="POST">
-        <input type="text" name="data" placeholder="Enter block data">
-        <button type="submit">Add Block</button>
-    </form> -->
-    <table>
-        <tr>
-            <th>Timestamp</th>
-            <th>Data</th>
-            <th>Previous Hash</th>
-            <th>Current Hash</th>
+
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{{url_for('index')}}" class="logo d-flex align-items-center">
+        <img src="/static/img/logoalt2.png" alt="">
+        <span class="d-none d-lg-block">PredictBay</span>
+      </a>
+    </div>
+  </header>
+  <main id="main" class="main" style="margin-left: 30px; margin-right: 30px;">
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Logs (GOOGLE)</h5>
+
+
+      <table class="table" style="color: aliceblue;">
+        <tr >
+          <th scope="col">Timestamp</th>
+          <th scope="col">Data</th>
+          <th scope="col">Previous Hash</th>
+          <th scope="col">Current Hash</th>
         </tr>
         {% for block in blocks %}
         <tr>
-            <td>{{ block['timestamp'] }}</td>
-            <td>{{ block['data'] }}</td>
-            <td>{{ block['previous_hash'] }}</td>
-            <td>{{ block['current_hash'] }}</td>
+          <td>{{ block['timestamp'] }}</td>
+          <td>{{ block['data'] }}</td>
+          <td>{{ block['previous_hash'] }}</td>
+          <td>{{ block['current_hash'] }}</td>
         </tr>
         {% endfor %}
-    </table>
+
+      </table>
+
+    </div>
+  </div>
+  </main>
+
+
+
+
+
+ 
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <script src="/static/js/apexcharts.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/quill.min.js"></script>
+  <script src="/static/assets/tinymce/tinymce.min.js"></script>
+  <script src="/static/js/simple-datatables.js"></script>
+  <script src="/static/js/validate.js"></script>
+
 </body>
+
 </html>

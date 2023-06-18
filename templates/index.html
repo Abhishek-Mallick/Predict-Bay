@@ -114,6 +114,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('logs')}}">
+                    <i class="bi bi-clock-history"></i>
+                    <span>Logs</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('faq')}}">
                     <i class="bi bi-question-circle"></i>
                     <span>F.A.Q</span>
@@ -617,34 +623,6 @@
 
                         </div>
                     </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Logs (GOOGLE)</h5>
-
-
-                            <table class="table">
-                                <tr>
-                                    <th scope="col">Timestamp</th>
-                                    <th scope="col">Data</th>
-                                    <!-- <th scope="col">Previous Hash</th>
-                                    <th scope="col">Current Hash</th> -->
-                                </tr>
-                                {% for block in blocks %}
-                                <tr>
-                                    <td>{{ block['timestamp'] }}</td>
-                                    <td>{{ block['data'] }}</td>
-                                    <!-- <td>{{ block['previous_hash'] }}</td>
-                                    <td>{{ block['current_hash'] }}</td> -->
-                                </tr>
-                                {% endfor %}
-
-                            </table>
-
-                        </div>
-                    </div>
-
-
 
                     <div class="card">
                         <div class="card-body">

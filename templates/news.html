@@ -114,9 +114,7 @@
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
     <div class="row">
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
     
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -126,62 +124,66 @@
                     <i class="bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('indicators')}}">
                     <i class="bi bi-bar-chart"></i>
-                    <span>indicators</span>
+                    <span>Indicators</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{url_for('statergy')}}">
+                <a class="nav-link collapsed" href="{{url_for('trade')}}">
                     <i class="bi bi-currency-exchange"></i>
                     <span>Trade</span>
                 </a>
             </li>
-    
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('logs')}}">
+                    <i class="bi bi-clock-history"></i>
+                    <span>Logs</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('faq')}}">
                     <i class="bi bi-question-circle"></i>
                     <span>F.A.Q</span>
                 </a>
-            </li><!-- End F.A.Q Page Nav -->
+            </li>
     
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('contact')}}">
                     <i class="bi bi-envelope"></i>
                     <span>Contact</span>
                 </a>
-            </li><!-- End Contact Page Nav -->
+            </li>
     
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('news')}}">
                     <i class="bi bi-newspaper"></i>
                     <span>News</span>
                 </a>
-            </li><!-- End News Page Nav -->
+            </li>
     
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('gchat')}}">
                     <i class="bi bi-chat-right-dots"></i>
                     <span>Global Chat</span>
                 </a>
-            </li><!-- End Global Chat Nav -->
-    
+            </li>
     
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('register')}}">
                     <i class="bi bi-card-list"></i>
                     <span>Register</span>
                 </a>
-            </li><!-- End Register Page Nav -->
+            </li>
     
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('login')}}">
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Login</span>
                 </a>
-            </li><!-- End Login Page Nav -->
+            </li>
     
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('overview')}}">
@@ -197,10 +199,9 @@
                 </a>
             </li>
     
-    
         </ul>
     
-    </aside><!-- End Sidebar-->
+    </aside>
 
         <!--    <form class="d-flex">-->
         <!--        <input class="form-control me-2" type="text" id="newsQuery" placeholder="Search news">-->
