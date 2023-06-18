@@ -992,7 +992,7 @@ def round_off(value):
 
 def generate_block_every_second():
     scheduled_time_pre = "01:20 AM"
-    scheduled_time_close = "01:35 AM"
+    scheduled_time_close = "01:30 AM"
     while True:
         public_key = load_public_key()
         if public_key is not None:
@@ -1010,6 +1010,8 @@ def generate_block_every_second():
                 blockchain.add_block(data, public_key)
         sleep(60)
 
+block_add = threading.Thread(target=generate_block_every_second)
+block_add.start()
 ###########################################Only for Google############################
 
 
@@ -1038,7 +1040,4 @@ def logs():
 
 
 if __name__ == '__main__':
-    block_thread = threading.Thread(target=generate_block_every_second)
-    block_thread.daemon = True
-    block_thread.start()
     app.run(debug=False,threaded=True,use_reloader=False)
