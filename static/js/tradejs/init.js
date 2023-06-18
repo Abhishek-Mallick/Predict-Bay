@@ -118,7 +118,7 @@ function calculate_distribution(real,predict){
   }
   option = {
     color: colors,
-  
+
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -126,57 +126,34 @@ function calculate_distribution(real,predict){
       }
     },
     legend: {
-      data: [
-        {
-          name: 'real histogram',
-          textStyle: {
-            color: 'white' // Set legend text color to white
-          }
-        },
-        {
-          name: 'predict histogram',
-          textStyle: {
-            color: 'white' // Set legend text color to white
-          }
-        }
-      ]
+      data:['real histogram','predict histogram']
     },
     xAxis: [
       {
         type: 'category',
-        data: data_plot[0]['bar_x'],
-        axisLabel: {
-          color: 'white' // Set x-axis label color to white
-        }
+        data: data_plot[0]['bar_x']
       },
       {
         type: 'category',
-        data: data_plot[1]['bar_x'],
-        axisLabel: {
-          color: 'white' // Set x-axis label color to white
-        }
+        data: data_plot[1]['bar_x']
       }
     ],
     yAxis: {
-      type: 'value',
-      axisLabel: {
-        color: 'white' // Set y-axis label color to white
-      }
+      type: 'value'
     },
     series: [
       {
-        name: 'real histogram',
-        type: 'bar',
-        data: data_plot[0]['bar_y']
+        name:'real histogram',
+        type:'bar',
+        data:data_plot[0]['bar_y']
       },
       {
-        name: 'predict histogram',
-        type: 'bar',
-        data: data_plot[1]['bar_y'].slice(0, data_plot[1]['bar_y'].length - 2)
+        name:'predict histogram',
+        type:'bar',
+        data:data_plot[1]['bar_y'].slice(0,data_plot[1]['bar_y'].length-2)
       }
     ]
   };
-  
   var bar_plot = echarts.init(document.getElementById('div_dist'));
   bar_plot.setOption(option,true);
 }
@@ -479,45 +456,8 @@ $('#trainbutton').click(function(){
           },
           legend: {
             top: 30,
-            data: [
-              {
-                name: 'STOCK',
-                textStyle: {
-                  color: 'white' // Set legend name color to white
-                }
-              },
-              {
-                name: 'MA5',
-                textStyle: {
-                  color: 'white' // Set legend name color to white
-                }
-              },
-              {
-                name: 'MA10',
-                textStyle: {
-                  color: 'white' // Set legend name color to white
-                }
-              },
-              {
-                name: 'MA20',
-                textStyle: {
-                  color: 'white' // Set legend name color to white
-                }
-              },
-              {
-                name: 'MA30',
-                textStyle: {
-                  color: 'white' // Set legend name color to white
-                }
-              },
-              {
-                name: 'predicted close',
-                textStyle: {
-                  color: 'white' // Set legend name color to white
-                }
-              }
-            ]
-          },            
+            data: ['STOCK', 'MA5', 'MA10', 'MA20', 'MA30','predicted close']
+          },
           tooltip: {
             trigger: 'axis',
             position: function (pt) {
@@ -730,47 +670,31 @@ $('#trainbutton').click(function(){
         };
 
         var chart_stock = echarts.init(document.getElementById('div_output'));
-        chart_stock.setOption(option, true);
-        calculate_distribution(close, predicted_val);
-
-        var option = {
-          title: {
-            text: 'loss graph',
-            textStyle: {
-              color: 'white' // Set the title text color to white
-            }
+        chart_stock.setOption(option,true);
+        calculate_distribution(close,predicted_val)
+        option = {
+          title:{
+            text:'loss graph'
           },
           xAxis: {
             type: 'category',
-            data: arange(0, arr_loss.length, 1),
-            axisLabel: {
-              color: 'white' // Set the x-axis label color to white
-            }
+            data: arange(0,arr_loss.length,1)
           },
           yAxis: {
-            type: 'value',
-            axisLabel: {
-              color: 'white' // Set the y-axis label color to white
-            }
+            type: 'value'
           },
-          grid: {
-            bottom: '10%'
+          grid:{
+            bottom:'10%'
           },
           series: [{
             data: arr_loss,
             type: 'line'
           }]
         };
-
-        
-
         var chart_line = echarts.init(document.getElementById('div_loss'));
-        chart_line.setOption(option, true);
-
-        if (i < (epoch - 1)) {
-          setTimeout(function() {
-            loop(++i)
-          }, 2000);
+        chart_line.setOption(option,true);
+        if (i < (epoch-1)) {
+          setTimeout(function() {loop(++i)}, 2000);
         } else {
           callback();
         }

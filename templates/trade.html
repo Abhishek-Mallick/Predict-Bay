@@ -19,13 +19,10 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
   <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -38,55 +35,53 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="/static/css/materialize.min.css"></script>
 
-  <style>
-    ::-webkit-scrollbar {
-      width: 12px;
-      /* width of the entire scrollbar */
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #343a40;
-      /* color of the tracking area */
-    }
-
-    ::-webkit-scrollbar-thumb {
-      -ms-overflow-style: none;
-      background-color: #adb5bd;
-      /* color of the scroll thumb */
-      border-radius: 25px;
-      /* roundness of the scroll thumb */
-      border: 3px #dee2e6;
-      /* creates padding around scroll thumb */
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #555;
-    }
-    .center-table {
-      margin-left: auto;
-      margin-right: auto;
+<style>
+  ::-webkit-scrollbar {
+    width: 12px;
   }
-  .spaced-table th, .spaced-table td {
-      padding: 10px 20px; /* Adjust as needed */
-      text-align: center;
+
+  ::-webkit-scrollbar-track {
+    background: #343a40;
   }
+
+  ::-webkit-scrollbar-thumb {
+    -ms-overflow-style: none;
+    background-color: #adb5bd;
+    border-radius: 25px;
+    border: 3px #dee2e6;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+
+  .center-table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .spaced-table th,
+  .spaced-table td {
+    padding: 10px 20px;
+    text-align: center;
+  }
+
   .bordered-table {
     width: 100%;
-    border-collapse: collapse; /* This ensures the borders on each cell touch each other */
-}
+    border-collapse: collapse;
+  }
 
-.bordered-table th, .bordered-table td {
-    border: 1px solid black; /* Adjust as needed */
+  .bordered-table th,
+  .bordered-table td {
+    border: 1px solid black;
     padding: 10px;
     text-align: center;
-}
-  </style>
+  }
+</style>
 
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -95,17 +90,15 @@
         <span class="d-none d-lg-block">PredictBay</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    </div>
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
       </ul>
-    </nav><!-- End Icons Navigation -->
-  </header><!-- End Header -->
+    </nav>
+  </header>
 
-
-  <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -115,7 +108,7 @@
           <i class="bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('indicators')}}">
           <i class="bi bi-bar-chart"></i>
@@ -123,39 +116,43 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{url_for('statergy')}}">
+        <a class="nav-link collapsed" href="{{url_for('trade')}}">
           <i class="bi bi-currency-exchange"></i>
           <span>Trade</span>
         </a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('logs')}}">
+          <i class="bi bi-clock-history"></i>
+          <span>Logs</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('faq')}}">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
-
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('contact')}}">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('news')}}">
           <i class="bi bi-newspaper"></i>
           <span>News</span>
         </a>
-      </li><!-- End News Page Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('gchat')}}">
           <i class="bi bi-chat-right-dots"></i>
           <span>Global Chat</span>
         </a>
-      </li><!-- End Global Chat Nav -->
+      </li>
 
 
       <li class="nav-item">
@@ -163,14 +160,14 @@
           <i class="bi bi-card-list"></i>
           <span>Register</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('login')}}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>
-      </li><!-- End Login Page Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('overview')}}">
@@ -189,7 +186,7 @@
 
     </ul>
 
-  </aside><!-- End Sidebar-->
+  </aside>
 
 
   <main id="main" class="main">
@@ -200,15 +197,15 @@
           <li class="breadcrumb-item">Trade With PredictBay</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
     <section class="section">
       <div class="row">
 
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">TURTLE STATERGY |<span> {{ticker}}</span></h5>
-              <form class="row g-3" method="POST" action="/statergy">
+              <h5 class="card-title">TURTLE STRATEGY |<span> {{ticker}}</span></h5>
+              <form class="row g-3" method="POST" action="/trade">
                 <div class="col-md-12">
                   <input type="text" class="form-control" placeholder="TICKER SYMBOL" id="ticker" name="ticker"
                     value="{{ ticker }}" required>
@@ -232,7 +229,7 @@
                 <div class="text-center">
                   <button type="submit" class="btn btn-danger" value="submit">Submit</button>
                 </div>
-              </form><!-- End No Labels Form -->
+              </form>
             </div>
           </div>
         </div>
@@ -333,18 +330,16 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">NEURAL NETWORK STATERGY</h5>
+              <h5 class="card-title">NEURAL NETWORK STRATEGY</h5>
 
-              <!-- General Form Elements -->
               <form>
                 <div class="row mb-3">
-                  <!-- <label class="col-sm-2 col-form-label">Submit Button</label> -->
                   <div class="text-center">
                     <button id="suggestbutton" class="btn btn-danger">Suggest</button>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">File Upload</label>
+                  <label class="col-sm-2 col-form-label">Upload CSV</label>
                   <div class="col-sm-10">
                     <input class="form-control" type="file" id="uploadcsv">
                   </div>
@@ -442,14 +437,13 @@
 
 
                 <div class="row mb-3">
-                  <!-- <label class="col-sm-2 col-form-label">Submit Button</label> -->
                   <div class="text-center">
                     <button id="trainbutton" class="btn btn-danger">Train</button>
                   </div>
                 </div>
 
 
-              </form><!-- End General Form Elements -->
+              </form>
 
             </div>
           </div>
@@ -512,16 +506,13 @@
         </div>
       </div>
     </section>
-    <div class="card" style="height: 100vh;">
+    <div class="card" style="height: 90vh;">
       <div class="card-body">
-        <!-- <div class="row" style="padding-left:10px;padding-right:10px"> -->
-          <!-- <div class="col s12 m12"> -->
             <div id="div_output" style="height: 800px;"></div>
-          <!-- </div>
-        </div> -->
       </div>
     </div>
-    <div class="row close-first" style="padding-left:10px;padding-right:40px;display: flex; justify-content: center; align-items: center;">
+    <div class="row close-first"
+      style="padding-left:10px;padding-right:40px;display: flex; justify-content: center; align-items: center;">
       <div class="col s12 m8">
         <div id="div_dist" style="height: 450px;"></div>
       </div>
@@ -529,33 +520,35 @@
         <div class="row">
           <div id="div_loss" style="height: 250px;"></div>
         </div>
-        <div class="row" id="log" style="height: 150px; overflow:auto;display: flex; justify-content: center; align-items: center;">
+        <div class="row" id="log"
+          style="height: 150px; overflow:auto;display: flex; justify-content: center; align-items: center;">
         </div>
       </div>
     </div>
     <div class="row" style="padding-left:10px;padding-right:10px">
-    <ul class="collapsible" data-collapsible="accordion">
+      <ul class="collapsible" data-collapsible="accordion">
         <li>
-            <div class="collapsible-header" style="text-align: center;"><i class="material-icons">archive</i>Simulation log</div>
-            <div class="collapsible-body" style="text-align: center;"><span>
-                <table class="bordered-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Action</th>
-                            <th>Price</th>
-                            <th>Investment</th>
-                            <th>Balance</th>
-                        </tr>
-                    </thead>
-                    <tbody id='table-body'>
-                    </tbody>
-                </table><br>
-                <span id="log-invest"></span>
+          <div class="collapsible-header" style="text-align: center;"><i class="bi bi-archive-fill"></i> Simulation
+            log</div>
+          <div class="collapsible-body" style="text-align: center;"><span>
+              <table class="bordered-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Action</th>
+                    <th>Price</th>
+                    <th>Investment</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id='table-body'>
+                </tbody>
+              </table><br>
+              <span id="log-invest"></span>
             </span></div>
         </li>
-    </ul>
-</div>
+      </ul>
+    </div>
     <div class="row center" id="color-investment">
     </div>
 
@@ -563,26 +556,15 @@
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>
-      // var graphJSON_ma = {{ graph_json_ma| safe }};
       var graph_JSON_turtle = {{ graph_json_turtle | safe}}
       var ticker = "{{ ticker }}";
       var years = "{{ years }}";
       var initialMoney = "{{ initial_money }}";
       var maxBuy = "{{ max_buy }}";
       var maxSell = "{{ max_sell }}";
-
-
-      // Parse the graph JSON data passed from the Flask app
-      // var graph = {{ graph_json_ma| safe }};
       var graphData = {{ graph_json_turtle| safe }};
 
-
-      // Render the graph using Plotly
-      // Plotly.newPlot('graph1', graph.data, graph.layout);
       Plotly.newPlot('graph_turtle', graphData.data, graphData.layout);
-
-
-      // Update the displayed information
       var infoDiv = document.createElement("div");
       infoDiv.innerHTML = "Ticker: " + ticker + "<br>";
       infoDiv.innerHTML += "Years: " + years + "<br>";
@@ -593,14 +575,12 @@
       document.body.insertBefore(infoDiv, stockChart);
     </script>
 
-  </main><!-- End #main -->
+  </main>
 
-  <!-- ======= Footer ======= -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
   <script src="/static/js/apexcharts.min.js"></script>
   <script src="/static/js/bootstrap.bundle.min.js"></script>
   <script src="/static/js/main.js"></script>
