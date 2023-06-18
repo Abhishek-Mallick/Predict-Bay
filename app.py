@@ -991,8 +991,8 @@ def round_off(value):
 ################################Only for Google####################################
 
 def generate_block_every_second():
-    scheduled_time_pre = "01:20 AM"
-    scheduled_time_close = "01:35 AM"
+    scheduled_time_pre = "01:45 AM"
+    scheduled_time_close = "01:45 AM"
     while True:
         public_key = load_public_key()
         if public_key is not None:
