@@ -9,11 +9,9 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
   <link href="/static/img/logoalt2.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -32,22 +30,17 @@
 <style>
   ::-webkit-scrollbar {
     width: 12px;
-    /* width of the entire scrollbar */
   }
 
   ::-webkit-scrollbar-track {
     background: #343a40;
-    /* color of the tracking area */
   }
 
   ::-webkit-scrollbar-thumb {
     -ms-overflow-style: none;
     background-color: #adb5bd;
-    /* color of the scroll thumb */
     border-radius: 25px;
-    /* roundness of the scroll thumb */
     border: 3px #dee2e6;
-    /* creates padding around scroll thumb */
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -59,7 +52,6 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
@@ -68,195 +60,213 @@
       <span class="d-none d-lg-block">PredictBay</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
-  </div><!-- End Logo -->
+  </div>
 
+  </header>
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
-    
-
-  </header><!-- End Header -->
-
-<!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
-
-  <ul class="sidebar-nav" id="sidebar-nav">
-
-    <li class="nav-item">
-      <a class="nav-link collapsed " href="{{url_for('index')}}">
-        <i class="bi-grid"></i>
-        <span>Dashboard</span>
-      </a>
-    </li><!-- End Dashboard Nav -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('indicators')}}">
-        <i class="bi bi-bar-chart"></i>
-        <span>indicators</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('statergy')}}">
-        <i class="bi bi-currency-exchange"></i>
-        <span>Trade</span>
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('faq')}}">
-        <i class="bi bi-question-circle"></i>
-        <span>F.A.Q</span>
-      </a>
-    </li><!-- End F.A.Q Page Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('contact')}}">
-        <i class="bi bi-envelope"></i>
-        <span>Contact</span>
-      </a>
-    </li><!-- End Contact Page Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('news')}}">
-        <i class="bi bi-newspaper"></i>
-        <span>News</span>
-      </a>
-    </li><!-- End News Page Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('gchat')}}">
-        <i class="bi bi-chat-right-dots"></i>
-        <span>Global Chat</span>
-      </a>
-    </li><!-- End Global Chat Nav -->
-
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('register')}}">
-        <i class="bi bi-card-list"></i>
-        <span>Register</span>
-      </a>
-    </li><!-- End Register Page Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('login')}}">
-        <i class="bi bi-box-arrow-in-right"></i>
-        <span>Login</span>
-      </a>
-    </li><!-- End Login Page Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('overview')}}">
-        <i class="bi bi-dash-circle"></i>
-        <span>Overview</span>
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="{{url_for('about')}}">
-        <i class="bi bi-person"></i>
-        <span>About Us</span>
-      </a>
-    </li>
-
-
-  </ul>
-
-</aside><!-- End Sidebar-->
+  <aside id="sidebar" class="sidebar">
+  
+    <ul class="sidebar-nav" id="sidebar-nav">
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="{{url_for('index')}}">
+          <i class="bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('indicators')}}">
+          <i class="bi bi-bar-chart"></i>
+          <span>Indicators</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('trade')}}">
+          <i class="bi bi-currency-exchange"></i>
+          <span>Trade</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('faq')}}">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('contact')}}">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('news')}}">
+          <i class="bi bi-newspaper"></i>
+          <span>News</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('gchat')}}">
+          <i class="bi bi-chat-right-dots"></i>
+          <span>Global Chat</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('register')}}">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('login')}}">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('overview')}}">
+          <i class="bi bi-dash-circle"></i>
+          <span>Overview</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('about')}}">
+          <i class="bi bi-person"></i>
+          <span>About Us</span>
+        </a>
+      </li>
+  
+    </ul>
+  
+  </aside>
 
 
   <main id="main" class="main">
 
     <div class="pagetitle">
       <h1>Overview</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{url_for('index')}}">Home</a></li>
-          <li class="breadcrumb-item active">Overview</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section">
       <div class="row">
         <div class="col-lg-6">
-
+    
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Project Overview</h5>
-              <p>The project aims to provide stock price predictions for a given ticker symbol using historical stock data. The web application allows users to input a ticker symbol, and it retrieves the corresponding stock data using the Yahoo Finance API. The application then utilizes two models to predict future stock prices: a traditional machine learning model and a bi-directional LSTM model. The predicted prices are displayed on a web page along with historical price charts and other stock information.</p>
+              <h5 class="card-title">Advanced Machine Learning Models</h5>
+              <p>Our cutting-edge website, PredictBay, harnesses the potential of state-of-the-art machine learning models
+                such as LSTM, Bi-LSTM, and GRU. By leveraging these powerful algorithms, we accurately predict stock closing
+                prices for the next day. Our models delve deep into historical stock data, capturing intricate patterns and
+                trends to generate reliable forecasts.
+              </p>
             </div>
           </div>
-
+    
         </div>
-
+    
         <div class="col-lg-6">
-
+    
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Machine Learning Model</h5>
-              <p>The traditional machine learning model used in the project is a regression model trained on historical stock price data. The model is loaded and the data is preprocessesd by scaling it using MinMaxScaler and splitting it into training and testing sets. The model is trained on the training set and used to predict prices on the testing set. The predicted prices are then inverse-transformed using the scaler to obtain the actual predicted values. Finally, the model predicts the next day's closing price based on the last 100 days of historical data.</p>
+              <h5 class="card-title">Buy-Sell Suggestions with Smart Indicators
+              </h5>
+              <p>We equip you with invaluable buy-sell suggestions supported by a range of five dynamic indicators. RSI
+                (Relative Strength Index), MA (Moving Average), MACD (Moving Average Convergence Divergence), and more. Our
+                indicators provide real-time signals, empowering you to make informed decisions about your investments.
+              </p>
             </div>
           </div>
-
+    
         </div>
       </div>
-
+    
       <div class="row">
         <div class="col-lg-6">
-
+    
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Bi-directional LSTM Model</h5>
-              <p>The bi-directional LSTM model is implemented using the Keras library.The Data_fetch_transform function is responsible for fetching the stock data, preprocessing it, and splitting it into training and testing sets. The model is trained on the training set using the LSTM architecture with a time step of 100. The training and testing sets are reshaped to fit the model's input shape. The model is used to predict prices on the testing set, which are then inverse-transformed using the scaler. Additionally, the code includes an evaluate_predictions function that calculates the difference and ratio between the predicted and actual prices and identifies outliers based on a given threshold. The model also predicts the next day's closing price.</p>
+              <h5 class="card-title">Trust and Transparency with Blockchain
+              </h5>
+              <p>In an industry where trust matters, PredictBay introduces an ingenious blockchain-based proof system. This
+                incorruptible database presents an indisputable record of our predicted closing prices alongside the actual
+                market results from previous days. Our commitment to transparency ensures you can rely on our predictions
+                with unwavering confidence.
+              </p>
             </div>
           </div>
-
+    
         </div>
-
+    
         <div class="col-lg-6">
-
+    
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Web Application</h5>
-              <p>The Flask web application provides a user interface for interacting with the stock prediction models. It uses HTML templates to render the web pages and accepts user inputs for the ticker symbol. It retrieves stock data using the Yahoo Finance API and displays the historical price chart, including moving averages. It also displays the predicted prices from both models, along with other stock information such as the today's high, close, and open values. The application provides additional pages for FAQs, contact information, about section, user registration, and news. It also includes a global chat feature and a login page.
-
-                Overall, the project combines traditional machine learning techniques with deep learning (LSTM) to predict stock prices. The Flask web application serves as a user-friendly interface to interact with the models and view the predictions, historical data, and other stock-related information.</p>
+              <h5 class="card-title">Maximize Your Gains with our Profit Calculator
+              </h5>
+              <p>Wondering what your investment could have grown into today? Our intuitive profit calculator allows you to
+                estimate your potential returns by simply entering your investment amount and the date of investment. Stay
+                ahead of the game and gain valuable insights into your portfolio's performance.
+              </p>
             </div>
           </div>
-
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Elevate Your Knowledge with our Learning Hub
+              </h5>
+              <p>Master the Art of Trading: PredictBay not only offers exceptional prediction capabilities but also serves
+                as an invaluable learning resource. Our comprehensive Learning Hub is tailored for novice investors,
+                providing curated content that demystifies stock trading terms, strategies, and concepts. Expand your
+                knowledge, make informed decisions, and grow as a successful trader.</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Strategic Guidance with Turtle Strategy and Neural Analysis
+              </h5>
+              <p>At PredictBay, we provide comprehensive strategic guidance by integrating the renowned Turtle Strategy with
+                cutting-edge neural analysis techniques. The Turtle Strategy, known for its disciplined trading based on
+                systematic rules, is combined with neural analysis insights to help you optimize your trading approach,
+                identify hidden patterns, and stay ahead of market fluctuations. Gain a competitive edge and unlock new
+                levels of success in your stock trading journey with PredictBay.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-  </main><!-- End #main -->
+  </main>
 
-  <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="/static/js/main.js"></script>
+<script src="/static/js/apexcharts.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/quill.min.js"></script>
+<script src="/static/js/tinymce.min.js"></script>
+<script src="/static/js/simple-datatables.js"></script>
+<script src="/static/js/validate.js"></script>
 
 </body>
-
 </html>
