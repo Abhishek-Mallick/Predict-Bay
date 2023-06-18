@@ -12,11 +12,9 @@
     <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-    <!-- Favicons -->
     <link href="/static/img/logoalt2.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -24,8 +22,6 @@
     <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
-
-    <!-- Vendor CSS Files -->
     <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/boxicons.min.css" rel="stylesheet">
@@ -37,22 +33,17 @@
     <style>
         ::-webkit-scrollbar {
             width: 12px;
-            /* width of the entire scrollbar */
         }
 
         ::-webkit-scrollbar-track {
             background: #343a40;
-            /* color of the tracking area */
         }
 
         ::-webkit-scrollbar-thumb {
             -ms-overflow-style: none;
             background-color: #adb5bd;
-            /* color of the scroll thumb */
             border-radius: 25px;
-            /* roundness of the scroll thumb */
             border: 3px #dee2e6;
-            /* creates padding around scroll thumb */
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -68,7 +59,6 @@
         <div id="loader-text"></div>
     </div>
 
-    <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
@@ -77,7 +67,7 @@
                 <span class="d-none d-lg-block">PredictBay</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+        </div>
 
         <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="/">
@@ -94,84 +84,13 @@
                     <a class="nav-link nav-icon search-bar-toggle" href="#">
                         <i class="bi bi-search"></i>
                     </a>
-                </li><!-- End Search Icon-->
-                <!-- <li class="nav-item">
-                    <a class="nav-link nav-icon" href="https://predictbay-deployment-gfg-dfdw6l7waq-as.a.run.app">
-                        <i class="bi bi-arrow-return-left"></i>
-                    </a>
-                </li>Add a new list item for the icon -->
-
-                <li class="nav-item dropdown pe-3">
-
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="/static/img/user-icon.jpg" alt="Profile" class="rounded-circle">
-                        <!-- <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> -->
-                    </a><!-- End Profile Iamge Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                        <li class="dropdown-header">
-                            <!-- {% if username %}
-                            <h1>Welcome, {{ username }}!</h1>
-                            <a href="{{ url_for('logout') }}">Logout</a>
-                            {% else %}
-                            <h1>Welcome to the Home Page</h1>
-                            <a href="{{ url_for('register') }}">Register</a>
-                            <br>
-                            <a href="{{ url_for('login') }}">Login</a>
-                            {% endif %} -->
-                            <!-- <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span> -->
-                        </li>
-                        <!-- <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>My Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
-                            </a>
-                        </li>
-                 -->
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
+                </li>
             </ul>
-        </nav><!-- End Icons Navigation -->
-    </header><!-- End Header -->
+        </nav>
+    </header>
 
 
 
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -181,63 +100,60 @@
                     <i class="bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('indicators')}}">
                     <i class="bi bi-bar-chart"></i>
-                    <span>indicators</span>
+                    <span>Indicators</span>
                 </a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{url_for('statergy')}}">
+                <a class="nav-link collapsed" href="{{url_for('trade')}}">
                     <i class="bi bi-currency-exchange"></i>
                     <span>Trade</span>
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('faq')}}">
                     <i class="bi bi-question-circle"></i>
                     <span>F.A.Q</span>
                 </a>
-            </li><!-- End F.A.Q Page Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('contact')}}">
                     <i class="bi bi-envelope"></i>
                     <span>Contact</span>
                 </a>
-            </li><!-- End Contact Page Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('news')}}">
                     <i class="bi bi-newspaper"></i>
                     <span>News</span>
                 </a>
-            </li><!-- End News Page Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('gchat')}}">
                     <i class="bi bi-chat-right-dots"></i>
                     <span>Global Chat</span>
                 </a>
-            </li><!-- End Global Chat Nav -->
-
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('register')}}">
                     <i class="bi bi-card-list"></i>
                     <span>Register</span>
                 </a>
-            </li><!-- End Register Page Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('login')}}">
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Login</span>
                 </a>
-            </li><!-- End Login Page Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('overview')}}">
@@ -253,10 +169,9 @@
                 </a>
             </li>
 
-
         </ul>
 
-    </aside><!-- End Sidebar-->
+    </aside>
 
 
     <main id="main" class="main">
@@ -267,8 +182,6 @@
 
                     <div class="row">
 
-
-                        <!-- Sales Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card sales-card">
                                 <div class="card-body">
@@ -290,10 +203,8 @@
                                 </div>
 
                             </div>
-                        </div><!-- End Sales Card -->
+                        </div>
 
-
-                        <!-- Sales Card -->
                         <div class="col-xxl-4 col-xl-12">
 
                             <div class="card info-card customers-card">
@@ -318,10 +229,8 @@
                                 </div>
                             </div>
 
-                        </div><!-- End Sales Card -->
+                        </div>
 
-
-                        <!-- Revenue Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card revenue-card">
                                 <div class="card-body">
@@ -343,15 +252,13 @@
                                 </div>
 
                             </div>
-                        </div><!-- End Revenue Card -->
+                        </div>
 
-                        <!-- Reports -->
                         <div class="col-12">
                             <div class="card">
 
                                 <div class="card-body">
                                     <h5 class="card-title">{{ticker}} <span>| Closing Price</span></h5>
-                                    <!-- <div id="div_output" style="width: 800px; height: 600px;"></div> -->
                                     {% if chart %}
                                     {{ chart|safe }}
                                     {% endif %}
@@ -359,10 +266,9 @@
                                 </div>
 
                             </div>
-                        </div><!-- End Reports -->
+                        </div>
 
 
-                        <!-- Reports -->
                         <div class="col-12">
                             <div class="card">
 
@@ -372,9 +278,8 @@
                                 </div>
 
                             </div>
-                        </div><!-- End Reports -->
+                        </div>
 
-                        <!-- Reports -->
                         <div class="col-12">
                             <div class="card">
 
@@ -388,9 +293,7 @@
                                 </div>
 
                             </div>
-                        </div><!-- End Reports -->
-
-                        <!-- Sales Card -->
+                        </div>
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card sales-card">
                                 <div class="card-body">
@@ -403,18 +306,14 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6>{{predicted_price|round(4)}}</h6>
-                                            <!-- <span class="text-success small pt-1 fw-bold">{{high_percent|round(4)}}%</span>
-                                            <span class="text-muted small pt-2 ps-1">{{high_status}}</span>
-                         -->
+
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                        </div><!-- End Sales Card -->
+                        </div>
 
-
-                        <!-- Sales Card -->
                         <div class="col-xxl-4 col-xl-12">
 
                             <div class="card info-card customers-card">
@@ -429,8 +328,6 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6>{{uprange}} - {{downrange}}</h6>
-                                            <!-- <span class="text-danger small pt-1 fw-bold">{{Open_percent|round(4)}}%</span>
-                                            <span class="text-muted small pt-2 ps-1">{{Open_status}}</span> -->
 
                                         </div>
                                     </div>
@@ -438,10 +335,8 @@
                                 </div>
                             </div>
 
-                        </div><!-- End Sales Card -->
+                        </div>
 
-
-                        <!-- Revenue Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card revenue-card">
                                 <div class="card-body">
@@ -454,22 +349,18 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6>{{biLSTM_predicted_price|round(4)}}</h6>
-                                            <!-- <span class="text-success small pt-1 fw-bold">{{Close_percent|round(4)}}%</span>
-                                            <span class="text-muted small pt-2 ps-1">{{Close_status}}</span> -->
 
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                        </div><!-- End Revenue Card -->
+                        </div>
 
                     </div>
                 </div>
-                <!-- Right side columns -->
                 <div class="col-lg-4">
 
-                    <!-- Recent Activity -->
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Company Name :<span> {{ company_name }}</span></h5>
@@ -477,9 +368,9 @@
                             <h5 class="card-title">Description :<span> {{ short_description }}</span></h5>
 
                         </div>
-                    </div><!-- End Recent Activity -->
+                    </div>
 
-                    <!-- Recent Activity -->
+
                     <div class="card" style="height: 550px;">
                         <div class="card-body" style="overflow:hidden;overflow-y:scroll;height: 200px; width: 100%; ">
                             <h5 class="card-title">TOP COMPANIES IN INDIA<span> | MARKET CAPITALISATION - BSE</span>
@@ -534,7 +425,8 @@
                             </div>
                             <div class="d-flex align-items-center" style="margin-top: 30px;">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <img src="/static/img/logos/HUL_logo.svg" height="55px" width="55px" style="border-radius: 50%;">
+                                    <img src="/static/img/logos/HUL_logo.svg" height="55px" width="55px"
+                                        style="border-radius: 50%;">
                                 </div>
                                 <div class="ps-3">
                                     <h5>Hindustan Unilever Ltd.</h5>
@@ -544,7 +436,8 @@
                             </div>
                             <div class="d-flex align-items-center" style="margin-top: 30px;">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <img src="/static/img/logos/1200px-ITC_Limited_Logo.svg.png" height="55px" width="55px" style="border-radius: 50%;">
+                                    <img src="/static/img/logos/1200px-ITC_Limited_Logo.svg.png" height="55px"
+                                        width="55px" style="border-radius: 50%;">
                                 </div>
                                 <div class="ps-3">
                                     <h5>ITC Ltd.</h5>
@@ -552,11 +445,207 @@
                                     <span class="text-success small pt-1 fw-bold">563,237.76</span>
                                 </div>
                             </div>
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/infosys-logo.jpg" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Infosys Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">536,474.62</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/SBI-logo.svg.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>State Bank of India</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">509,863.08</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/hdfc.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Housing Development Finance Corporation Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">490,010.378</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/airtel-logo-white-text-vertical.jpg" height="55px"
+                                        width="55px" style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Bharti Airtel Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">474,611.60</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/Bajaj.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Bajaj Finance Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">436,467.36</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/licindia.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>LIC India</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">382,346.11
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/Kotak_Mahindra.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Kotak Mahindra Bank Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">369,093.22</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/LT.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Larsen & Toubro Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">332,003.31</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/AP.jpg" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Asian Paints Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">317,993.25</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/HCL.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>HCL Technologies Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">311,800.12</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/axisbank.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Axis Bank Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">302,066.23</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/MS.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Maruti Suzuki India Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">290,298.94</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/adani.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Adani Enterprises Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">285,758.38</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center" style="margin-top: 30px;">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <img src="/static/img/logos/Supermarts.png" height="55px" width="55px"
+                                        style="border-radius: 50%;">
+                                </div>
+                                <div class="ps-3">
+                                    <h5>Avenue Supermarts Ltd.</h5>
+                                    <span class="text-muted small pt-2 ps-1">Market Cap (Rs. cr) :</span>
+                                    <span class="text-success small pt-1 fw-bold">265,596.36</span>
+                                </div>
+                            </div>
 
                         </div>
-                    </div><!-- End Recent Activity -->
+                    </div>
 
-                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Logs (GOOGLE)</h5>
+
+
+                            <table class="table">
+                                <tr>
+                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Data</th>
+                                    <!-- <th scope="col">Previous Hash</th>
+                                    <th scope="col">Current Hash</th> -->
+                                </tr>
+                                {% for block in blocks %}
+                                <tr>
+                                    <td>{{ block['timestamp'] }}</td>
+                                    <td>{{ block['data'] }}</td>
+                                    <!-- <td>{{ block['previous_hash'] }}</td>
+                                    <td>{{ block['current_hash'] }}</td> -->
+                                </tr>
+                                {% endfor %}
+
+                            </table>
+
+                        </div>
+                    </div>
+
+
+
                     <div class="card">
                         <div class="card-body">
                             <form
@@ -565,56 +654,49 @@
                                 class="validate" target="_blank" novalidate>
                                 <div id="mc_embed_signup_scroll">
                                     <h2 class="card-title" style="font-size: 25px;">Subscribe to our Newsletter</h2>
-                                    <!-- <div class="indicates-required"><span class="asterisk">*</span> indicates required
-                                    </div> -->
+
                                     <div class="row mb-3">
                                         <label for="mce-FNAME" class="col-sm-2 col-form-label">Name </label>
-                                        <input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME"
-                                            style="width: 300px;">
-                                        <span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+                                        <div class="col-sm-10">
+                                            <input type="text" value="" name="FNAME" class="form-control"
+                                                id="mce-FNAME">
+                                            <span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+                                        </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="mce-EMAIL" class="col-sm-2 col-form-label">Email <span
                                                 class="asterisk" style="color: red;">*</span></label>
-                                        <input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL"
-                                            required style="width: 300px;">
-                                        <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                                        <div class="col-sm-10">
+                                            <input type="email" value="" name="EMAIL" class="form-control"
+                                                id="mce-EMAIL" required>
+                                            <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                                        </div>
                                     </div>
 
                                     <div id="mce-responses" class="clear-foot">
                                         <div class="response" id="mce-error-response" style="display:none"></div>
                                         <div class="response" id="mce-success-response" style="display:none"></div>
                                     </div>
-                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input
                                             type="text" name="b_ad18f4fc61203ce08318f1249_08d1490c3a" tabindex="-1"
                                             value=""></div>
-                                    <div class="optionalParent">
-                                        <div class="clear-foot">
-                                            <div class="col-sm-10">
-                                                <input type="submit" value="Subscribe" name="subscribe"
-                                                    id="mc-embedded-subscribe" class="btn btn-primary"
-                                                    style="margin-left: 68px;">
-                                            </div>
-
-                                            <!-- <p class="brandingLogo"><a href="http://eepurl.com/itxM9Q"
-                                                    title="Mailchimp - email marketing made easy and fun"><img
-                                                        src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a>
-                                            </p> -->
-                                        </div>
+                                    <div>
+                                        <input type="submit" value="Subscribe" name="subscribe"
+                                            id="mc-embedded-subscribe" class="btn btn-danger"
+                                            style="margin-left: 80px;">
                                     </div>
                                 </div>
                             </form>
 
                         </div>
-                    </div><!-- End Recent Activity -->
+                    </div>
 
-                </div><!-- End Right side columns -->
+                </div>
 
             </div>
         </section>
 
-    </main><!-- End #main -->
+    </main>
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
     <script
         type='text/javascript'>(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; fnames[2] = 'LNAME'; ftypes[2] = 'text'; fnames[3] = 'ADDRESS'; ftypes[3] = 'address'; fnames[4] = 'PHONE'; ftypes[4] = 'phone'; fnames[5] = 'BIRTHDAY'; ftypes[5] = 'birthday'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
@@ -623,14 +705,14 @@
     <df-messenger intent="WELCOME" chat-title="Predict-Bay-Chat-Bot" agent-id="8d3a76f6-5407-46d9-8133-59a8919cffc5"
         language-code="en"></df-messenger>
 
-    <!-- ======= Footer ======= -->
+
     <footer id="footer" class="footer">
         <div class="copyright">
             &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
         </div>
-    </footer><!-- End Footer -->
+    </footer>
 
-    <!-- Vendor JS Files -->
+
     <script src="/static/js/apexcharts.min.js"></script>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/main.js"></script>
