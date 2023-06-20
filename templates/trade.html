@@ -94,10 +94,62 @@
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <div id="user-button"></div>
+        </li>
+      </ul>
+    </nav>
 
       </ul>
     </nav>
   </header>
+
+  <!-- ======= login script ====== -->
+    
+    <script>
+      const publishableKey = "pk_test_dGlnaHQtb3J5eC04MC5jbGVyay5hY2NvdW50cy5kZXYk";
+
+      const startClerk = async () => {
+        const Clerk = window.Clerk;
+
+        try {
+          // Load Clerk environment and session if available
+          await Clerk.load();
+
+          const userButton = document.getElementById("user-button");
+          const authLinks = document.getElementById("auth-links");
+
+          Clerk.addListener(({ user }) => {
+            // Display links conditionally based on user state
+            authLinks.style.display = user ? "none" : "block";
+          });
+
+          if (Clerk.user) {
+            // Mount user button component
+            Clerk.mountUserButton(userButton);
+            userButton.style.margin = "auto";
+          }
+        } catch (err) {
+          console.error("Error starting Clerk: ", err);
+        }
+      };
+
+      (() => {
+        const script = document.createElement("script");
+        script.setAttribute("data-clerk-publishable-key", publishableKey);
+        script.async = true;
+        script.src = `https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js`;
+        script.crossOrigin = "anonymous";
+        script.addEventListener("load", startClerk);
+        script.addEventListener("error", () => {
+          document.getElementById("no-frontend-api-warning").hidden = false;
+        });
+        document.body.appendChild(script);
+      })();
+
+    </script>
+    
+    <!-- ====== end login ====== -->
 
   <aside id="sidebar" class="sidebar">
 
@@ -155,7 +207,7 @@
       </li>
 
 
-      <li class="nav-item">
+<!--       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('register')}}">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
@@ -167,7 +219,7 @@
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('overview')}}">
@@ -183,6 +235,12 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href='javascript:;' onclick="Clerk.openSignIn()" id="auth-links">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li>
 
     </ul>
 
@@ -204,27 +262,42 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">TURTLE STRATEGY |<span> {{ticker}}</span></h5>
+              <h5 class="card-title">TURTLE STRATEGY |<span> {{ticker}}</span></h5><br>
               <form class="row g-3" method="POST" action="/trade">
-                <div class="col-md-12">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Enter Ticker</label>
+                  <div class="col-sm-10">
                   <input type="text" class="form-control" placeholder="TICKER SYMBOL" id="ticker" name="ticker"
                     value="{{ ticker }}" required>
+                    </div>
                 </div>
-                <div class="col-md-6">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Initial Money</label>
+                  <div class="col-sm-10">
                   <input type="number" class="form-control" placeholder="INITIAL MONEY" id="initial_money"
                     name="initial_money" value="{{ initial_money }}" required>
+                    </div>
                 </div>
-                <div class="col-md-6">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Years</label>
+                  <div class="col-sm-10">
                   <input type="number" class="form-control" placeholder="NUMBER OF YEARS" id="years" name="years"
                     value="{{ years }}" required>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                  <input type="number" class="form-control" placeholder="MAX BUY" id="max_buy" name="max_buy"
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Max Buy</label>
+                  <div class="col-sm-10">
+                  <input type="number" class="form-control" placeholder="MAX STOCKS TO BUY" id="max_buy" name="max_buy"
                     value="{{ max_buy }}" required>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                  <input type="number" class="form-control" placeholder="MAX SELL" id="max_sell" name="max_sell"
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Max Sell</label>
+                  <div class="col-sm-10">
+                  <input type="number" class="form-control" placeholder="MAX STOCKS TO SELL" id="max_sell" name="max_sell"
                     value="{{ max_sell }}" required>
+                    </div>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-danger" value="submit">Submit</button>
@@ -235,10 +308,10 @@
         </div>
 
         <div class="col-lg-6">
-          <div class="card" style="height: 285px;">
+          <div class="card" style="height: 415px;">
             <div class="card-body">
               <h5 class="card-title">DESCRIPTION</h5>
-              <h5 class="card-title" style="overflow:hidden;overflow-y:scroll;height: 200px; width: 100%; "><span>
+              <h5 class="card-title" style="overflow:hidden;overflow-y:scroll;height: 305px; width: 100%; "><span>
                 The
                   Turtle strategy, also known as the Turtle Trading strategy, is a trend-following trading strategy
                   developed by
