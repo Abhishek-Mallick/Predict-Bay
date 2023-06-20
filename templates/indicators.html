@@ -78,6 +78,9 @@
             <i class="bi bi-search"></i>
           </a>
         </li>
+        <li class="nav-item dropdown pe-3">
+              <div id="user-button"></div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -138,7 +141,7 @@
         </a>
       </li>
 
-      <li class="nav-item">
+<!--       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('register')}}">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
@@ -150,7 +153,7 @@
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url_for('overview')}}">
@@ -166,9 +169,63 @@
         </a>
       </li>
 
+       <li class="nav-item">
+                <a class="nav-link collapsed" href='javascript:;' onclick="Clerk.openSignIn()" id="auth-links">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+       </li>
+
     </ul>
 
   </aside>
+
+  <!-- ======= login script ====== -->
+
+    <script>
+        const publishableKey = "pk_test_dGlnaHQtb3J5eC04MC5jbGVyay5hY2NvdW50cy5kZXYk"; // <- Add Publishable Key here
+
+        const startClerk = async () => {
+            const Clerk = window.Clerk;
+
+            try {
+                // Load Clerk environment and session if available
+                await Clerk.load();
+
+                const userButton = document.getElementById("user-button");
+                const authLinks = document.getElementById("auth-links");
+
+                Clerk.addListener(({ user }) => {
+                    // Display links conditionally based on user state
+                    authLinks.style.display = user ? "none" : "block";
+                });
+
+                if (Clerk.user) {
+                    // Mount user button component
+                    Clerk.mountUserButton(userButton);
+                    userButton.style.margin = "auto";
+                }
+            } catch (err) {
+                console.error("Error starting Clerk: ", err);
+            }
+        };
+
+        (() => {
+            const script = document.createElement("script");
+            script.setAttribute("data-clerk-publishable-key", publishableKey);
+            script.async = true;
+            script.src = `https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js`;
+            script.crossOrigin = "anonymous";
+            script.addEventListener("load", startClerk);
+            script.addEventListener("error", () => {
+                document.getElementById("no-frontend-api-warning").hidden = false;
+            });
+            document.body.appendChild(script);
+        })();
+
+    </script>
+
+    <!-- ====== end login ====== -->
 
 
   <main id="main" class="main">
