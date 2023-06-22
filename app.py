@@ -48,6 +48,7 @@ from sqlite3 import Error
 import time
 from time import ctime, sleep
 import datetime
+import csv
 
 
 app = Flask(__name__)
@@ -194,10 +195,54 @@ def create_candlestick_chart(data):
 
     return graph
 
+def load_csv(file_path):
+    items = []
+    with open(file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            items.append(row)
+    return items
+
+# Index the items based on the search keyword
+def index_items(items, keyword):
+    indexed_items = []
+    for item in items:
+        if item['company_name'].lower().startswith(keyword.lower()):
+            indexed_items.append(item['company_name'])
+            if len(indexed_items) >= 6:
+                break
+    return indexed_items
+
+# Get the ticker for a given company name
+def get_ticker(items, company_name):
+    for item in items:
+        if item['company_name'].lower() == company_name.lower():
+            return item['ticker']
+    return None
+
+@app.route('/search', methods=['GET'])
+def search():
+    keyword = request.args.get('keyword', '')
+    # Load CSV file
+    items = load_csv('valid_tickers.csv')
+    # Index the items based on the search keyword
+    indexed_items = index_items(items, keyword)
+    return jsonify(indexed_items)
+
+@app.route('/select', methods=['GET'])
+def select():
+    company_name = request.args.get('company_name', '')
+    # Load CSV file
+    items = load_csv('valid_tickers.csv')
+    # Get the ticker for the selected company name
+    ticker = get_ticker(items, company_name)
+    return jsonify({'ticker': ticker})
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        ticker = request.form['ticker']
+        ticker = request.form.get('ticker')
     else:
         ticker = 'GOOGL'
 

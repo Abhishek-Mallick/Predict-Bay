@@ -30,6 +30,9 @@
     <link href="/static/css/remixicon.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
     <link href="/static/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <style>
         ::-webkit-scrollbar {
             width: 12px;
@@ -49,6 +52,7 @@
         ::-webkit-scrollbar-thumb:hover {
             background-color: #555;
         }
+
         #auth-links {
             display: none;
         }
@@ -71,16 +75,45 @@
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
-
         <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="/">
-                <input type="text" id="ticker" name="ticker" value="{{ ticker }}"
-                    placeholder="Enter ticker symbol (NASDAQ)">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-
+            <form id="specific-form" class="search-form d-flex align-items-center" method="POST" action="/">
+                <input type="text" id="ticker" name="ticker" value="{{ ticker }}" placeholder="Enter ticker symbol (NASDAQ)">
+                <button type="submit" title="Search" value="Search"><i class="bi bi-search"></i></button>
             </form>
-
         </div>
+        
+        <script>
+            $(document).ready(function () {
+                $("#ticker").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/search",
+                            type: "GET",
+                            data: { keyword: request.term },
+                            success: function (data) {
+                                response(data);
+                            }
+                        });
+                    },
+                    minLength: 1,
+                    select: function (event, ui) {
+                        event.preventDefault();
+        
+                        // Send the selected company name to Flask for getting the ticker
+                        $.ajax({
+                            url: "/select",
+                            type: "GET",
+                            data: { company_name: ui.item.value },
+                            success: function (data) {
+                                var ticker = data.ticker; // Retrieve the ticker
+                                $("#ticker").val(ticker); // Set the ticker as the value of the search box
+                                $("#specific-form").submit(); // Submit the form with the ticker as the keyword
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li class="nav-item d-block d-lg-none">
@@ -153,7 +186,7 @@
                 </a>
             </li>
 
-<!--             <li class="nav-item">
+            <!--             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{url_for('register')}}">
                     <i class="bi bi-card-list"></i>
                     <span>Register</span>
@@ -190,9 +223,9 @@
         </ul>
 
     </aside>
-    
+
     <!-- ======= login script ====== -->
-    
+
     <script>
         const publishableKey = "pk_test_dGlnaHQtb3J5eC04MC5jbGVyay5hY2NvdW50cy5kZXYk";
 
@@ -200,19 +233,19 @@
             const Clerk = window.Clerk;
 
             try {
-                
+
                 await Clerk.load();
 
                 const userButton = document.getElementById("user-button");
                 const authLinks = document.getElementById("auth-links");
 
                 Clerk.addListener(({ user }) => {
-                   
+
                     authLinks.style.display = user ? "none" : "block";
                 });
 
                 if (Clerk.user) {
-                    
+
                     Clerk.mountUserButton(userButton);
                     userButton.style.margin = "auto";
                 }
