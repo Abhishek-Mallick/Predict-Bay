@@ -25,7 +25,7 @@ The bi-directional LSTM model is implemented using the Keras library.The Data_fe
 
 <hr>
 
-### Predictbay Features
+# Predictbay Features
 
 _Precise Predictions:_ Leverage the power of artificial intelligence to make data-backed investment decisions confidently.
 
@@ -41,7 +41,7 @@ _User-Friendly Interface:_ Our intuitive platform ensures seamless navigation an
 
 _Research and Learning Resources:_ Dive into our comprehensive FAQ documentation to learn more about various indicators, factors, and strategies. It serves as a valuable resource for new investors to expand their knowledge.
 
-### Website Preview
+## Website Preview
 
 <img src="Predictbay_Template/img1.png">
 <img src="Predictbay_Template/img2.png">
