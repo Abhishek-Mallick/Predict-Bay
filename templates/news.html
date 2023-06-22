@@ -37,14 +37,6 @@
 	<link href="/static/css/style.css" rel="stylesheet">
 	<link href="/static/css/styles.css" rel="stylesheet">
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<style>
-		#desc{
-			color: aliceblue;
-		}
-          
-	</style>
-
-
 
 </head>
 
@@ -58,18 +50,17 @@
 			</a>
 			<i class="bi bi-list toggle-sidebar-btn"></i>
 		</div>
-            <div class="search-bar">
-                <form class="search-form d-flex align-items-center" id="search">
-                    <input type="text" id="q" placeholder="Search News">
-                    <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                </form>
-            </div>
-        
+		<div class="search-bar" hidden>
+			<form class="search-form d-flex align-items-center" id="search">
+				<input type="text" id="q" placeholder="Search News">
+				<button type="submit" title="Search"><i class="bi bi-search"></i></button>
+			</form>
+		</div>
 		<nav class="header-nav ms-auto">
 			<ul class="d-flex align-items-center">
-				<li class="nav-item d-block d-lg-none">
-					<a class="nav-link nav-icon search-bar-toggle" href="#">
-						<i class="bi bi-search"></i>
+				<li class="nav-item d-block d-lg-none" hidden>
+					<a class="nav-link nav-icon search-bar-toggle" href="#" hidden>
+						<i class="bi bi-search" hidden></i>
 					</a>
 				</li>
 				<li class="nav-item dropdown pe-3">
