@@ -49,6 +49,14 @@ import time
 from time import ctime, sleep
 import datetime
 import csv
+import time
+from datetime import datetime
+from yahoo_fin import stock_info as si
+import matplotlib.pyplot as plt
+import mpld3
+import pandas_ta as pta
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.linear_model import LinearRegression
 
 
 app = Flask(__name__)
@@ -238,6 +246,52 @@ def select():
     ticker = get_ticker(items, company_name)
     return jsonify({'ticker': ticker})
 
+def get_stock_data(ticker):
+    df = si.get_data(ticker)
+    df['date'] = df.index
+    return df
+
+def format_data(df):
+    DATA_LEN = 300
+    dates = df['date'][len(df)-DATA_LEN:len(df)].to_list()
+    close_prices = df['close'][len(df)-DATA_LEN:len(df)].to_list()
+    open_prices = df['open'][len(df)-DATA_LEN:len(df)].to_list()
+    volumes = df['volume'][len(df)-DATA_LEN:len(df)].to_list()
+    high_prices = df['high'][len(df)-DATA_LEN:len(df)].to_list()
+    low_prices = df['low'][len(df)-DATA_LEN:len(df)].to_list()
+    close_for_calc = df['close'][len(df)-DATA_LEN:len(df)]
+    return dates, close_prices, open_prices, volumes, high_prices, low_prices, close_for_calc
+
+def linear_regression_prediction(close_prices):
+    dataset = np.array(close_prices)
+    training = len(dataset)
+    dataset = np.reshape(dataset, (dataset.shape[0], 1))
+
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    scaled_data = scaler.fit_transform(dataset)
+
+    train_data = scaled_data[0:int(training), :]
+
+    x_train = []
+    y_train = []
+    prediction_days = 60
+
+    for i in range(prediction_days, len(train_data)):
+        x_train.append(train_data[i-prediction_days:i, 0])
+        y_train.append(train_data[i, 0])
+
+    x_train, y_train = np.array(x_train), np.array(y_train)
+
+    reg = LinearRegression().fit(x_train, y_train)
+
+    x_tomm = close_prices[len(close_prices) - prediction_days:]
+    x_tomm = np.array(x_tomm)
+    x_tomm = scaler.transform(x_tomm.reshape(-1, 1))
+
+    prediction = reg.predict(x_tomm.reshape(1, -1))
+    prediction = scaler.inverse_transform(prediction.reshape(-1, 1))
+
+    return round(prediction[0][0], 2)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -261,7 +315,13 @@ def index():
         market_cap_formatted = format_market_cap(market_cap)
         short_description = info['longBusinessSummary']
 
-
+                   # === GRU ===
+	    
+	df_GRU = get_stock_data(ticker)
+        dates, close_prices, open_prices, volumes, high_prices, low_prices, close_for_calc = format_data(df_GRU)
+        prediction_GRU = linear_regression_prediction(close_prices)
+	    
+	           # === END ===
 
         closing_prices = df['Close']
 
@@ -381,15 +441,18 @@ def index():
         predicted_prices = scaler.inverse_transform(predicted_prices)
         predicted_price = predicted_prices[0][0]
         
-        if(biLSTM_predicted_price > predicted_price):
-            uprange = floor(biLSTM_predicted_price)
-            downrange = floor(predicted_price)
-        else:
-            uprange = floor(predicted_price)
-            downrange = floor(biLSTM_predicted_price)
+        # if(biLSTM_predicted_price > predicted_price):
+        #     uprange = floor(biLSTM_predicted_price)
+        #     downrange = floor(predicted_price)
+        # else:
+        #     uprange = floor(predicted_price)
+        #     downrange = floor(biLSTM_predicted_price)
+
+	uprange=floor(prediction_GRU+2)
+        downrange=floor(prediction_GRU-2)
 
          
-        return render_template('index.html', ticker=ticker, chart_data=chart_data, predicted_price=round(predicted_price, 2), biLSTM_predicted_price=round(biLSTM_predicted_price, 2), uprange = uprange, downrange = downrange, bilstm_graph_html = bilstm_graph_html, ma100=ma100,ma200=ma200, graph_html=graph_html,high_value=high_value,close_value=close_value,open_value=open_value,high_status=increase_status_high,high_percent=percentage_change_high,Close_status=increase_status_Close,Close_percent=percentage_change_Close,Open_status=increase_status_Open,Open_percent=percentage_change_Open,company_name=company_name,market_cap=market_cap_formatted,short_description=short_description,chart=chart)
+        return render_template('index.html', ticker=ticker, chart_data=chart_data, predicted_price=round(predicted_price, 2), biLSTM_predicted_price=round(biLSTM_predicted_price, 2), uprange = uprange, downrange = downrange, bilstm_graph_html = bilstm_graph_html, ma100=ma100,ma200=ma200, graph_html=graph_html,high_value=high_value,close_value=close_value,open_value=open_value,high_status=increase_status_high,high_percent=percentage_change_high,Close_status=increase_status_Close,Close_percent=percentage_change_Close,Open_status=increase_status_Open,Open_percent=percentage_change_Open,company_name=company_name,market_cap=market_cap_formatted,short_description=short_description,chart=chart,prediction_GRU=prediction_GRU)
     except InvalidTickerError as e:
         return render_template('errorpage.html')
         if request.method == 'POST':
