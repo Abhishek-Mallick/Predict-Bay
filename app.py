@@ -57,6 +57,7 @@ import mpld3
 import pandas_ta as pta
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
+from sklearn.impute import SimpleImputer
 
 
 app = Flask(__name__)
@@ -254,13 +255,19 @@ def get_stock_data(ticker):
 def format_data(df):
     DATA_LEN = 300
     dates = df['date'][len(df)-DATA_LEN:len(df)].to_list()
+    
+    # Fill NaN values in 'close' column with the mean
+    df['close'].fillna(df['close'].mean(), inplace=True)
+    
     close_prices = df['close'][len(df)-DATA_LEN:len(df)].to_list()
     open_prices = df['open'][len(df)-DATA_LEN:len(df)].to_list()
     volumes = df['volume'][len(df)-DATA_LEN:len(df)].to_list()
     high_prices = df['high'][len(df)-DATA_LEN:len(df)].to_list()
     low_prices = df['low'][len(df)-DATA_LEN:len(df)].to_list()
     close_for_calc = df['close'][len(df)-DATA_LEN:len(df)]
+    
     return dates, close_prices, open_prices, volumes, high_prices, low_prices, close_for_calc
+
 
 def linear_regression_prediction(close_prices):
     dataset = np.array(close_prices)
