@@ -412,7 +412,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xxl-4 col-xl-12">
+<!--                         <div class="col-xxl-4 col-xl-12">
 
                             <div class="card info-card customers-card">
 
@@ -433,7 +433,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
 
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card revenue-card">
@@ -453,6 +453,43 @@
                                 </div>
 
                             </div>
+                        </div>
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card customers-card">
+                        
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ticker}} <span>| GRU Predicted price</span></h5>
+                        
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{prediction_GRU}}</h6>
+                        
+                                        </div>
+                                    </div>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                        
+                            <div class="card info-card customers-card">
+                        
+                                <div class="card-body">
+                                    <center><h5 class="card-title">{{ticker}} <span>| Predicted Closing Range</span></h5></center>
+                        
+                                    <div class="d-flex align-items-center">
+                                        <div class="ps-3" style="margin-left: auto;margin-right: auto;">
+                                           <h6>{{uprange}} - {{downrange}}</h6>
+                        
+                                        </div>
+                                    </div>
+                        
+                                </div>
+                            </div>
+                        
                         </div>
 
                     </div>
