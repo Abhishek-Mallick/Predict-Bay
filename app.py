@@ -205,7 +205,7 @@ def create_candlestick_chart(data):
 
 def load_csv(file_path):
     items = []
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='utf-8-sig') as file:
         reader = csv.DictReader(file)
         for row in reader:
             items.append(row)
@@ -448,8 +448,8 @@ def index():
         #     uprange = floor(predicted_price)
         #     downrange = floor(biLSTM_predicted_price)
 
-        uprange=floor(prediction_GRU+2)
-        downrange=floor(prediction_GRU-2)
+        uprange=floor(prediction_GRU)+1
+        downrange=floor(prediction_GRU)-1
 
          
         return render_template('index.html', ticker=ticker, chart_data=chart_data, predicted_price=round(predicted_price, 2), biLSTM_predicted_price=round(biLSTM_predicted_price, 2), uprange = uprange, downrange = downrange, bilstm_graph_html = bilstm_graph_html, ma100=ma100,ma200=ma200, graph_html=graph_html,high_value=high_value,close_value=close_value,open_value=open_value,high_status=increase_status_high,high_percent=percentage_change_high,Close_status=increase_status_Close,Close_percent=percentage_change_Close,Open_status=increase_status_Open,Open_percent=percentage_change_Open,company_name=company_name,market_cap=market_cap_formatted,short_description=short_description,chart=chart,prediction_GRU=prediction_GRU)
