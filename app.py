@@ -317,11 +317,16 @@ def index():
         company = yf.Ticker(ticker)
         info = company.info
         chart = create_candlestick_chart(df)
-        company_name = info['longName']
-        market_cap = info['marketCap']
-        market_cap_formatted = format_market_cap(market_cap)
-        short_description = info['longBusinessSummary']
-
+        try:
+            company_name = info['longName']
+            market_cap = info['marketCap']
+            market_cap_formatted = format_market_cap(market_cap)
+            short_description = info['longBusinessSummary']
+        except:
+            company_name = "No data found"
+            market_cap = 0
+            market_cap_formatted = 0
+            short_description = "No data found"
                    # === GRU ===
 	    
         df_GRU = get_stock_data(ticker)
@@ -454,10 +459,22 @@ def index():
         # else:
         #     uprange = floor(predicted_price)
         #     downrange = floor(biLSTM_predicted_price)
-
-        uprange=floor(prediction_GRU)+1
-        downrange=floor(prediction_GRU)-1
-
+        if floor(prediction_GRU) > 1:    
+            uprange=floor(prediction_GRU)+1
+            downrange=floor(prediction_GRU)-1
+        else:
+            gr = str(prediction_GRU)
+            dk  = len(gr[2:])
+            lk = "."            
+            print(dk)
+            for i in range(dk):
+                if (i != (dk-1)): 
+                    lk += '0'
+                else:
+                    lk +='1'
+            buffet = float(lk)
+            uprange= prediction_GRU + buffet
+            downrange= prediction_GRU - buffet
          
         return render_template('index.html', ticker=ticker, chart_data=chart_data, predicted_price=round(predicted_price, 2), biLSTM_predicted_price=round(biLSTM_predicted_price, 2), uprange = uprange, downrange = downrange, bilstm_graph_html = bilstm_graph_html, ma100=ma100,ma200=ma200, graph_html=graph_html,high_value=high_value,close_value=close_value,open_value=open_value,high_status=increase_status_high,high_percent=percentage_change_high,Close_status=increase_status_Close,Close_percent=percentage_change_Close,Open_status=increase_status_Open,Open_percent=percentage_change_Open,company_name=company_name,market_cap=market_cap_formatted,short_description=short_description,chart=chart,prediction_GRU=prediction_GRU)
     except InvalidTickerError as e:
@@ -473,7 +490,7 @@ def get_today_high(symbol):
     stock = yf.Ticker(symbol)
     data = stock.history(period='1d')
     if not data.empty:
-        return data['High'].iloc[-1]
+        return round(data['High'].iloc[-1],3)
     return None
 
 # Function to get today's close value of a stock
@@ -481,7 +498,7 @@ def get_today_close(symbol):
     stock = yf.Ticker(symbol)
     data = stock.history(period='1d')
     if not data.empty:
-        return data['Close'].iloc[-1]
+        return round(data['Close'].iloc[-1], 3)
     return None
 
 # Function to get today's open value of a stock
@@ -489,7 +506,7 @@ def get_today_open(symbol):
     stock = yf.Ticker(symbol)
     data = stock.history(period='1d')
     if not data.empty:
-        return data['Open'].iloc[-1]
+        return round(data['Open'].iloc[-1],3)
     return None
 
 def get_percentage_change_high(symbol):
@@ -499,6 +516,7 @@ def get_percentage_change_high(symbol):
         yesterday_high = data['High'].iloc[-2]
         today_high = data['High'].iloc[-1]
         percentage_change = ((today_high - yesterday_high) / yesterday_high) * 100
+        percentage_change = round(percentage_change,4)
         if percentage_change > 0:
             increase_status = 'Increased'
         elif percentage_change < 0:
@@ -515,6 +533,7 @@ def get_percentage_change_Close(symbol):
         yesterday_high = data['Close'].iloc[-2]
         today_high = data['Close'].iloc[-1]
         percentage_change = ((today_high - yesterday_high) / yesterday_high) * 100
+        percentage_change = round(percentage_change,4)
         if percentage_change > 0:
             increase_status = 'Increased'
         elif percentage_change < 0:
@@ -531,6 +550,7 @@ def get_percentage_change_Open(symbol):
         yesterday_high = data['Open'].iloc[-2]
         today_high = data['Open'].iloc[-1]
         percentage_change = ((today_high - yesterday_high) / yesterday_high) * 100
+        percentage_change = round(percentage_change,4)
         if percentage_change > 0:
             increase_status = 'Increased'
         elif percentage_change < 0:
