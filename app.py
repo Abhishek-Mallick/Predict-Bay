@@ -50,7 +50,7 @@ from time import ctime, sleep
 import datetime
 import csv
 import time
-from datetime import datetime
+# from datetime import datetime
 from yahoo_fin import stock_info as si
 import matplotlib.pyplot as plt
 import mpld3
@@ -317,7 +317,7 @@ def index():
 
                    # === GRU ===
 	    
-	df_GRU = get_stock_data(ticker)
+        df_GRU = get_stock_data(ticker)
         dates, close_prices, open_prices, volumes, high_prices, low_prices, close_for_calc = format_data(df_GRU)
         prediction_GRU = linear_regression_prediction(close_prices)
 	    
@@ -448,7 +448,7 @@ def index():
         #     uprange = floor(predicted_price)
         #     downrange = floor(biLSTM_predicted_price)
 
-	uprange=floor(prediction_GRU+2)
+        uprange=floor(prediction_GRU+2)
         downrange=floor(prediction_GRU-2)
 
          
