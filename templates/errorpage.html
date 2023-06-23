@@ -24,10 +24,73 @@
   <link href="/static/css/remixicon.css" rel="stylesheet">
   <link href="/static/css/style.css" rel="stylesheet">
   <link href="/static/css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+        .search-bar-toggle {
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    
+        .search-bar-toggle:hover {
+            color: #ff0000;
+        }
+    
+        .ui-autocomplete {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            float: left;
+            display: none;
+            min-width: 160px;
+            padding: 4px 0;
+            margin: 2px 0 0 0;
+            list-style: none;
+            font-size: 14px;
+            text-align: left;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            background-clip: padding-box;
+        }
+    </style>
+    <style>
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #343a40;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -ms-overflow-style: none;
+            background-color: #adb5bd;
+            border-radius: 25px;
+            border: 3px #dee2e6;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        #auth-links {
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body>
-
+  <div id="loader">
+    <div id="loader-text"></div>
+</div>
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -37,14 +100,45 @@
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
+    <script>
+      $(document).ready(function () {
+          $("#ticker").autocomplete({
+              source: function (request, response) {
+                  $.ajax({
+                      url: "/search",
+                      type: "GET",
+                      data: { keyword: request.term },
+                      success: function (data) {
+                          response(data);
+                      }
+                  });
+              },
+              minLength: 1,
+              select: function (event, ui) {
+                  event.preventDefault();
+  
+                  // Send the selected company name to Flask for getting the ticker
+                  $.ajax({
+                      url: "/select",
+                      type: "GET",
+                      data: { company_name: ui.item.value },
+                      success: function (data) {
+                          var ticker = data.ticker; // Retrieve the ticker
+                          $("#ticker").val(ticker); // Set the ticker as the value of the search box
+                          $("#specific-form").submit(); // Submit the form with the ticker as the keyword
+                      }
+                  });
+              }
+          });
+      });
+  </script>
 
-
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="/">
-        <input type="text" id="ticker" name="ticker" value="{{ ticker }}" placeholder="Enter ticker symbol">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div>
+<div class="search-bar">
+  <form id="specific-form" class="search-form d-flex align-items-center" method="POST" action="/">
+      <input type="text" id="ticker" name="ticker" value="{{ ticker }}" placeholder="Enter ticker symbol (NASDAQ)">
+      <button type="submit" title="Search" value="Search"><i class="bi bi-search"></i></button>
+  </form>
+</div>
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
