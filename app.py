@@ -1106,15 +1106,20 @@ def models(ticker):
     bilstm_price = biLSTM(df)
 
     # if (bilstm_price > lstm_price):
-    #     uprange = floor(bilstm_price)
+    #     uprange = floor(bilstm_price
     #     downrange = floor(lstm_price)
     # else:
     #     uprange = floor(lstm_price)
     #     downrange = floor(bilstm_price)    
+    #############gru##################
+    df_GRU = get_stock_data(ticker)
+    dates, close_prices, open_prices, volumes, high_prices, low_prices, close_for_calc = format_data(df_GRU)
+    prediction_GRU = linear_regression_prediction(close_prices)
 
+    uprange = floor(prediction_GRU)+1
+    downrange = floor(prediction_GRU)-1
 
-    return lstm_price, bilstm_price, uprange, downrange
-
+    return lstm_price, bilstm_price, uprange, downrange, prediction_GRU
 
 
 #######################################################################################################################
