@@ -1105,12 +1105,12 @@ def models(ticker):
     lstm_price = LSTM(df)
     bilstm_price = biLSTM(df)
 
-    if (bilstm_price > lstm_price):
-        uprange = floor(bilstm_price)
-        downrange = floor(lstm_price)
-    else:
-        uprange = floor(lstm_price)
-        downrange = floor(bilstm_price)    
+    # if (bilstm_price > lstm_price):
+    #     uprange = floor(bilstm_price)
+    #     downrange = floor(lstm_price)
+    # else:
+    #     uprange = floor(lstm_price)
+    #     downrange = floor(bilstm_price)    
 
 
     return lstm_price, bilstm_price, uprange, downrange
@@ -1138,10 +1138,11 @@ def generate_block_every_second():
                 blockchain.add_block(data, public_key)
             if current_time == scheduled_time_pre:
                 symbol = "GOOGL"
-                lstm, bilstm, up, down = models(symbol)
+                lstm, bilstm, uprange, downrange, gru = models(symbol)
                 lstm_r = round_off(lstm)
                 bilstm_r = round_off(bilstm)
-                data = f"LSTM: {lstm_r}, BiLSTM: {bilstm_r}, Range: {up} - {down}"
+                gru_r = round_off(gru)
+                data = f"LSTM: {lstm_r}, BiLSTM: {bilstm_r}, GRU: {gru_r}, Range: {uprange} - {downrange}"
                 blockchain.add_block(data, public_key)
         sleep(60)
 
