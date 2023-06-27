@@ -299,6 +299,48 @@ def linear_regression_prediction(close_prices):
     prediction = scaler.inverse_transform(prediction.reshape(-1, 1))
 
     return round(prediction[0][0], 2)
+def future_predictions(close_prices, prediction_days, future_days):
+    dataset = np.array(close_prices)
+    training = len(dataset)
+    dataset = np.reshape(dataset, (dataset.shape[0], 1))
+
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    scaled_data = scaler.fit_transform(dataset)
+
+    train_data = scaled_data[0:int(training), :]
+
+    x_train = []
+    y_train = []
+
+    for i in range(prediction_days, len(train_data)):
+        x_train.append(train_data[i-prediction_days:i, 0])
+        y_train.append(train_data[i, 0])
+
+    x_train, y_train = np.array(x_train), np.array(y_train)
+
+    reg = LinearRegression().fit(x_train, y_train)
+
+    predicted_prices = []
+    tot_prices = list(close_prices)
+
+    for i in range(future_days):
+        x_prices = tot_prices[len(tot_prices) - prediction_days:]
+        x_prices = np.array(x_prices, dtype=object)  # Specify dtype=object to handle ragged nested sequences
+        x_prices = scaler.transform(x_prices.reshape(-1, 1))
+
+        prediction = reg.predict(x_prices.reshape(1, -1))
+        prediction = scaler.inverse_transform(prediction.reshape(-1, 1))
+
+        tot_prices.append(prediction)
+        predicted_prices.append(prediction)
+
+    tot_prices = np.array(tot_prices, dtype=object)  # Specify dtype=object for the final array
+    predicted_prices = np.array(predicted_prices, dtype=object)  # Specify dtype=object for the predicted prices array
+
+    tot_prices = np.reshape(tot_prices, (tot_prices.shape[0]))
+    predicted_prices = np.reshape(predicted_prices, (predicted_prices.shape[0]))
+
+    return tot_prices, predicted_prices
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -332,6 +374,11 @@ def index():
         df_GRU = get_stock_data(ticker)
         dates, close_prices, open_prices, volumes, high_prices, low_prices, close_for_calc = format_data(df_GRU)
         prediction_GRU = linear_regression_prediction(close_prices)
+	future_days = 10
+        tot_prices, predicted_prices = future_predictions(close_prices, 60, future_days)
+        prediction_list = []
+        for i in range(future_days):
+            prediction_list.append(predicted_prices[i])
 	    
 	           # === END ===
 
@@ -476,7 +523,7 @@ def index():
             uprange= prediction_GRU + buffet
             downrange= prediction_GRU - buffet
          
-        return render_template('index.html', ticker=ticker, chart_data=chart_data, predicted_price=round(predicted_price, 2), biLSTM_predicted_price=round(biLSTM_predicted_price, 2), uprange = uprange, downrange = downrange, bilstm_graph_html = bilstm_graph_html, ma100=ma100,ma200=ma200, graph_html=graph_html,high_value=high_value,close_value=close_value,open_value=open_value,high_status=increase_status_high,high_percent=percentage_change_high,Close_status=increase_status_Close,Close_percent=percentage_change_Close,Open_status=increase_status_Open,Open_percent=percentage_change_Open,company_name=company_name,market_cap=market_cap_formatted,short_description=short_description,chart=chart,prediction_GRU=prediction_GRU)
+        return render_template('index.html', ticker=ticker, chart_data=chart_data, predicted_price=round(predicted_price, 2), biLSTM_predicted_price=round(biLSTM_predicted_price, 2), uprange = uprange, downrange = downrange, bilstm_graph_html = bilstm_graph_html, ma100=ma100,ma200=ma200, graph_html=graph_html,high_value=high_value,close_value=close_value,open_value=open_value,high_status=increase_status_high,high_percent=percentage_change_high,Close_status=increase_status_Close,Close_percent=percentage_change_Close,Open_status=increase_status_Open,Open_percent=percentage_change_Open,company_name=company_name,market_cap=market_cap_formatted,short_description=short_description,chart=chart,prediction_GRU=prediction_GRU,prediction_list=prediction_list)
     except InvalidTickerError as e:
         return render_template('errorpage.html')
         if request.method == 'POST':
