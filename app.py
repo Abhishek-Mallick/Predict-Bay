@@ -374,7 +374,7 @@ def index():
         df_GRU = get_stock_data(ticker)
         dates, close_prices, open_prices, volumes, high_prices, low_prices, close_for_calc = format_data(df_GRU)
         prediction_GRU = linear_regression_prediction(close_prices)
-	future_days = 10
+        future_days = 10
         tot_prices, predicted_prices = future_predictions(close_prices, 60, future_days)
         prediction_list = []
         for i in range(future_days):
