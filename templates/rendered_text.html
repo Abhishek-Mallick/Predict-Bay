@@ -13,9 +13,8 @@
             const contentElement = document.querySelector('pre');
             const ipAddress = '103.94.87.228';
 
-            if (contentElement.textContent.includes(ipAddress)) {
-                contentElement.classList.add('red-text');
-            }
+            const regex = new RegExp(ipAddress, 'g');
+            contentElement.innerHTML = contentElement.innerHTML.replace(regex, '<span class="red-text">$&</span>');
         });
     </script>
 </head>
