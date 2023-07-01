@@ -58,12 +58,22 @@
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const contentElement = document.querySelector('pre');
-            const ipAddresses = ['127.0.0.1', '192.168.0.1', '10.0.0.1'];
 
-            ipAddresses.forEach((ipAddress, index) => {
-                const regex = new RegExp(ipAddress, 'g');
-                contentElement.innerHTML = contentElement.innerHTML.replace(regex, `<span class="ip-address-${index + 1}">$&</span>`);
-            });
+            fetch('/get_logs')
+                .then(response => response.json())
+                .then(data => {
+                    const logContent = data.content;
+
+                    const ipAddresses = ['127.0.0.1', '192.168.0.1', '10.0.0.1'];
+
+                    ipAddresses.forEach((ipAddress, index) => {
+                        const regex = new RegExp(ipAddress, 'g');
+                        logContent = logContent.replace(regex, `<span class="ip-address-${index + 1}">$&</span>`);
+                    });
+
+                    contentElement.innerHTML = logContent;
+                })
+                .catch(error => console.log('Error:', error));
         });
     </script>
 </head>
