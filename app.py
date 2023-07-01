@@ -1,4 +1,5 @@
-from flask import Flask, render_template, current_app, request, redirect, url_for, g 
+from flask import Flask, render_template, current_app, request, redirect, url_for, g, render_template_string
+from markupsafe import Markup
 import yfinance as yf
 import numpy as np
 import pandas as pd
@@ -344,6 +345,19 @@ def future_predictions(close_prices, prediction_days, future_days):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    ip_add = request.environ['REMOTE_ADDR']
+    timestamp = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%a %b %d %H:%M:%S %Y")
+    text_to_add = f"\n{timestamp}:  {ip_add}\n"
+    file_path = 'templates/ip_logs.txt'
+    try:
+        with open(file_path, "a") as file:
+            file.write(text_to_add)
+            # print("Text added to the existing file.")
+    except FileNotFoundError:
+        with open(file_path, "w") as file:
+            file.write(text_to_add)
+            # print("File created and text added.")    
+
     if request.method == 'POST':
         ticker = request.form.get('ticker')
     else:
@@ -530,6 +544,13 @@ def index():
             ticker = request.form['ticker']
             index()
 
+
+@app.route('/track')
+def track():
+    with open('templates/ip_logs.txt', 'r') as file:
+        text_content = file.read()
+    rendered_content = Markup(text_content)
+    return render_template('rendered_text.html', content=rendered_content)
 
 
 # Function to get today's high value of a stock
