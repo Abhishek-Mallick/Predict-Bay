@@ -83,6 +83,12 @@
                                     const replacement = `<span class="ip-address">${ipAddress}</span> <span class="location">(${city})</span> <span class="country">[${country_name}]</span>`;
                                     logContent = logContent.replace(regex, replacement);
                                     contentElement.innerHTML = logContent;
+
+                                    // Remove the duplicated heading inside the container
+                                    const containerHeading = document.querySelector('.container h1');
+                                    if (containerHeading) {
+                                        containerHeading.remove();
+                                    }
                                 })
                                 .catch(error => console.log('Error:', error));
                         });
@@ -96,6 +102,7 @@
 </head>
 <body>
     <div class="container">
+        <h1>IP Logs</h1>
         <pre>
             {{ content }}
         </pre>
