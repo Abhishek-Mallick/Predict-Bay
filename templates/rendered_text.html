@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="/static/img/logoalt2.png" rel="icon">
+    <title>IP Logs</title>
+    <style>
+        body {
+            font-family: Consolas, monospace;
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff00;
+            margin-top: 0;
+        }
+
+        pre {
+            background-color: #111;
+            border-radius: 5px;
+            padding: 20px;
+            line-height: 1.4;
+            font-size: 14px;
+            color: #00ff00;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .log-line {
+            padding: 2px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .log-line:last-child {
+            border-bottom: none;
+        }
+
+        .timestamp {
+            color: #888;
+        }
+
+        .ip-address {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .location {
+            color: #00bb00;
+            font-weight: bold;
+        }
+
+        .country {
+            color: #00dd00;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const contentElement = document.querySelector('pre');
+            const mainHeading = document.querySelector('h1');
+
+            fetch('/track')
+                .then(response => response.text())
+                .then(logContent => {
+                    const ipRegex = /\b(?:\d{1,3}\.){3}\d{1,3}\b/g;
+                    const ipAddresses = logContent.match(ipRegex);
+
+                    if (ipAddresses) {
+                        const uniqueIPs = [...new Set(ipAddresses)];
+
+                        uniqueIPs.forEach(ipAddress => {
+                            fetch(`https://ipapi.co/${ipAddress}/json/`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    const { city, country_name } = data;
+                                    const regex = new RegExp(ipAddress, 'g');
+                                    const replacement = `<span class="ip-address">${ipAddress}</span> <span class="location">(${city})</span> <span class="country">[${country_name}]</span>`;
+                                    logContent = logContent.replace(regex, replacement);
+                                    contentElement.innerHTML = logContent;
+                                })
+                                .catch(error => console.log('Error:', error));
+                        });
+
+                        // Remove the duplicated heading inside the container
+                        const containerHeading = document.querySelector('.container h1');
+                        if (containerHeading) {
+                            containerHeading.remove();
+                        }
+                    } else {
+                        contentElement.innerHTML = logContent;
+                    }
+
+                    // Update the main heading text
+                    if (mainHeading) {
+                        mainHeading.textContent = 'IP Logs';
+                    }
+                })
+                .catch(error => console.log('Error:', error));
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1></h1>
+        <pre>
+            {{ content }}
+        </pre>
+    </div>
+</body>
+</html>
