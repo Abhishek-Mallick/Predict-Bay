@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="/static/img/logoalt2.png" rel="icon">
     <title>IP Logs</title>
+    <style>
+        .red-text {
+            color: red;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const contentElement = document.querySelector('pre');
+            const ipAddress = '103.94.87.228';
+
+            if (contentElement.textContent.includes(ipAddress)) {
+                contentElement.classList.add('red-text');
+            }
+        });
+    </script>
 </head>
 <body>
     <pre>{{ content }}</pre>
