@@ -40,18 +40,18 @@
             color: #888;
         }
 
-        .ip-address-1 {
+        .ip-address {
             color: #00ff00;
             font-weight: bold;
         }
 
-        .ip-address-2 {
-            color: #00dd00;
+        .location {
+            color: #00bb00;
             font-weight: bold;
         }
 
-        .ip-address-3 {
-            color: #00bb00;
+        .country {
+            color: #00dd00;
             font-weight: bold;
         }
     </style>
@@ -60,18 +60,29 @@
             const contentElement = document.querySelector('pre');
 
             fetch('/get_logs')
-                .then(response => response.json())
-                .then(data => {
-                    const logContent = data.content;
+                .then(response => response.text())
+                .then(logContent => {
+                    const ipRegex = /\b(?:\d{1,3}\.){3}\d{1,3}\b/g;
+                    const ipAddresses = logContent.match(ipRegex);
 
-                    const ipAddresses = ['127.0.0.1', '192.168.0.1', '10.0.0.1'];
+                    if (ipAddresses) {
+                        const uniqueIPs = [...new Set(ipAddresses)];
 
-                    ipAddresses.forEach((ipAddress, index) => {
-                        const regex = new RegExp(ipAddress, 'g');
-                        logContent = logContent.replace(regex, `<span class="ip-address-${index + 1}">$&</span>`);
-                    });
-
-                    contentElement.innerHTML = logContent;
+                        uniqueIPs.forEach(ipAddress => {
+                            fetch(`https://ipapi.co/${ipAddress}/json/`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    const { city, country_name } = data;
+                                    const regex = new RegExp(ipAddress, 'g');
+                                    const replacement = `<span class="ip-address">${ipAddress}</span> <span class="location">(${city})</span> <span class="country">[${country_name}]</span>`;
+                                    logContent = logContent.replace(regex, replacement);
+                                    contentElement.innerHTML = logContent;
+                                })
+                                .catch(error => console.log('Error:', error));
+                        });
+                    } else {
+                        contentElement.innerHTML = logContent;
+                    }
                 })
                 .catch(error => console.log('Error:', error));
         });
