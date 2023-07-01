@@ -345,7 +345,7 @@ def future_predictions(close_prices, prediction_days, future_days):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    ip_add = request.environ['REMOTE_ADDR']
+    ip_add = request.remote_addr
     timestamp = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%a %b %d %H:%M:%S %Y")
     text_to_add = f"\n{timestamp}:  {ip_add}\n"
     file_path = 'templates/ip_logs.txt'
