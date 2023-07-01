@@ -23,6 +23,7 @@
         }
 
         pre {
+            margin-top: 0;
             background-color: #111;
             border-radius: 5px;
             padding: 20px;
@@ -89,11 +90,23 @@
                                     if (containerHeading) {
                                         containerHeading.remove();
                                     }
+
+                                    // Update the main heading text
+                                    const mainHeading = document.querySelector('h1');
+                                    if (mainHeading) {
+                                        mainHeading.textContent = 'IP Logs';
+                                    }
                                 })
                                 .catch(error => console.log('Error:', error));
                         });
                     } else {
                         contentElement.innerHTML = logContent;
+
+                        // Update the main heading text
+                        const mainHeading = document.querySelector('h1');
+                        if (mainHeading) {
+                            mainHeading.textContent = 'IP Logs';
+                        }
                     }
                 })
                 .catch(error => console.log('Error:', error));
@@ -102,7 +115,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>IP Logs</h1>
+        <h1></h1>
         <pre>
             {{ content }}
         </pre>
