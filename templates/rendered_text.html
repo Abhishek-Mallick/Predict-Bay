@@ -11,9 +11,15 @@
             background-color: #000;
         }
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         h1 {
             text-align: center;
             color: #00ff00;
+            margin-top: 0;
         }
 
         pre {
@@ -89,9 +95,11 @@
     </script>
 </head>
 <body>
-    <h1>IP Logs</h1>
-    <pre>
-        {{ content }}
-    </pre>
+    <div class="container">
+        <h1>IP Logs</h1>
+        <pre>
+            {{ content }}
+        </pre>
+    </div>
 </body>
 </html>
