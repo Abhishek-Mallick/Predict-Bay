@@ -59,9 +59,10 @@ import pandas_ta as pta
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.impute import SimpleImputer
-
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_host=1)
 
 class InvalidTickerError(Exception):
     pass
@@ -352,11 +353,9 @@ def index():
     try:
         with open(file_path, "a") as file:
             file.write(text_to_add)
-            # print("Text added to the existing file.")
     except FileNotFoundError:
         with open(file_path, "w") as file:
-            file.write(text_to_add)
-            # print("File created and text added.")    
+            file.write(text_to_add)   
 
     if request.method == 'POST':
         ticker = request.form.get('ticker')
