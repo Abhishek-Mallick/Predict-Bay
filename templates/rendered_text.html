@@ -4,21 +4,73 @@
     <link href="/static/img/logoalt2.png" rel="icon">
     <title>IP Logs</title>
     <style>
-        .red-text {
-            color: red;
+        body {
+            font-family: Consolas, monospace;
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff00;
+        }
+
+        pre {
+            background-color: #111;
+            border-radius: 5px;
+            padding: 20px;
+            line-height: 1.4;
+            font-size: 14px;
+            color: #00ff00;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .log-line {
+            padding: 2px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .log-line:last-child {
+            border-bottom: none;
+        }
+
+        .timestamp {
+            color: #888;
+        }
+
+        .ip-address-1 {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .ip-address-2 {
+            color: #00dd00;
+            font-weight: bold;
+        }
+
+        .ip-address-3 {
+            color: #00bb00;
+            font-weight: bold;
         }
     </style>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const contentElement = document.querySelector('pre');
-            const ipAddress = '103.94.87.228';
+            const ipAddresses = ['127.0.0.1', '192.168.0.1', '10.0.0.1'];
 
-            const regex = new RegExp(ipAddress, 'g');
-            contentElement.innerHTML = contentElement.innerHTML.replace(regex, '<span class="red-text">$&</span>');
+            ipAddresses.forEach((ipAddress, index) => {
+                const regex = new RegExp(ipAddress, 'g');
+                contentElement.innerHTML = contentElement.innerHTML.replace(regex, `<span class="ip-address-${index + 1}">$&</span>`);
+            });
         });
     </script>
 </head>
 <body>
-    <pre>{{ content }}</pre>
+    <h1>IP Logs</h1>
+    <pre>
+        {{ content }}
+    </pre>
 </body>
 </html>
