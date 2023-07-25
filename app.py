@@ -51,7 +51,6 @@ from time import ctime, sleep
 import datetime
 import csv
 import time
-# from datetime import datetime
 from yahoo_fin import stock_info as si
 import matplotlib.pyplot as plt
 import mpld3
