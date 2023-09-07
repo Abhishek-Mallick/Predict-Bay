@@ -359,7 +359,7 @@ def index():
     if request.method == 'POST':
         ticker = request.form.get('ticker')
     else:
-        ticker = 'GOOGL'
+        ticker = 'GOOG'
 
         if ticker.isspace():
             render_template('errorpage.html')
