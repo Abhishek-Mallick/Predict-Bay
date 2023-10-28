@@ -359,7 +359,7 @@ def index():
     if request.method == 'POST':
         ticker = request.form.get('ticker')
     else:
-        ticker = 'GOOG'
+        ticker = 'TSLA'
 
         if ticker.isspace():
             render_template('errorpage.html')
@@ -369,7 +369,7 @@ def index():
         period = '10y'
         df = get_data(ticker, period)
         company = yf.Ticker(ticker)
-        info = company.info
+        info = "NONE"
         chart = create_candlestick_chart(df)
         try:
             company_name = info['longName']
@@ -684,7 +684,7 @@ def indicators():
     if request.method == 'POST':
         ticker = request.form['ticker']
     else:
-        ticker = 'GOOG'
+        ticker = 'TSLA'
 
         if ticker.isspace():
             render_template('errorpage.html')
@@ -1194,7 +1194,7 @@ def round_off(value):
     formatted_value = "{:.2f}".format(value)
     return float(formatted_value)
 
-################################Only for GOOGe####################################
+################################Only for TSLAe####################################
 
 def generate_block_every_second():
     scheduled_time_pre = "01:20 AM"
@@ -1204,11 +1204,11 @@ def generate_block_every_second():
         if public_key is not None:
             current_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%I:%M %p")
             if current_time == scheduled_time_close:
-                symbol = "GOOG"
+                symbol = "TSLA"
                 data = f"Open: {round(get_today_open(symbol),3)}, High: {round(get_today_high(symbol),3)}, Close: {round(get_today_close(symbol),3)}"
                 blockchain.add_block(data, public_key)
             if current_time == scheduled_time_pre:
-                symbol = "GOOG"
+                symbol = "TSLA"
                 lstm, bilstm, uprange, downrange, gru = models(symbol)
                 lstm_r = round_off(lstm)
                 bilstm_r = round_off(bilstm)
@@ -1219,7 +1219,7 @@ def generate_block_every_second():
 
 block_add = threading.Thread(target=generate_block_every_second)
 block_add.start()
-###########################################Only for GOOGe############################
+###########################################Only for TSLAe############################
 
 
 
