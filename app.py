@@ -24,7 +24,7 @@ from sklearn.model_selection import train_test_split as split
 from sklearn.preprocessing import MinMaxScaler
 import warnings
 import itertools
-warnings.filterwarnings("ignore")
+#warnings.filterwarnings("ignore")
 from IPython import display
 import os
 import re
