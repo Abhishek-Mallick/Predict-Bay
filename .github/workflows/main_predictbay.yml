@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - PredictBay
+name: Build and deploy Python app to Azure Web App - predictbay
 
 on:
   push:
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DB133A168F4D413BBD779E053F0B60F1 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_65DD4AE46F5E4C25821688490DC4F2D9 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A9CBC1BA1A64438F8F44B208BEAD5C4C }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4490320020F4487FA240B8B2E0E2434A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5CFFA8A551734962914231EB0FE6BA92 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D5D6E88E7B7F4293A7A7C4AF15D690B4 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'PredictBay'
+          app-name: 'predictbay'
           slot-name: 'Production'
           
