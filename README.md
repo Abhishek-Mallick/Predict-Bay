@@ -49,7 +49,6 @@ _Research and Learning Resources:_ Dive into our comprehensive FAQ documentation
 <img src="Predictbay_Template/img4.png">
 <img src="Predictbay_Template/img5.png">
 <img src="Predictbay_Template/img6.png">
-<img src="Predictbay_Template/img7.png">
 <img src="Predictbay_Template/img8.png">
 <img src="Predictbay_Template/img9.png">
 <img src="Predictbay_Template/img10.png">
