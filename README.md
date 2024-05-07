@@ -44,14 +44,12 @@ _Research and Learning Resources:_ Dive into our comprehensive FAQ documentation
 ## Website Preview
 
 <img src="Predictbay_Template/img1.png">
-<!-- <img src="Predictbay_Template/img2.png">
+<img src="Predictbay_Template/img2.png">
 <img src="Predictbay_Template/img3.png">
 <img src="Predictbay_Template/img4.png">
 <img src="Predictbay_Template/img5.png">
-<img src="Predictbay_Template/img6.png"> -->
-
-
-
-
-
-
+<img src="Predictbay_Template/img6.png">
+<img src="Predictbay_Template/img7.png">
+<img src="Predictbay_Template/img8.png">
+<img src="Predictbay_Template/img9.png">
+<img src="Predictbay_Template/img10.png">
